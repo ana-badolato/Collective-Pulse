@@ -2,7 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Questrial&display=swap');
 
-
 /* 
   font-family: "Oswald", sans-serif;
   font-family: "Questrial", sans-serif;
@@ -11,20 +10,53 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+
   text-align: center;
 
+  --color-neutral-white: #fefdfb;
+  --color-neutral-black: #1f1f1f;
+  --color-fluor-yellow: #fbfd57;
+  --color-fluor-pink: #ea3f70;
+  --color-fluor-blue: #27cbb8;
+  --color-fluor-green: #80e65e;
+  --color-fluor-purple: #8427ec;
+  --color-fluor-orange: #fe6316;
 
-  --color-neutral-white: #FEFDFB;
-  --color-neutral-black: #1F1F1F;
-  --color-fluor-yellow: #FBFD57;
-  --color-fluor-pink: #EA3F70;
-  --color-fluor-blue: #27CBB8;
-  --color-fluor-green: #80E65E;
-  --color-fluor-purple: #8427EC;
-  --color-fluor-orange: #FE6316;
-
-  --font-text:"Questrial", sans-serif;
-  --font-heading: "Oswald", sans-serif;
+  --font-text: 'Questrial', sans-serif;
+  --font-heading: 'Oswald', sans-serif;
+}
+.container-nav {
+  background-color: var(--color-neutral-black);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+.container-nav a {
+  font-size: 24px;
+  font-family: 'Oswald', sans-serif;
+  color: var(--color-neutral-white);
+  text-decoration: none;
+}
+.conatiner-categories-nav {
+  display: flex;
+  gap: 50px;
+}
+.conatiner-categories-nav a::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: var(--color-fluor-pink);
+  transform: scale(0, 1);
+  transform-origin: center;
+  transition: transform 0.25s;
 }
 
+.conatiner-categories-nav a:hover::after {
+  transform: scale(1, 1);
+}
+.logo a {
+  font-size: 50px;
+  width: 20px;
+}
