@@ -9,22 +9,19 @@ import Navbar from './component/Navbar'
 import './App.css'
 
 function App() {
-
   return (
     <>
-    <Navbar/>
-    <Routes>
-      <Route path='/'element={<Home/>}/>
-      <Route path='/categories'element={<NewsCategory/>}/>
-      <Route path='/details' element={<Details/>}/>
-      <Route path='/category' element={<Category/>}/>
-      <Route path='*' element={<NotFound/>}/>
-    </Routes>
-
-
-
+      <div className="main">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/categories" element={<NewsCategory />} />
+          <Route path="/details" element={<Details />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </div>
     </>
-    
   )
 }
 

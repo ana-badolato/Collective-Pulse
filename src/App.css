@@ -8,11 +8,9 @@
 } */
 
 #root {
-  max-width: 1280px;
+  width: 100vw;
   margin: 0 auto;
-
   text-align: center;
-
   --color-neutral-white: #fefdfb;
   --color-neutral-black: #1f1f1f;
   --color-fluor-yellow: #fbfd57;
@@ -25,9 +23,16 @@
   --font-text: 'Questrial', sans-serif;
   --font-heading: 'Oswald', sans-serif;
 }
+body {
+  margin: 0 auto;
+}
+
 .container-nav {
-  background-color: var(--color-neutral-black);
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.692);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -40,6 +45,7 @@
   text-decoration: none;
 }
 .conatiner-categories-nav {
+  width: 50%;
   display: flex;
   gap: 50px;
 }
@@ -58,5 +64,14 @@
 }
 .logo a {
   font-size: 50px;
-  width: 20px;
+}
+.logo {
+  width: 30px;
+}
+.hero {
+  background-image: url('./assets/hero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 1500px;
 }

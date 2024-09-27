@@ -1,9 +1,5 @@
-
-
 function Home() {
-  return (
-    <div>Home</div>
-  )
+  return <div className="hero"></div>
 }
 
 export default Home
