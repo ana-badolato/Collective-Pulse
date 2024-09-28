@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react'
-import noticia1 from '../assets/noticia1.png'
-import noticia2 from '../assets/noticia2.png'
-import noticia3 from '../assets/noticia3.png'
+import new1 from '../assets/new1.jpg'
+import new2 from '../assets/new2.jpg'
+import new3 from '../assets/new3.jpg'
 
 function Carousel(props) {
   //const { rentals } = props
   const [imageIndex, setImageIndex] = useState(0)
 
-  let images = [noticia1, noticia2, noticia3]
+  let images = [new1, new2, new3]
   // Esta función maneja el cambio automático a la siguiente imagen
   useEffect(() => {
     const interval = setInterval(() => {
       setImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       )
-    }, 3000)
+    }, 5000)
 
     return () => clearInterval(interval)
   }, [images.length])

@@ -97,6 +97,10 @@ html {
   width: 96px;
 }
 
+.menu, .container-menu {
+  display: none;
+}
+
 /*SearchBar------------------------------------------------------------------*/
 
 .search-bar-container {
@@ -162,7 +166,15 @@ html {
   color: rgba(31, 31, 31, 0.7);
 }
 
-
+.title {
+  font-size: 7vw;
+  font-family: var(--font-heading);
+  color: var(--color-neutral-white);
+  text-align: left;
+  line-height: 7vw;
+  margin: -7% 20% 0 20%;
+  margin-bottom: 10rem;
+}
 
 
 
@@ -176,6 +188,7 @@ html {
 
 .home {
   background-color: var(--color-neutral-black);
+  padding-bottom: 64px;
 }
 .hero {
   background-image: linear-gradient(to bottom, rgba(31, 31, 31, 0) 70%, #1f1f1f 100%), url('./assets/hero.png');
@@ -183,46 +196,52 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   min-width: 100%;
-  height: 1500px;
+  height: 1080px;
 }
-.menu, .container-menu {
-  display: none;
-}
+
 .box-carousel {
-  width: 90%;
-  height: 800px;
-  border-radius: 15px;
+  width: 60%;
+  height: auto; /* Esto asegura que el contenedor cambie de altura basado en el contenido */
+  aspect-ratio: 16 / 9; /* Define una relación de aspecto 16:9 para el contenedor */
   overflow: hidden;
   position: relative;
+  border: 5px solid var(--color-fluor-pink);
 }
+
 .image-carousel {
   width: 100%;
-  border-radius: 15px;
+  height: 100%;
+  object-fit: cover; /* Mantiene la proporción de la imagen y la recorta si es necesario */
   position: absolute;
   top: 0;
   left: 0;
   transition: opacity 0.4s ease-in-out;
 }
+
 .container-carousel {
   margin: 20px 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.container {
+
+
+
+/* Card M ----------------------------------------------------------------------*/
+.cardM-container {
   position: relative;
   width: 300px;
   height: 200px;
   overflow: hidden;
 }
 
-.image img {
+.cardM-image img {
   width: 100%;
   height: 100%;
   display: block;
 }
 
-.info {
+.cardM-info {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -240,10 +259,15 @@ html {
   align-items: center;
 }
 
-.container:hover .info {
+.cardM-container:hover .cardM-info {
   transform: translateY(0);
 }
 
+
+
+
+
+/* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
 
   /* NavBar Mobile ------------------------------------------------------*/
@@ -301,5 +325,9 @@ html {
   .search-button img {
     width: 20px;
     height: 20px;
+  }
+
+  .box-carousel{
+    width: 90%;
   }
 }
