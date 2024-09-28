@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="home">
       <div className="hero"></div>
-      {/* <SearchBar /> */}
+      <SearchBar />
       <Carousel />
       <div
         style={{

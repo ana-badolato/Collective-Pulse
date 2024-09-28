@@ -101,24 +101,27 @@ html {
 
 .search-bar-container {
   position: absolute;
-  top: 40%; /* Ajuste para mover la barra más arriba */
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 128px; /* Mantén el padding general */
-  background: radial-gradient(circle, var(--color-neutral-black) 20%, transparent 90%);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  width: 90%; /* Ancho basado en porcentaje para adaptarse mejor */
-  max-width: 380px; /* Limita el ancho máximo */
+  padding: 12%; 
+  
+  background: radial-gradient(circle, var(--color-neutral-black) 10%, transparent 70%);
+
+  width: 90%; 
+  max-width: 500px; 
+  min-width: 200px;
   gap: 16px;
 }
 
 .search-label {
   font-family: 'Oswald', sans-serif;
-  font-size: 24px;
+  font-weight: 500;
+  font-size: 32px;
   color: var(--color-neutral-white);
   margin-bottom: 10px;
 }
@@ -127,7 +130,7 @@ html {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%; /* Asegura que el input ocupe todo el contenedor */
+  width: 100%; 
 }
 
 .search-input {
@@ -136,14 +139,14 @@ html {
   outline: none;
   color: var(--color-neutral-black);
   font-size: 16px;
-  padding: 15px 50px 15px 30px;
-  width: 100%; /* Ancho del 100% del contenedor padre */
+  padding: 20px 50px 20px 30px;
+  width: 100%; 
   font-family: 'Questrial', sans-serif;
 }
 
 .search-button {
   position: absolute;
-  right: 15px; /* Más separación a la derecha para el botón */
+  right: 15px; 
   background: none;
   border: none;
   padding: 0;
@@ -242,9 +245,15 @@ html {
 }
 
 @media (max-width: 480px) {
+
+  /* NavBar Mobile ------------------------------------------------------*/
+
   .container-nav {
     padding: 10px;
     justify-content: space-between;
+    height: 64px;
+    display: flex; 
+    align-items: center; 
   }
   
   /* Ocultar las categorías del navbar en móvil */
@@ -257,13 +266,6 @@ html {
     display: none;
   }
 
-
-  .container-nav {
-    height: 64px;
-    display: flex; 
-    align-items: center; 
-  }
-  
   .wrapper-nav{
     display: flex; 
     justify-content: flex-start;
@@ -281,24 +283,23 @@ html {
   }
   
   
+/* SearchBar Mobile --------------------------------------*/
 
-
-
-  /* Estilos adicionales para la barra de búsqueda en móvil */
   .search-bar-container {
     width: 90%; 
-    max-width: 350px; 
-    padding: 64px; 
+    padding: 8px; 
   }
 
   .search-input {
-    width: 85%;
-    font-size: 14px; 
-    padding: 10px 40px 10px 20px; 
+    padding: 10px 40px; 
+  }
+  
+  .search-button {
+    right: 10px; 
   }
 
   .search-button img {
-    width: 24px;
-    height: 24px; 
+    width: 20px;
+    height: 20px;
   }
 }
