@@ -22,13 +22,15 @@ function Carousel(props) {
   return (
     <div className="container-carousel">
       <div className="box-carousel">
-        {images.map((cada, i) => (
-          <img
-            className="image-carousel"
-            key={i}
-            src={images[imageIndex]}
-            alt={`Imagen ${imageIndex}`}
-          />
+      {images.map((cada, i) => (
+          <div className="image-container" key={i}>
+            <img
+              className="image-carousel"
+              src={images[imageIndex]}
+              alt={`Imagen ${imageIndex}`}
+            />
+            <span className="image-tag">Culture</span> {/* Tag fijo */}
+          </div>
         ))}
       </div>
     </div>
