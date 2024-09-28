@@ -13,6 +13,7 @@
   max-width: 100%;
   --color-neutral-white: #fefdfb;
   --color-neutral-black: #1f1f1f;
+  --color-neutral-black-details:#3C3939;
   --color-fluor-yellow: #fbfd57;
   --color-fluor-pink: #ea3f70;
   --color-fluor-blue: #27cbb8;
@@ -173,7 +174,7 @@ html {
   text-align: left;
   line-height: 7vw;
   margin: -7% 20% 0 20%;
-  margin-bottom: 10rem;
+  margin-bottom: 64px;
 }
 
 
@@ -252,18 +253,84 @@ html {
   margin: 16px;
 }
 
+
+/*- Section headers -------------------------------------------------------*/
+
+.section-header {
+  width: 60%;
+  font-family: var(--font-heading);
+  display: flex;
+  align-items: center;
+  margin: 64px auto;
+}
+
+.section-header h2 {
+  color: var(--color-neutral-white);
+  margin: 0; 
+  white-space: nowrap; 
+}
+
+.section-header hr {
+  flex-grow: 1; 
+  border: none;
+  border-top: 0.5px solid var(--color-neutral-black-details);
+  margin-left: 16px; /* Espacio entre el h2 y la línea */
+}
+
+
+
+
+
+
+
+
+
 /* Card M ----------------------------------------------------------------------*/
+.cardM-section {
+  width: 60%;
+  display: flex;
+  margin: 0 auto;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
 .cardM-container {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 48%;
   overflow: hidden;
+
 }
 
 .cardM-image img {
   width: 100%;
   height: 100%;
   display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+/* Rectángulo de categoría en la parte inferior */
+.cardM-category {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background-color: var(--color-fluor-pink);
+  font-family: 'Oswald', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  z-index: 2;
+}
+.cardM-category p{
+  text-transform: uppercase;
+  z-index: 2;
+  font-size: 16px;
+  color: var(--color-neutral-black);
+  justify-content: flex-start;
+  padding-left: 16px;
+  font-weight: 500;
 }
 
 .cardM-info {
@@ -272,17 +339,26 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: var(--color-neutral-black);
   transform: translateY(100%);
   transition: transform 0.5s ease-in-out;
   padding: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  text-align: left;
 }
+
+.cardM-info h3{
+  font-family: var(--font-heading);
+}
+
+.cardM-info p{
+  font-family: var(--font-text);
+}
+
 
 .cardM-container:hover .cardM-info {
   transform: translateY(0);
