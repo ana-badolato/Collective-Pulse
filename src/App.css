@@ -13,7 +13,7 @@
   max-width: 100%;
   --color-neutral-white: #fefdfb;
   --color-neutral-black: #1f1f1f;
-  --color-neutral-black-details:#3C3939;
+  --color-neutral-black-details: #3c3939;
   --color-fluor-yellow: #fbfd57;
   --color-fluor-pink: #ea3f70;
   --color-fluor-blue: #27cbb8;
@@ -28,19 +28,15 @@ body,
 html {
   margin: 0;
   padding: 0;
-  
 }
 
 /* Aplicar un contenedor que centra y limita el ancho del contenido */
-
-
 
 .main {
   display: flex;
   flex-direction: column;
   width: 100%;
 }
-
 
 /* Navbar------------------------------------------------------------------------*/
 
@@ -49,19 +45,19 @@ html {
   max-width: 60%;
   margin: auto;
   display: flex;
-  justify-content: space-between; 
-  align-items: center; 
+  justify-content: space-between;
+  align-items: center;
   box-sizing: border-box; /* Asegura que el padding y border no afecten el ancho */
-} 
+}
 .container-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%; /* La barra de navegación ocupa todo el ancho */
   background-color: rgba(0, 0, 0, 0.8);
-  padding: 16px 0; 
+  padding: 16px 0;
   box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
-  z-index: 1000; 
+  z-index: 1000;
   min-height: 80px;
   justify-content: space-between; /* Distribuye los elementos uniformemente */
   overflow-x: hidden; /* Evita desbordamientos horizontales */
@@ -94,11 +90,12 @@ html {
   margin: 0;
 }
 
-.logo-container img{
+.logo-container img {
   width: 96px;
 }
 
-.menu, .container-menu {
+.menu,
+.container-menu {
   display: none;
 }
 
@@ -113,12 +110,16 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 12%; 
-  
-  background: radial-gradient(circle, var(--color-neutral-black) 10%, transparent 70%);
+  padding: 12%;
 
-  width: 90%; 
-  max-width: 500px; 
+  background: radial-gradient(
+    circle,
+    var(--color-neutral-black) 10%,
+    transparent 70%
+  );
+
+  width: 90%;
+  max-width: 500px;
   min-width: 200px;
   gap: 16px;
 }
@@ -135,7 +136,7 @@ html {
   position: relative;
   display: flex;
   align-items: center;
-  width: 100%; 
+  width: 100%;
 }
 
 .search-input {
@@ -145,13 +146,13 @@ html {
   color: var(--color-neutral-black);
   font-size: 16px;
   padding: 20px 50px 20px 30px;
-  width: 100%; 
+  width: 100%;
   font-family: 'Questrial', sans-serif;
 }
 
 .search-button {
   position: absolute;
-  right: 15px; 
+  right: 15px;
   background: none;
   border: none;
   padding: 0;
@@ -177,22 +178,17 @@ html {
   margin-bottom: 64px;
 }
 
-
-
-
-
-
-
-
-
-
-
 .home {
   background-color: var(--color-neutral-black);
   padding-bottom: 64px;
 }
 .hero {
-  background-image: linear-gradient(to bottom, rgba(31, 31, 31, 0) 70%, #1f1f1f 100%), url('./assets/hero.png');
+  background-image: linear-gradient(
+      to bottom,
+      rgba(31, 31, 31, 0) 70%,
+      #1f1f1f 100%
+    ),
+    url('./assets/hero.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -242,7 +238,7 @@ html {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color:  var(--color-fluor-pink); 
+  background-color: var(--color-fluor-pink);
   color: var(--color-neutral-black);
   font-family: 'Oswald', sans-serif;
   padding: 5px 10px;
@@ -252,7 +248,6 @@ html {
   z-index: 1; /* Asegura que esté encima de la imagen */
   margin: 16px;
 }
-
 
 /*- Section headers -------------------------------------------------------*/
 
@@ -266,24 +261,16 @@ html {
 
 .section-header h2 {
   color: var(--color-neutral-white);
-  margin: 0; 
-  white-space: nowrap; 
+  margin: 0;
+  white-space: nowrap;
 }
 
 .section-header hr {
-  flex-grow: 1; 
+  flex-grow: 1;
   border: none;
   border-top: 0.5px solid var(--color-neutral-black-details);
   margin-left: 16px; /* Espacio entre el h2 y la línea */
 }
-
-
-
-
-
-
-
-
 
 /* Card M ----------------------------------------------------------------------*/
 .cardM-section {
@@ -298,7 +285,6 @@ html {
   position: relative;
   width: 48%;
   overflow: hidden;
-
 }
 
 .cardM-image img {
@@ -323,7 +309,7 @@ html {
   align-items: center;
   z-index: 2;
 }
-.cardM-category p{
+.cardM-category p {
   text-transform: uppercase;
   z-index: 2;
   font-size: 16px;
@@ -351,36 +337,59 @@ html {
   text-align: left;
 }
 
-.cardM-info h3{
+.cardM-info h3 {
   font-family: var(--font-heading);
 }
 
-.cardM-info p{
+.cardM-info p {
   font-family: var(--font-text);
 }
-
 
 .cardM-container:hover .cardM-info {
   transform: translateY(0);
 }
+.box-labelcategory {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  background-color: lightgray;
+}
 
+.labelcategory {
+  position: absolute;
+  top: 0;
+  right: 50px;
+  width: 300px;
+  height: 50px;
+  background-color: var(--color-fluor-orange);
+  color: var(--color-neutral-black);
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
-
-
+.box-labelcategory:hover .labelcategory {
+  transform: translateX(0);
+}
 
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
-
   /* NavBar Mobile ------------------------------------------------------*/
 
   .container-nav {
     padding: 10px;
     justify-content: space-between;
     height: 64px;
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
   }
-  
+
   /* Ocultar las categorías del navbar en móvil */
   .container-categories-nav {
     display: none;
@@ -391,36 +400,35 @@ html {
     display: none;
   }
 
-  .wrapper-nav{
-    display: flex; 
+  .wrapper-nav {
+    display: flex;
     justify-content: flex-start;
-    margin-left: 16px; 
+    margin-left: 16px;
   }
-  
+
   .container-menu {
-    display: flex; 
-    align-items: center; 
+    display: flex;
+    align-items: center;
   }
-  
+
   .menu {
     display: block;
-    width: 24px; 
+    width: 24px;
   }
-  
-  
-/* SearchBar Mobile --------------------------------------*/
+
+  /* SearchBar Mobile --------------------------------------*/
 
   .search-bar-container {
-    width: 90%; 
-    padding: 8px; 
+    width: 90%;
+    padding: 8px;
   }
 
   .search-input {
-    padding: 10px 40px; 
+    padding: 10px 40px;
   }
-  
+
   .search-button {
-    right: 10px; 
+    right: 10px;
   }
 
   .search-button img {
@@ -428,7 +436,7 @@ html {
     height: 20px;
   }
 
-  .box-carousel{
+  .box-carousel {
     width: 90%;
   }
 }
