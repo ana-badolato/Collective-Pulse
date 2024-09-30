@@ -1,9 +1,27 @@
-import Carousel from '../component/Carousel'
+import Carousel from "../component/Carousel";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import SearchBar from "../component/SearchBar";
+import CardM from "../component/CardM";
+import LabelCategory from "../component/LabelCategory";
 
-import SearchBar from '../component/SearchBar'
-import CardM from '../component/CardM'
-import LabelCategory from '../component/LabelCategory'
 function Home() {
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    const response = await axios.get("http://localhost:5000/news");
+    setNews(response.data);
+  };
+
+  const latestNews = news.sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  console.log(latestNews);
+
   return (
     <div className="home">
       <div className="hero"></div>
@@ -18,11 +36,10 @@ function Home() {
         <hr />
       </div>
       <div className="cardM-section">
-        <LabelCategory />
-        <CardM />
-        <CardM />
-        <CardM />
-        <CardM />
+        {/* <LabelCategory /> */}
+        {latestNews.slice(0,4).map((eachNew) => {
+          return <CardM {...eachNew} />;
+        })}
       </div>
       {/* el slider iría aquí entre sección y sección */}
       <div className="section-header">
@@ -30,7 +47,7 @@ function Home() {
         <hr />
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
