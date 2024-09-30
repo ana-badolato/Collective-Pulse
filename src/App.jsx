@@ -5,16 +5,33 @@ import Details from './pages/Details'
 import Category from './pages/Category'
 import NotFound from './pages/NotFound'
 import Navbar from './component/Navbar'
+import { useState } from 'react'
 
 import './App.css'
+import NewsForm from './component/NewsForm'
 
 function App() {
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   return (
     <>
       <div className="main">
-        <Navbar />
+        <Navbar  openModal={openModal} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home  setIsOpen={setIsOpen}  modalIsOpen={modalIsOpen}/>} />
           <Route path="/categories" element={<NewsCategory />} />
           <Route path="/details" element={<Details />} />
           <Route path="/category" element={<Category />} />

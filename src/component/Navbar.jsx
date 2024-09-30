@@ -4,7 +4,7 @@ import menu from "../assets/menu.png";
 import logo from "../assets/icons/logo.svg";
 
 
-function Navbar() {
+function Navbar(props) {
   return (
     <div className="container-nav">
       <div className="wrapper-nav">
@@ -16,13 +16,14 @@ function Navbar() {
           <Link to="/"><img src={logo} alt="" /></Link>
         </div>
         <div className="container-categories-nav">
-          <Link to="/category">CIVIS</Link>
+          <Link to="/category">CIVICS</Link>
           <Link to="/category">CULTURE</Link>
           <Link to="/category">SCIENCE</Link>
           <Link to="/category">LIFESTYLE</Link>
           <Link to="/category">SUSTAINABILITY</Link>
           <Link to="/category">TRAVEL</Link>
         </div>
+        <button onClick={props.openModal}>ADD PULSE</button>
       </div>
     </div>
   );

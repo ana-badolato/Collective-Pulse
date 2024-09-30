@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import SearchBar from "../component/SearchBar";
 import CardM from "../component/CardM";
 import LabelCategory from "../component/LabelCategory";
+import ModalForm from "../component/ModalForm";
 
-function Home() {
+function Home(props) {
+  const {setIsOpen,modalIsOpen }=props
   const [news, setNews] = useState([]);
   useEffect(() => {
     getData();
@@ -46,6 +48,7 @@ function Home() {
         <h2>TRENDING</h2>
         <hr />
       </div>
+      <ModalForm setIsOpen={setIsOpen} modalIsOpen={modalIsOpen}/>
     </div>
   );
 }
