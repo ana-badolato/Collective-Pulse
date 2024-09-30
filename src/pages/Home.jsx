@@ -8,7 +8,8 @@ import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
 
 function Home(props) {
-  const { setIsOpen, modalIsOpen, news, getData, isUpdate } = props;
+  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews } =
+    props;
 
   const latestNews = news.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
@@ -33,7 +34,12 @@ function Home(props) {
         {/* <LabelCategory /> */}
         {latestNews.slice(0, 4).map((eachNew) => {
           return (
-            <Link className="cardM-section" to={`/details/${eachNew.id}`}>
+            <Link
+              className="cardM-section"
+              key={eachNew.id}
+              to={`/details/${eachNew.id}`}
+              onClick={() => incrementViews(eachNew.id)}
+            >
               <CardM {...eachNew} getData={getData} />;
             </Link>
           );

@@ -23,6 +23,19 @@ function App() {
     setNews(response.data);
   };
 
+ // Función para incrementar las vistas
+ const incrementViews = async (id) => {
+  try {
+    // Aquí haces la petición PATCH
+    const response = await axios.patch(`http://localhost:5000/news/${id}`, {
+      views: (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1, 
+    });
+    console.log("Vistas incrementadas:", response.data.views);
+  } catch (error) {
+    console.error("Error al incrementar las vistas:", error);
+  }
+};
+
   function openModal() {
     setIsOpen(true);
   }
@@ -68,6 +81,7 @@ function App() {
                 setIsOpen={setIsOpen}
                 modalIsOpen={modalIsOpen}
                 isUpdate={false}
+                incrementViews={incrementViews}
               />
             }
           />
