@@ -16,7 +16,12 @@ function Home(props) {
   });
 
   //console.log(latestNews);
+ // Filtramos las 6 noticias con más vistas para la sección "Trending"
+ const trendingNews = [...news] // Clonamos el array para evitar modificar el original
+ .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
+ .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
 
+ console.log('Trending News Order by Views:', trendingNews);
   return (
     <div className="home">
       <div className="hero"></div>
@@ -49,6 +54,18 @@ function Home(props) {
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
+      </div>
+      <div className="cardM-section">
+        {trendingNews.map((eachNew) => (
+          <Link
+            className="cardM-section"
+            to={`/details/${eachNew.id}`}
+            onClick={() => incrementViews(eachNew.id)}
+            key={eachNew.id}
+          >
+            <CardM {...eachNew} />
+          </Link>
+        ))}
       </div>
       <ModalForm
         getData={getData}
