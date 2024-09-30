@@ -3,7 +3,6 @@ import menu from "../assets/menu.png";
 
 import logo from "../assets/icons/logo.svg";
 
-
 function Navbar(props) {
   return (
     <div className="container-nav">
@@ -11,9 +10,11 @@ function Navbar(props) {
         <div className="container-menu">
           <img className="menu" src={menu} alt="menu" />
         </div>
-   
+
         <div className="logo-container">
-          <Link to="/"><img src={logo} alt="" /></Link>
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
         </div>
         <div className="container-categories-nav">
           <Link to="/category">CIVICS</Link>

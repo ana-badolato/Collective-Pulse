@@ -1,37 +1,105 @@
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router";
 function NewsForm(props) {
-  const [category, setCategory] = useState("");
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [title, setTitle] = useState("");
+  // const [author, setAuthor] = useState("");
+  // const [content, setContent] = useState("");
+  // const [image, setImage] = useState("");
 
-  const handleTitle = (e) => setTitle(e.target.value);
-  const handleContent = (e) => setContent(e.target.value);
-  const handleAuthor = (e) => setAuthor(e.target.value);
-  const handleImage = (e) => setImage(e.target.value);
-  const handleCategory = (e) => setCategory(e.target.value);
+  // const handleTitle = (e) => {
 
-  // useEffect(()=>{
-  //   const response = axios.put("http://localhost:5000/news", newPulse)
-  //   setNewPulse(newPulse)
-  // }, [])
+  //   setTitle(e.target.value)
+  // };
+  // const handleContent = (e) => setContent(e.target.value);
+  // const handleAuthor = (e) => setAuthor(e.target.value);
+  // const handleImage = (e) => setImage(e.target.value);
+  // const handleCategory = (e) => setCategory(e.target.value);
+
+  // const params = useParams();
+  // // useEffect(()=>{
+  // //   const response = axios.put("http://localhost:5000/news", newPulse)
+  // //   setNewPulse(newPulse)
+  // // }, [])
+
+  // const formToDisplay = isUpdate
+  //   ? news.find((eachNew) => {
+  //       return eachNew.id === Number(params.id);
+  //     })
+  //   : {
+  //       category: category,
+  //       title: title,
+  //       image: image,
+  //       content: content,
+  //       author: author,
+  //       date: new Date(),
+  //       views: 0,
+  //     };
+  // const [editNew, setEditNew] = useState(formToDisplay);
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   const newPulse = {
+  //     category: category,
+  //     title: title,
+  //     image: image,
+  //     content: content,
+  //     author: author,
+  //     date: new Date(),
+  //     views: 0,
+  //   };
+  //   props.getData();
+  //   try {
+  //     const response = await axios.post("http://localhost:5000/news", newPulse);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+ const {getData, isUpdate, news}=props
+  const [newsData, setNewsData] = useState({
+    category: "",
+    title: "",
+    author: "",
+    content: "",
+    image: "",
+  });
+
+  const params = useParams();
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setNewsData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const formToDisplay = isUpdate
+    ? news.find((eachNew) => {
+        return eachNew.id === Number(params.id);
+      })
+    : {
+        ...newsData,
+        date: new Date(),
+        views: 0,
+      };
+
+  const [editNew, setEditNew] = useState(formToDisplay);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newPulse = {
-      category: category,
-      title: title,
-      image: image,
-      content: content,
-      author: author,
+      ...newsData,
       date: new Date(),
       views: 0,
     };
-    props.getData()
+
+  getData();
+
     try {
       const response = await axios.post("http://localhost:5000/news", newPulse);
     } catch (error) {
@@ -45,7 +113,7 @@ function NewsForm(props) {
         <Form.Select
           aria-label="Select category"
           name="category"
-          onChange={handleCategory}
+          onChange={handleChange}
         >
           <option>Select category</option>
           <option value="civics">Civics</option>
@@ -60,9 +128,9 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="author"
-            value={author}
+            value={editNew.author}
             placeholder="author"
-            onChange={handleAuthor}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -70,9 +138,9 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="title"
-            value={title}
+            value={editNew.title}
             placeholder="title"
-            onChange={handleTitle}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
@@ -80,9 +148,9 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="image"
-            value={image}
+            value={editNew.image}
             placeholder="image"
-            onChange={handleImage}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -91,13 +159,13 @@ function NewsForm(props) {
           <Form.Control
             as="textarea"
             name="content"
-            value={content}
+            value={editNew.content}
             rows={3}
-            onChange={handleContent}
+            onChange={handleChange}
           />
         </Form.Group>
 
-        <button type="submit">Submit</button>  
+        <button type="submit">Submit</button>
       </Form>
     </div>
   );
