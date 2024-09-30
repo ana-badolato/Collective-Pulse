@@ -47,10 +47,10 @@ function ModalForm(props) {
         <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
         <button onClick={closeModal}>close</button>
         <div>I am a modal</div>
-        <form>
-          <NewsForm />
+        
+          <NewsForm getData={props.getData}/>
           <button>the modal</button>
-        </form>
+       
       </Modal>
     </div>
   );

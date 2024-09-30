@@ -2,7 +2,13 @@
 
 function Details() {
   return (
-    <div>NewDetails</div>
+    <div>
+      <h1></h1>
+      <img src="" alt="" />
+      <div>
+        <p></p>
+      </div>
+    </div>
   )
 }
 

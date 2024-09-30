@@ -5,21 +5,13 @@ import SearchBar from "../component/SearchBar";
 import CardM from "../component/CardM";
 import LabelCategory from "../component/LabelCategory";
 import ModalForm from "../component/ModalForm";
+import { Link } from "react-router-dom";
 
 function Home(props) {
-  const {setIsOpen,modalIsOpen }=props
-  const [news, setNews] = useState([]);
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    const response = await axios.get("http://localhost:5000/news");
-    setNews(response.data);
-  };
-
+  const {setIsOpen,modalIsOpen, news, getData }=props
+ 
   const latestNews = news.sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
+    return new Date(b.date).getTime()- new Date(a.date).getTime();
   });
 
   console.log(latestNews);
@@ -40,7 +32,13 @@ function Home(props) {
       <div className="cardM-section">
         {/* <LabelCategory /> */}
         {latestNews.slice(0,4).map((eachNew) => {
-          return <CardM {...eachNew} />;
+          
+
+          return (
+            <Link className="cardM-section" to={`/details/${eachNew.id}`}>
+          <CardM {...eachNew} getData={getData}/>;
+          </Link>
+          )
         })}
       </div>
       {/* el slider iría aquí entre sección y sección */}
@@ -48,7 +46,7 @@ function Home(props) {
         <h2>TRENDING</h2>
         <hr />
       </div>
-      <ModalForm setIsOpen={setIsOpen} modalIsOpen={modalIsOpen}/>
+      <ModalForm getData={getData} setIsOpen={setIsOpen} modalIsOpen={modalIsOpen}/>
     </div>
   );
 }
