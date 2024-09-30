@@ -1,10 +1,11 @@
-import { useParams } from "react-router";
+import {useParams } from "react-router";
 import ModalForm from "../component/ModalForm";
 
 function Details(props) {
   const params = useParams();
-  const { news, getData, setIsOpen, modalIsOpen, isUpdate } = props;
+  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete } = props;
   //console.log(news);
+ 
   let thisNew = news.find((eachNew) => {
     return eachNew.id === Number(params.id);
   });
@@ -17,7 +18,7 @@ function Details(props) {
       <div>
         <p>{thisNew.content}</p>
       </div>
-      <button>delete</button>
+      <button onClick={()=>{handleDelete(params.id)}}>delete</button>
       <button>edit</button>
       <ModalForm
         news={news}

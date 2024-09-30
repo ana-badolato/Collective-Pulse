@@ -77,7 +77,7 @@ html {
   content: '';
   display: block;
   height: 3px;
-  background-color: var(--color-fluor-pink);
+  background-color:var(--custom-color);
   transform: scale(0, 1);
   transform-origin: center;
   transition: transform 0.25s;
