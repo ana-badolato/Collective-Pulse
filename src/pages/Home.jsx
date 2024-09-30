@@ -11,6 +11,11 @@ function Home(props) {
   const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews } =
     props;
 
+    useEffect(() => {
+
+      getData();
+    }, []); 
+
   const latestNews = news.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
