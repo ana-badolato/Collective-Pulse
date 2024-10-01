@@ -8,16 +8,18 @@ function Details(props) {
   const params = useParams();
   const [comment, setComment] = useState([]);
   const[likes, setLikes]= useState(0) 
-
+  const [loading, setLoading] = useState(true);
   const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete,   getDataCategory} =
     props;
 
-  useEffect(() => {
-    if (!news.length) {
-      getData(); // Obtener los datos si no están cargados
-    }
-    getComments();
-  }, [news, getData]);
+    useEffect(() => {
+      if (!news.length) {
+        // Si no hay noticias cargadas, intenta cargarlas
+        getData().then(() => setLoading(false)); // Actualiza estado cuando termine
+      } else {
+        setLoading(false); // Ya hay noticias cargadas
+      }
+    }, [news, getData]);
 
   const getComments = async () => {
     const response = await axios.get(

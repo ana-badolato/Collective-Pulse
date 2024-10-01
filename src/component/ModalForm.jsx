@@ -70,6 +70,7 @@ function ModalForm(props) {
           getDataCategory={getDataCategory}
           news={news}
           isUpdate={isUpdate}
+          closeModal={closeModal}
         />
         
         {/* <button>the modal</button> */}
