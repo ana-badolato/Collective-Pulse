@@ -5,9 +5,9 @@ import { useState } from "react";
 
 function CardM(props) {
   //const [news, setNews] = useState([]);
-  const { id, author, categories, content, date, image, title, getData } =
+  const { id, author, categories, content, date, image, title, getData,getCategoryColor } =
     props;
-
+const {category} =useParams()
   // const handleDelete = async (id) => {
   //   try {
   //     await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
@@ -25,7 +25,7 @@ function CardM(props) {
       <div className="cardM-image">
         <img src={image} alt="" />
       </div>
-      <div className="cardM-category">
+      <div className="cardM-category" style={{ '--custom-color': getCategoryColor(categories) }} >
         <p>{categories}</p>
       </div>
       <div className="cardM-info">

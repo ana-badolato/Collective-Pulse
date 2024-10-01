@@ -4,7 +4,8 @@ import logo from "../assets/icons/logo.svg";
 
 function Navbar(props) {
    const {
-    openModal
+    openModal,
+    getCategoryColor
    }=props
 
    const allCategories = [
@@ -17,25 +18,25 @@ function Navbar(props) {
   ];
 
 
-   const getCategoryColor = (category) => {
-   let categoryColor="";
-//console.log(category)
-      if( category === "civics"){
-        categoryColor="#27cbb8"
-      }else if ( category === "culture"){
-        categoryColor="#ea3f70"
-      }else if (category === "science"){
-        categoryColor="#fe6316"
-      }else if ( category === "lifestyle"){
-        categoryColor="#8427ec"
-      }else if ( category === "sustainability"){
-        categoryColor="#80e65e"
-      }else if ( category === "travel"){
-        categoryColor="#fbfd57"
-      }
+//    const getCategoryColor = (category) => {
+//    let categoryColor="";
+// //console.log(category)
+//       if( category === "civics"){
+//         categoryColor="#27cbb8"
+//       }else if ( category === "culture"){
+//         categoryColor="#ea3f70"
+//       }else if (category === "science"){
+//         categoryColor="#fe6316"
+//       }else if ( category === "lifestyle"){
+//         categoryColor="#8427ec"
+//       }else if ( category === "sustainability"){
+//         categoryColor="#80e65e"
+//       }else if ( category === "travel"){
+//         categoryColor="#fbfd57"
+//       }
 
-   return categoryColor
-  }
+//    return categoryColor
+//   }
    
   return (
     <div className="container-nav">

@@ -5,6 +5,9 @@ import CardM from "../component/CardM";
 import { Link } from "react-router-dom";
 
 function Category(props) {
+  const {
+    getCategoryColor
+  }=props
   const params= useParams()
   const[category, setCategory]= useState([])
   useEffect(() => {
@@ -38,7 +41,7 @@ function Category(props) {
           to={`/details/${eachNew.id}`}
           onClick={() => incrementViews(eachNew.id)}
         >
-          <CardM {...eachNew} getData={getData} />;
+          <CardM getCategoryColor={getCategoryColor} {...eachNew} getData={getData} />;
         </Link>
       );
     })}

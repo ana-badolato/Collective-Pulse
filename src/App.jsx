@@ -59,6 +59,26 @@ function App() {
   //   "travel",
   // ];
 
+  const getCategoryColor = (category) => {
+    let categoryColor = "";
+    //console.log(category)
+    if (category === "civics") {
+      categoryColor = "#27cbb8";
+    } else if (category === "culture") {
+      categoryColor = "#ea3f70";
+    } else if (category === "science") {
+      categoryColor = "#fe6316";
+    } else if (category === "lifestyle") {
+      categoryColor = "#8427ec";
+    } else if (category === "sustainability") {
+      categoryColor = "#80e65e";
+    } else if (category === "travel") {
+      categoryColor = "#fbfd57";
+    }
+
+    return categoryColor;
+  };
+
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
@@ -76,7 +96,7 @@ function App() {
   return (
     <>
       <div className="main">
-        <Navbar openModal={openModal} />
+        <Navbar openModal={openModal} getCategoryColor={getCategoryColor} />
         <Routes>
           <Route
             path="/"
@@ -88,10 +108,11 @@ function App() {
                 modalIsOpen={modalIsOpen}
                 isUpdate={false}
                 incrementViews={incrementViews}
+                getCategoryColor={getCategoryColor}
               />
             }
           />
-          <Route path="/categories" element={<NewsCategory />} />
+          {/* <Route path="/categories" element={<NewsCategory />} /> */}
           <Route
             path="/details/:id"
             element={
@@ -105,7 +126,10 @@ function App() {
               />
             }
           />
-          <Route path="/category/:category" element={<Category news={news} />} />
+          <Route
+            path="/category/:category"
+            element={<Category getCategoryColor={getCategoryColor} />}
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

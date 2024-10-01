@@ -8,7 +8,7 @@ import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
 
 function Home(props) {
-  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews } =
+  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews ,getCategoryColor } =
     props;
 
     useEffect(() => {
@@ -20,6 +20,9 @@ function Home(props) {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
+
+  
+
   //console.log(latestNews);
  // Filtramos las 6 noticias con más vistas para la sección "Trending"
  const trendingNews = [...news] // Clonamos el array para evitar modificar el original
@@ -27,6 +30,7 @@ function Home(props) {
  .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
 
  //console.log('Trending News Order by Views:', trendingNews);
+ console.log(getCategoryColor("science"), "color")
   return (
     <div className="home">
       <div className="hero"></div>
@@ -50,7 +54,7 @@ function Home(props) {
               to={`/details/${eachNew.id}`}
               onClick={() => incrementViews(eachNew.id)}
             >
-              <CardM {...eachNew} getData={getData} />;
+              <CardM {...eachNew} getData={getData} getCategoryColor={getCategoryColor}/>;
             </Link>
           );
         })}
@@ -68,7 +72,7 @@ function Home(props) {
             onClick={() => incrementViews(eachNew.id)}
             key={eachNew.id}
           >
-            <CardM {...eachNew} />
+            <CardM getCategoryColor={getCategoryColor} {...eachNew} />
           </Link>
         ))}
       </div>

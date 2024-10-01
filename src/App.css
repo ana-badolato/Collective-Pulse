@@ -24,6 +24,74 @@
   --font-text: 'Questrial', sans-serif;
   --font-heading: 'Oswald', sans-serif;
 }
+
+.culture-style-background {
+ background-color: var(--color-fluor-pink);
+}
+.culture-style-border {
+  border: 2px solid var(--color-fluor-pink);
+}
+.culture-style-text {
+  color: var(--color-fluor-pink);
+}
+
+
+.science-style-background {
+  background-color: var(--color-fluor-orange);
+ }
+ .science-style-border {
+   border: 2px solid var(--color-fluor-orange);
+ }
+ .science-style-text {
+   color: var(--color-fluor-orange);
+ }
+
+
+ .lifestyle-style-background {
+  background-color: var(--color-fluor-purple);
+ }
+ .lifestyle-style-border {
+   border: 2px solid var(--color-fluor-purple);
+ }
+ .lifestyle-style-text {
+   color: var(--color-fluor-purple);
+ }
+
+
+ .travel-style-background {
+  background-color: var(--color-fluor-yellow);
+ }
+ .travel-style-border {
+   border: 2px solid var(--color-fluor-yellow);
+ }
+ .travel-style-text {
+   color: var(--color-fluor-yellow);
+ }
+
+
+ .civics-style-background {
+  background-color: var(--color-fluor-blue);
+ }
+ .civics-style-border {
+   border: 2px solid var(--color-fluor-blue);
+ }
+ .civics-style-text {
+   color: var(--color-fluor-blue);
+ }
+
+
+ .sustainability-style-background {
+  background-color: var(--color-fluor-green);
+ }
+ .sustainability-style-border {
+   border: 2px solid var(--color-fluor-green);
+ }
+ .sustainability-style-text {
+   color: var(--color-fluor-green);
+ }
+
+
+
 body,
 html {
   margin: 0;
@@ -302,7 +370,7 @@ html {
   left: 0;
   width: 100%;
   height: 40px;
-  background-color: var(--color-fluor-pink);
+  background-color: var(--custom-color);
   font-family: 'Oswald', sans-serif;
   display: flex;
   justify-content: flex-start;
