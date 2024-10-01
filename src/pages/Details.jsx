@@ -71,9 +71,11 @@ function Details(props) {
       />
 
       <FormComment likes={likes} newId={thisNew.id} setComment={setComment}/>
+      <h4>{comment.length} COMMENTS</h4>
+      
       {comment.map((eachComment) => {
         return (eachComment ?
-          (<div>
+          (<div key={eachComment.id}>
             <img src="" alt="" />
             <h3>{eachComment.author}</h3>
             <p>{eachComment.comment}</p>

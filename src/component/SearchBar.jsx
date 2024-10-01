@@ -1,6 +1,8 @@
-
 import searchIcon from "../assets/icons/searchIcon.svg";
-function SearchBar() {
+
+function SearchBar(props) {
+  const { searchValue, setSearchValue, handleSearchChange } = props;
+
   return (
     <div className="search-bar-container">
       <label htmlFor="search" className="search-label">
@@ -12,8 +14,14 @@ function SearchBar() {
           id="search"
           className="search-input"
           placeholder="Search..."
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
         />
-        <button type="submit" className="search-button">
+        <button
+          type="submit"
+          className="search-button"
+          onClick={handleSearchChange}
+        >
           <img src={searchIcon} alt="Search Icon" />
         </button>
       </div>

@@ -8,7 +8,7 @@ import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
 
 function Home(props) {
-  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews ,getCategoryColor } =
+  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews ,getCategoryColor, searchValue, setSearchValue, handleSearchChange } =
     props;
 
     useEffect(() => {
@@ -34,7 +34,9 @@ function Home(props) {
   return (
     <div className="home">
       <div className="hero"></div>
-      <SearchBar />
+      <SearchBar searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        handleSearchChange={handleSearchChange}/>
       <h1 className="title">
         <span>COLLECTIVE</span> <br />
         PULSE

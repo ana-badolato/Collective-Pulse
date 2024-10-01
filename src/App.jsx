@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import NewsForm from "./component/NewsForm";
+import SearchResults from "./pages/SearchResults";
 
 function App() {
   let subtitle;
@@ -50,15 +51,6 @@ function App() {
     setIsOpen(false);
   }
 
-  // const allCategories = [
-  //   "civics",
-  //   "culture",
-  //   "science",
-  //   "lifestyle",
-  //   "sustainability",
-  //   "travel",
-  // ];
-
   const getCategoryColor = (category) => {
     let categoryColor = "";
     //console.log(category)
@@ -82,14 +74,23 @@ function App() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
-      //setNews(response.data)
-      // const response = await axios.get(${import.meta.env.VITE_SERVER_URL})
-      // setNews((prevNews) => prevNews.filter((item) => item.id !== id));
+
       getData();
       navigate("/");
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const [searchValue, setSearchValue] = useState("");
+  const [filteredNews, setFilteredNews] = useState(news);
+  const handleSearchChange = () => {
+    const filterSearch = news.filter((eachNew) => {
+      return eachNew.title.toLowerCase().includes(searchValue.toLowerCase());
+    });
+
+    setFilteredNews(filterSearch);
+     navigate("/searchresults");
   };
 
   //console.log(news);
@@ -109,6 +110,9 @@ function App() {
                 isUpdate={false}
                 incrementViews={incrementViews}
                 getCategoryColor={getCategoryColor}
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                handleSearchChange={handleSearchChange}
               />
             }
           />
@@ -128,7 +132,16 @@ function App() {
           />
           <Route
             path="/category/:category"
-            element={<Category getCategoryColor={getCategoryColor} news={news} />}
+            element={
+              <Category getCategoryColor={getCategoryColor} news={news} />
+            }
+          />
+          <Route
+            path="/searchresults"
+            element={<SearchResults  searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            handleSearchChange={handleSearchChange}
+            getCategoryColor={getCategoryColor}  filteredNews={filteredNews}/>}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
