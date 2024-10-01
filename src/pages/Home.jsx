@@ -30,7 +30,7 @@ function Home(props) {
  .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
 
  //console.log('Trending News Order by Views:', trendingNews);
- console.log(getCategoryColor("science"), "color")
+ //console.log(getCategoryColor("science"), "color")
   return (
     <div className="home">
       <div className="hero"></div>
@@ -54,7 +54,7 @@ function Home(props) {
               to={`/details/${eachNew.id}`}
               onClick={() => incrementViews(eachNew.id)}
             >
-              <CardM {...eachNew} getData={getData} getCategoryColor={getCategoryColor}/>;
+              <CardM {...eachNew} getData={getData} getCategoryColor={getCategoryColor} news={news}/>;
             </Link>
           );
         })}
@@ -72,7 +72,7 @@ function Home(props) {
             onClick={() => incrementViews(eachNew.id)}
             key={eachNew.id}
           >
-            <CardM getCategoryColor={getCategoryColor} {...eachNew} />
+            <CardM getCategoryColor={getCategoryColor} news={news} {...eachNew} />
           </Link>
         ))}
       </div>

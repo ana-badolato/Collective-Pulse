@@ -31,7 +31,7 @@ function App() {
         views:
           (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1,
       });
-      //console.log("Vistas incrementadas:", response.data.views);
+      console.log("Vistas incrementadas:", response.data.views);
     } catch (error) {
       console.error("Error al incrementar las vistas:", error);
     }
@@ -128,7 +128,7 @@ function App() {
           />
           <Route
             path="/category/:category"
-            element={<Category getCategoryColor={getCategoryColor} />}
+            element={<Category getCategoryColor={getCategoryColor} news={news} />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

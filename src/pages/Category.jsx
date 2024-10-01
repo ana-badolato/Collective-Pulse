@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 function Category(props) {
   const {
     getCategoryColor
+  , news
   }=props
   const params= useParams()
   const[category, setCategory]= useState([])
@@ -18,8 +19,8 @@ function Category(props) {
     try {
     
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`)
-   
       setCategory(response.data)
+    
       console.log(response.data)
     } catch (error) {
       console.log(error)
@@ -41,7 +42,7 @@ function Category(props) {
           to={`/details/${eachNew.id}`}
           onClick={() => incrementViews(eachNew.id)}
         >
-          <CardM getCategoryColor={getCategoryColor} {...eachNew} getData={getData} />;
+          <CardM getCategoryColor={getCategoryColor}  {...eachNew}  getData={getData} />;
         </Link>
       );
     })}

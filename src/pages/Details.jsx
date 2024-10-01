@@ -1,16 +1,29 @@
 import {useParams } from "react-router";
-import ModalForm from "../component/ModalForm";
+import ModalForm from "../component/ModalForm"
+import FormComment from "../component/FormComment";
+import { useEffect } from "react";
 
 function Details(props) {
   const params = useParams();
   const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete } = props;
-  //console.log(news);
- 
-  let thisNew = news.find((eachNew) => {
+ console.log("params", params )
+ console.log("news", news)
+
+ useEffect(() => {
+  if (!news.length) {
+    getData(); // Obtener los datos si no están cargados
+  }
+}, [news, getData]);
+
+ let thisNew = news.find((eachNew) => {
+
     return eachNew.id === Number(params.id);
   });
-  //console.log(thisNew);
-  //console.log(params)
+
+  if (!thisNew) {
+    return <div>Loading or news not found</div>;
+  }
+
   return (
     <div>
       <h1>{thisNew.title}</h1>
@@ -27,6 +40,9 @@ function Details(props) {
         modalIsOpen={modalIsOpen}
         isUpdate={isUpdate}
       />
+
+      <FormComment />
+
     </div>
   );
 }
