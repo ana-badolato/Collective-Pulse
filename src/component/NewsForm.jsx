@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams } from "react-router";
 function NewsForm(props) {
 
-  const { getData, isUpdate, news } = props;
+  const { getData, isUpdate, news, getDataCategory } = props;
   const [newsData, setNewsData] = useState({
     category: "",
     title: "",
@@ -45,6 +45,7 @@ function NewsForm(props) {
     };
 
     getData();
+    getDataCategory()
 
     try {
       if (isUpdate) {

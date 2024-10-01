@@ -18,7 +18,8 @@ function Category(props) {
   const[category, setCategory]= useState([])
   useEffect(() => {
     getDataCategory();
-  }, [params.category]);
+   
+  }, [params.category, news]);
   
   const getDataCategory = async ()=>{
     try {
@@ -33,7 +34,9 @@ function Category(props) {
   }
   
  /* Añadir aquí el loading*/
-
+ if (!category.length) {
+  return <div>Loading or news not found</div>;
+}
   return (
     <div>
     <div>{params.category}</div>
@@ -53,6 +56,7 @@ function Category(props) {
     })}
   </div>
   <ModalForm
+  getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
         modalIsOpen={modalIsOpen}

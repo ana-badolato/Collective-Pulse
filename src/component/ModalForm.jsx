@@ -20,7 +20,7 @@ Modal.setAppElement("#root");
 function ModalForm(props) {
   let subtitle;
   // const [modalIsOpen, setIsOpen] = React.useState(false);
-const {news, getData, setIsOpen, modalIsOpen, isUpdate}=props
+const {news, getData, setIsOpen, modalIsOpen, isUpdate, getDataCategory}=props
   function openModal() {
     setIsOpen(true);
   }
@@ -47,7 +47,7 @@ const {news, getData, setIsOpen, modalIsOpen, isUpdate}=props
         <button onClick={closeModal}>close</button>
         <div>I am a modal</div>
 
-        <NewsForm  getData={getData} news={news} isUpdate={isUpdate}/>
+        <NewsForm  getData={getData} getDataCategory={getDataCategory} news={news} isUpdate={isUpdate}/>
         <button>the modal</button>
       </Modal>
     </div>
