@@ -7,31 +7,23 @@ import ModalForm from "../component/ModalForm";
 
 function Category(props) {
   const {
-    getCategoryColor,
+  getCategoryColor,
   news,
   getData,
   setIsOpen,
   isUpdate,
-  modalIsOpen
+  modalIsOpen,
+  getDataCategory,
+  category
   }=props
-  const params= useParams()
-  const[category, setCategory]= useState([])
+
+
   useEffect(() => {
     getDataCategory();
    
   }, [params.category, news]);
   
-  const getDataCategory = async ()=>{
-    try {
-    
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`)
-      setCategory(response.data)
-    
-      console.log(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+
   
  /* Añadir aquí el loading*/
  if (!category.length) {

@@ -7,9 +7,9 @@ import axios from "axios";
 function Details(props) {
   const params = useParams();
   const [comment, setComment] = useState([]);
-  const[likes, setLikes]= useState(0)
+  const[likes, setLikes]= useState(0) 
 
-  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete } =
+  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete,   getDataCategory} =
     props;
 
   useEffect(() => {
@@ -63,6 +63,7 @@ function Details(props) {
       </button>
       <button>edit</button>
       <ModalForm
+       getDataCategory={getDataCategory}
         news={news}
         getData={getData}
         setIsOpen={setIsOpen}

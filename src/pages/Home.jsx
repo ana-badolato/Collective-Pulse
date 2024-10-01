@@ -19,6 +19,7 @@ function Home(props) {
     searchValue,
     setSearchValue,
     handleSearchChange,
+    getDataCategory
   } = props;
 
   useEffect(() => {
@@ -99,6 +100,7 @@ function Home(props) {
         ))}
       </div>
       <ModalForm
+       getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
         modalIsOpen={modalIsOpen}
