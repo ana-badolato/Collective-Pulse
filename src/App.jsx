@@ -21,7 +21,7 @@ function App() {
   
   useEffect(() => {
     getData();
-  }, [news]);
+  }, [cd ]);
   const navigate = useNavigate();
   const getData = async () => {
     try {
