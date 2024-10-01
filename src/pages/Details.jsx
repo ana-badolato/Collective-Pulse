@@ -7,6 +7,7 @@ import axios from "axios";
 function Details(props) {
   const params = useParams();
   const [comment, setComment] = useState([]);
+  const[likes, setLikes]= useState(0)
 
   const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete } =
     props;
@@ -32,6 +33,19 @@ function Details(props) {
   if (!thisNew) {
     return <div>Loading or news not found</div>;
   }
+  const handleLike = async (commentId)=>{
+    const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/comments/${commentId}`, {
+      likes: likes + 1
+    })
+    setLikes(response.data.likes);
+    setComment((prevComments) =>
+      prevComments.map((comment) =>
+        comment.id === commentId ? { ...comment, likes: response.data.likes } : comment
+      )
+    );
+}
+
+
 
   return (
     <div>
@@ -56,7 +70,7 @@ function Details(props) {
         isUpdate={isUpdate}
       />
 
-      <FormComment newId={thisNew.id} setComment={setComment}/>
+      <FormComment likes={likes} newId={thisNew.id} setComment={setComment}/>
       {comment.map((eachComment) => {
         return (eachComment ?
           (<div>
@@ -65,7 +79,7 @@ function Details(props) {
             <p>{eachComment.comment}</p>
             <p>{eachComment.date}</p>
             <p>{eachComment.likes}</p>
-            <button>like</button>
+            <button onClick={() => handleLike(eachComment.id)}>like</button>
           </div>):
           (<p>No comments to show</p>)
         );

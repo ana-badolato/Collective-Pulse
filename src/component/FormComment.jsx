@@ -4,11 +4,13 @@ import axios from "axios";
 function FormComment(props) {
   const {
     newId,
-    setComment
+    setComment,
+    likes
   }=props
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,10 +21,11 @@ function FormComment(props) {
           newId,
           author,
           comment: content,
-          likes: 0,
+          likes:likes,
         }
       );
-      // Actualizar la lista de comentarios con el nuevo comentario
+    
+     // Actualizar la lista de comentarios con el nuevo comentario
       setComment((prevComments) => [...prevComments, response.data]);
 
       // Limpiar el formulario
