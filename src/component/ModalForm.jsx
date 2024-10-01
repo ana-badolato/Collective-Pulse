@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import NewsForm from "./NewsForm";
-import cancelIcon from "../assets/icons/cancel.png"
+import cancelIcon from "../assets/icons/cancel.png";
 const customStyles = {
   content: {
     top: "50%",
@@ -64,7 +64,7 @@ function ModalForm(props) {
             <img src={cancelIcon} alt="cancel" />
           </button>
         </div>
-<hr className="form-hr"/>
+        <hr className="form-hr" />
         <NewsForm
           getData={getData}
           getDataCategory={getDataCategory}
@@ -72,7 +72,7 @@ function ModalForm(props) {
           isUpdate={isUpdate}
           closeModal={closeModal}
         />
-        
+
         {/* <button>the modal</button> */}
       </Modal>
     </div>

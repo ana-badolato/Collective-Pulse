@@ -17,7 +17,6 @@ function App() {
   const [news, setNews] = useState([]);
   const [category, setCategory] = useState([]);
   const [isUpdate, setIsUpdate] = useState(false);
-  // const params = useParams();
 
   useEffect(() => {
     getData();
@@ -37,17 +36,16 @@ function App() {
   const getDataCategory = async (category) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_SERVER_URL}/news?categories=${category}` // Utiliza la categoría pasada como argumento
+        `${import.meta.env.VITE_SERVER_URL}/news?categories=${category}`
       );
-      setCategory(response.data); // Actualiza el estado con los datos obtenidos
+      setCategory(response.data);
     } catch (error) {
       console.log(error);
     }
   };
-  // Función para incrementar las vistas
+
   const incrementViews = async (id) => {
     try {
-      // Aquí haces la petición PATCH
       const response = await axios.patch(`http://localhost:5000/news/${id}`, {
         views:
           (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1,
@@ -59,12 +57,11 @@ function App() {
   };
 
   function openModal(isEditing) {
-    setIsUpdate(isEditing);  // Si pasamos true, estamos editando; si no, creando
-    setIsOpen(true);  
+    setIsUpdate(isEditing);
+    setIsOpen(true);
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = "#f00";
   }
 
@@ -74,7 +71,7 @@ function App() {
 
   const getCategoryColor = (category) => {
     let categoryColor = "";
-    //console.log(category)
+
     if (category === "civics") {
       categoryColor = "#27cbb8";
     } else if (category === "culture") {
@@ -114,7 +111,6 @@ function App() {
     navigate("/searchresults");
   };
 
-  //console.log(news);
   return (
     <>
       <div className="main">
@@ -135,11 +131,11 @@ function App() {
                 setSearchValue={setSearchValue}
                 handleSearchChange={handleSearchChange}
                 getDataCategory={getDataCategory}
-                openModal={openModal} 
+                openModal={openModal}
               />
             }
           />
-          {/* <Route path="/categories" element={<NewsCategory />} /> */}
+
           <Route
             path="/details/:id"
             element={
@@ -151,7 +147,7 @@ function App() {
                 isUpdate={true}
                 handleDelete={handleDelete}
                 getDataCategory={getDataCategory}
-                openModal={openModal} 
+                openModal={openModal}
               />
             }
           />
@@ -167,7 +163,7 @@ function App() {
                 isUpdate={false}
                 category={category}
                 getDataCategory={getDataCategory}
-                openModal={openModal} 
+                openModal={openModal}
               />
             }
           />

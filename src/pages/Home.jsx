@@ -19,7 +19,7 @@ function Home(props) {
     searchValue,
     setSearchValue,
     handleSearchChange,
-    getDataCategory
+    getDataCategory,
   } = props;
 
   useEffect(() => {
@@ -32,14 +32,8 @@ function Home(props) {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-  //console.log(latestNews);
-  // Filtramos las 6 noticias con más vistas para la sección "Trending"
-  const trendingNews = [...news] // Clonamos el array para evitar modificar el original
-    .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
-    .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
+  const trendingNews = [...news].sort((a, b) => b.views - a.views).slice(0, 6);
 
-  //console.log('Trending News Order by Views:', trendingNews);
-  //console.log(getCategoryColor("science"), "color")
   return (
     <div className="home">
       <div className="hero"></div>
@@ -58,7 +52,6 @@ function Home(props) {
         <hr />
       </div>
       <div className="cardM-section">
-        {/* <LabelCategory /> */}
         {latestNews.slice(0, 4).map((eachNew) => {
           return (
             <Link
@@ -78,7 +71,7 @@ function Home(props) {
           );
         })}
       </div>
-      {/* el slider iría aquí entre sección y sección */}
+
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
@@ -100,7 +93,7 @@ function Home(props) {
         ))}
       </div>
       <ModalForm
-       getDataCategory={getDataCategory}
+        getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
         modalIsOpen={modalIsOpen}

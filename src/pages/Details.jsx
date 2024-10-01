@@ -7,19 +7,26 @@ import axios from "axios";
 function Details(props) {
   const params = useParams();
   const [comment, setComment] = useState([]);
-  const[likes, setLikes]= useState(0) 
+  const [likes, setLikes] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete,   getDataCategory, openModal} =
-    props;
+  const {
+    news,
+    getData,
+    setIsOpen,
+    modalIsOpen,
+    isUpdate,
+    handleDelete,
+    getDataCategory,
+    openModal,
+  } = props;
 
-    useEffect(() => {
-      if (!news.length) {
-        // Si no hay noticias cargadas, intenta cargarlas
-        getData().then(() => setLoading(false)); // Actualiza estado cuando termine
-      } else {
-        setLoading(false); // Ya hay noticias cargadas
-      }
-    }, [news, getData]);
+  useEffect(() => {
+    if (!news.length) {
+      getData().then(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, [news, getData]);
 
   const getComments = async () => {
     const response = await axios.get(
@@ -35,19 +42,22 @@ function Details(props) {
   if (!thisNew) {
     return <div>Loading or news not found</div>;
   }
-  const handleLike = async (commentId)=>{
-    const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/comments/${commentId}`, {
-      likes: likes + 1
-    })
+  const handleLike = async (commentId) => {
+    const response = await axios.patch(
+      `${import.meta.env.VITE_SERVER_URL}/comments/${commentId}`,
+      {
+        likes: likes + 1,
+      }
+    );
     setLikes(response.data.likes);
     setComment((prevComments) =>
       prevComments.map((comment) =>
-        comment.id === commentId ? { ...comment, likes: response.data.likes } : comment
+        comment.id === commentId
+          ? { ...comment, likes: response.data.likes }
+          : comment
       )
     );
-}
-
-
+  };
 
   return (
     <div>
@@ -65,7 +75,7 @@ function Details(props) {
       </button>
       <button onClick={() => openModal(true)}>edit</button>
       <ModalForm
-       getDataCategory={getDataCategory}
+        getDataCategory={getDataCategory}
         news={news}
         getData={getData}
         setIsOpen={setIsOpen}
@@ -73,20 +83,21 @@ function Details(props) {
         isUpdate={isUpdate}
       />
 
-      <FormComment likes={likes} newId={thisNew.id} setComment={setComment}/>
+      <FormComment likes={likes} newId={thisNew.id} setComment={setComment} />
       <h4>{comment.length} COMMENTS</h4>
-      
+
       {comment.map((eachComment) => {
-        return (eachComment ?
-          (<div key={eachComment.id}>
+        return eachComment ? (
+          <div key={eachComment.id}>
             <img src="" alt="" />
             <h3>{eachComment.author}</h3>
             <p>{eachComment.comment}</p>
             <p>{eachComment.date}</p>
             <p>{eachComment.likes}</p>
             <button onClick={() => handleLike(eachComment.id)}>like</button>
-          </div>):
-          (<p>No comments to show</p>)
+          </div>
+        ) : (
+          <p>No comments to show</p>
         );
       })}
     </div>
