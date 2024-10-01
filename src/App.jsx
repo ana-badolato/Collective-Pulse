@@ -1,44 +1,45 @@
-import { Routes, Route, useNavigate } from "react-router";
-import Home from "./pages/Home";
-import NewsCategory from "./pages/Categories";
-import Details from "./pages/Details";
-import Category from "./pages/Category";
-import NotFound from "./pages/NotFound";
-import Navbar from "./component/Navbar";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./App.css";
-import NewsForm from "./component/NewsForm";
-import SearchResults from "./pages/SearchResults";
-import { useParams } from "react-router";
+import { Routes, Route, useNavigate } from 'react-router'
+import Home from './pages/Home'
+import NewsCategory from './pages/Categories'
+import Details from './pages/Details'
+import Category from './pages/Category'
+import NotFound from './pages/NotFound'
+import Navbar from './component/Navbar'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import './App.css'
+import NewsForm from './component/NewsForm'
+import SearchResults from './pages/SearchResults'
+import { useParams } from 'react-router'
 
 function App() {
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [news, setNews] = useState([]);
-  const[category, setCategory]= useState([])
-  const params= useParams()
-  
+  let subtitle
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [news, setNews] = useState([])
+  const [category, setCategory] = useState([])
+  const params = useParams()
+
   useEffect(() => {
-    getData();
-  }, [ ]);
-  const navigate = useNavigate();
+    getData()
+  }, [])
+  const navigate = useNavigate()
   const getData = async () => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/news`
-      );
-      setNews(response.data);
+      )
+      setNews(response.data)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
-  const getDataCategory = async ()=>{
+  }
+  const getDataCategory = async () => {
     try {
-    
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`)
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`
+      )
       setCategory(response.data)
-    
+
       console.log(response.data)
     } catch (error) {
       console.log(error)
@@ -52,67 +53,67 @@ function App() {
       const response = await axios.patch(`http://localhost:5000/news/${id}`, {
         views:
           (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1,
-      });
-      console.log("Vistas incrementadas:", response.data.views);
+      })
+      console.log('Vistas incrementadas:', response.data.views)
     } catch (error) {
-      console.error("Error al incrementar las vistas:", error);
+      console.error('Error al incrementar las vistas:', error)
     }
-  };
+  }
 
   function openModal() {
-    setIsOpen(true);
+    setIsOpen(true)
   }
 
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    subtitle.style.color = '#f00'
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   const getCategoryColor = (category) => {
-    let categoryColor = "";
+    let categoryColor = ''
     //console.log(category)
-    if (category === "civics") {
-      categoryColor = "#27cbb8";
-    } else if (category === "culture") {
-      categoryColor = "#ea3f70";
-    } else if (category === "science") {
-      categoryColor = "#fe6316";
-    } else if (category === "lifestyle") {
-      categoryColor = "#8427ec";
-    } else if (category === "sustainability") {
-      categoryColor = "#80e65e";
-    } else if (category === "travel") {
-      categoryColor = "#fbfd57";
+    if (category === 'civics') {
+      categoryColor = '#27cbb8'
+    } else if (category === 'culture') {
+      categoryColor = '#ea3f70'
+    } else if (category === 'science') {
+      categoryColor = '#fe6316'
+    } else if (category === 'lifestyle') {
+      categoryColor = '#8427ec'
+    } else if (category === 'sustainability') {
+      categoryColor = '#80e65e'
+    } else if (category === 'travel') {
+      categoryColor = '#fbfd57'
     }
 
-    return categoryColor;
-  };
+    return categoryColor
+  }
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
 
-      getData();
-      navigate("/");
+      getData()
+      navigate('/')
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
-  const [searchValue, setSearchValue] = useState("");
-  const [filteredNews, setFilteredNews] = useState(news);
+  const [searchValue, setSearchValue] = useState('')
+  const [filteredNews, setFilteredNews] = useState(news)
   const handleSearchChange = () => {
     const filterSearch = news.filter((eachNew) => {
-      return eachNew.title.toLowerCase().includes(searchValue.toLowerCase());
-    });
+      return eachNew.title.toLowerCase().includes(searchValue.toLowerCase())
+    })
 
-    setFilteredNews(filterSearch);
-    navigate("/searchresults");
-  };
+    setFilteredNews(filterSearch)
+    navigate('/searchresults')
+  }
 
   //console.log(news);
   return (
@@ -150,6 +151,7 @@ function App() {
                 isUpdate={true}
                 handleDelete={handleDelete}
                 getDataCategory={getDataCategory}
+                getCategoryColor={getCategoryColor}
               />
             }
           />
@@ -183,7 +185,7 @@ function App() {
         </Routes>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

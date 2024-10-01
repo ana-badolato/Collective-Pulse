@@ -1,11 +1,11 @@
-import Carousel from "../component/Carousel";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import SearchBar from "../component/SearchBar";
-import CardM from "../component/CardM";
-import LabelCategory from "../component/LabelCategory";
-import ModalForm from "../component/ModalForm";
-import { Link } from "react-router-dom";
+import Carousel from '../component/Carousel'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import SearchBar from '../component/SearchBar'
+import CardM from '../component/CardM'
+import LabelCategory from '../component/LabelCategory'
+import ModalForm from '../component/ModalForm'
+import { Link } from 'react-router-dom'
 
 function Home(props) {
   const {
@@ -19,24 +19,24 @@ function Home(props) {
     searchValue,
     setSearchValue,
     handleSearchChange,
-    getDataCategory
-  } = props;
+    getDataCategory,
+  } = props
 
   useEffect(() => {
     if (!modalIsOpen) {
-      getData();
+      getData()
     }
-  }, [modalIsOpen]);
+  }, [modalIsOpen])
 
   const latestNews = news.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
 
   //console.log(latestNews);
   // Filtramos las 6 noticias con más vistas para la sección "Trending"
   const trendingNews = [...news] // Clonamos el array para evitar modificar el original
     .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
-    .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
+    .slice(0, 6) // Tomamos las primeras 6 noticias más vistas
 
   //console.log('Trending News Order by Views:', trendingNews);
   //console.log(getCategoryColor("science"), "color")
@@ -75,7 +75,7 @@ function Home(props) {
               />
               ;
             </Link>
-          );
+          )
         })}
       </div>
       {/* el slider iría aquí entre sección y sección */}
@@ -100,14 +100,14 @@ function Home(props) {
         ))}
       </div>
       <ModalForm
-       getDataCategory={getDataCategory}
+        getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
         modalIsOpen={modalIsOpen}
         isUpdate={isUpdate}
       />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
