@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Questrial&display=swap');
+
+:root {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 100%;
+  --color-neutral-white: #fefdfb;
+  --color-neutral-black: #1f1f1f;
+  --color-neutral-black-details: #3c3939;
+  --color-neutral-black-form: #5e5e5e;
+  --color-fluor-yellow: #fbfd57;
+  --color-fluor-pink: #ea3f70;
+  --color-fluor-blue: #27cbb8;
+  --color-fluor-green: #80e65e;
+  --color-fluor-purple: #8427ec;
+  --color-fluor-orange: #fe6316;
+
+  --font-text: 'Questrial', sans-serif;
+  --font-heading: 'Oswald', sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-text);
+}
+
+/* Aplicar un contenedor que centra y limita el ancho del contenido */
+.form-title{
+  font-family: var(--font-heading);
+  color: var(--color-neutral-white)!important;
+  text-align: left;
+  font-size: 32px;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Centrar el contenedor del formulario */
+.form-container {
+  padding: 0 64px;
+  
+}
+
+.form-container span {
+  color: var(--color-fluor-pink);
+}
+/* Hacer que las etiquetas sean blancas */
+.form-container label {
+  color: var(--color-neutral-white);
+  text-align: left;
+  font-size: 20px;
+}
+
+.form-button-cancel{
+  background-color: transparent;
+  border: none;
+}
+
+.form-button-cancel img:hover{
+  cursor: pointer;
+  width: 27px;
+  transition: 0.35s;
+}
+
+.form-button-cancel img {
+  width: 24px;
+}
+
+/* Alinear los campos de Category y Author horizontalmente */
+.form-row {
+  display: flex;
+  justify-content: space-between; 
+  gap: 16px;
+}
+
+.form-top{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 16px 64px 0px 64px;
+}
+
+.form-hr{
+  margin: 0 64px 64px 64px;
+  border: none;
+  border-top: 0.5px solid var(--color-neutral-black-details);
+}
+
+input:focus, textarea:focus {
+  border: 2px solid var(--color-neutral-white); /* Color rosa fluor al hacer foco */
+  outline: none;
+  box-shadow: none;
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-neutral-white);
+  opacity: 0.5;
+}
+
+.input-large, .input-small, .textarea-large {
+  font-size: 18px;
+  margin-bottom: 16px;
+  border-radius: 2px;
+  padding-left: 16px;
+  background-color: var(--color-neutral-black-form);
+  color: var(--color-neutral-white);
+  font-family: var(--font-text);;
+}
+.input-small {
+  width:100%;
+  height: 40px;
+}
+
+.input-large {
+  width: 100%;
+  height: 40px;
+}
+
+.textarea-large{
+  width: 100%;
+  height: 128px;
+  padding-top: 16px;
+  resize: vertical; /* Permite solo el redimensionado vertical */
+  max-width: 100%;
+  
+}
+
+/* Ajustar los formularios en bloque */
+.form-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  gap: 16px;
+}
+.form-required {
+  color: var(--color-neutral-black-form);
+  font-size: 18px;
+  text-align: left;
+  font-style: italic;
+}
+.form-required span{
+  color: var(--color-fluor-pink);
+}
+/* Centrar el botón en el formulario */
+.form-submit {
+  width: 128px;
+  align-self: center;
+  padding: 10px;
+  background-color: var(--color-fluor-pink);
+  color: var(--color-neutral-black);
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-top: 24px;
+}
+
+.form-submit:hover {
+  background-color: var(--color-fluor-blue);
+  
+}
+.form-submit-container {
+  display: flex;
+  justify-content: center; /* Alinea el botón hacia la derecha */
+  width: 100%;
+}

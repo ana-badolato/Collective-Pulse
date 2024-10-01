@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import NewsForm from "./NewsForm";
-
+import cancelIcon from "../assets/icons/cancel.png"
 const customStyles = {
   content: {
     top: "50%",
@@ -11,22 +11,32 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "50%",
+    height: "70%",
+    zIndex: "9999",
+    position: "fixed",
+    backgroundColor: "#1f1f1f",
+    border: "none",
+    borderRadius: "2px",
+  },
+  overlay: {
+    backgroundColor: "rgba(60, 57, 57, 0.75)",
+    zIndex: "900",
   },
 };
 
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement("#root");
 
 function ModalForm(props) {
   let subtitle;
-  // const [modalIsOpen, setIsOpen] = React.useState(false);
-const {news, getData, setIsOpen, modalIsOpen, isUpdate, getDataCategory}=props
+  const { news, getData, setIsOpen, modalIsOpen, isUpdate, getDataCategory } =
+    props;
   function openModal() {
     setIsOpen(true);
   }
 
   function afterOpenModal() {
-    subtitle.style.color = "#f00";
+    subtitle.style.color = "#000";
   }
 
   function closeModal() {
@@ -34,7 +44,7 @@ const {news, getData, setIsOpen, modalIsOpen, isUpdate, getDataCategory}=props
   }
 
   return (
-    <div>
+    <div className="form-container">
       <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
@@ -43,12 +53,26 @@ const {news, getData, setIsOpen, modalIsOpen, isUpdate, getDataCategory}=props
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
-        <button onClick={closeModal}>close</button>
-        <div>I am a modal</div>
-
-        <NewsForm  getData={getData} getDataCategory={getDataCategory} news={news} isUpdate={isUpdate}/>
-        <button>the modal</button>
+        <div className="form-top">
+          <h2
+            className="form-title"
+            ref={(_subtitle) => (subtitle = _subtitle)}
+          >
+            ADD PULSE
+          </h2>
+          <button className="form-button-cancel" onClick={closeModal}>
+            <img src={cancelIcon} alt="cancel" />
+          </button>
+        </div>
+<hr className="form-hr"/>
+        <NewsForm
+          getData={getData}
+          getDataCategory={getDataCategory}
+          news={news}
+          isUpdate={isUpdate}
+        />
+        
+        {/* <button>the modal</button> */}
       </Modal>
     </div>
   );
