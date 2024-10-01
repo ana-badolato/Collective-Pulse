@@ -23,18 +23,19 @@ function App() {
     setNews(response.data);
   };
 
- // Función para incrementar las vistas
- const incrementViews = async (id) => {
-  try {
-    // Aquí haces la petición PATCH
-    const response = await axios.patch(`http://localhost:5000/news/${id}`, {
-      views: (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1, 
-    });
-    console.log("Vistas incrementadas:", response.data.views);
-  } catch (error) {
-    console.error("Error al incrementar las vistas:", error);
-  }
-};
+  // Función para incrementar las vistas
+  const incrementViews = async (id) => {
+    try {
+      // Aquí haces la petición PATCH
+      const response = await axios.patch(`http://localhost:5000/news/${id}`, {
+        views:
+          (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1,
+      });
+      //console.log("Vistas incrementadas:", response.data.views);
+    } catch (error) {
+      console.error("Error al incrementar las vistas:", error);
+    }
+  };
 
   function openModal() {
     setIsOpen(true);
@@ -49,9 +50,14 @@ function App() {
     setIsOpen(false);
   }
 
-  const allCategories = ["civics", "culture", "science", "lifestyle", "sustainability", "travel"];
-
-
+  // const allCategories = [
+  //   "civics",
+  //   "culture",
+  //   "science",
+  //   "lifestyle",
+  //   "sustainability",
+  //   "travel",
+  // ];
 
   const handleDelete = async (id) => {
     try {
@@ -60,7 +66,7 @@ function App() {
       // const response = await axios.get(${import.meta.env.VITE_SERVER_URL})
       // setNews((prevNews) => prevNews.filter((item) => item.id !== id));
       getData();
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +76,7 @@ function App() {
   return (
     <>
       <div className="main">
-        <Navbar openModal={openModal} allCategories={allCategories} />
+        <Navbar openModal={openModal} />
         <Routes>
           <Route
             path="/"
@@ -99,7 +105,7 @@ function App() {
               />
             }
           />
-          <Route path="/category" element={<Category />} />
+          <Route path="/category/:category" element={<Category news={news} />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

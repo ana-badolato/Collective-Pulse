@@ -4,13 +4,22 @@ import logo from "../assets/icons/logo.svg";
 
 function Navbar(props) {
    const {
-    allCategories,
     openModal
    }=props
 
+   const allCategories = [
+    "civics",
+    "culture",
+    "science",
+    "lifestyle",
+    "sustainability",
+    "travel",
+  ];
+
+
    const getCategoryColor = (category) => {
    let categoryColor="";
-console.log(category)
+//console.log(category)
       if( category === "civics"){
         categoryColor="#27cbb8"
       }else if ( category === "culture"){
@@ -41,12 +50,12 @@ console.log(category)
           </Link>
         </div>
         <div className="container-categories-nav">
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("civics") }}>CIVICS</Link>
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("culture") }}>CULTURE</Link>
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("science") }}>SCIENCE</Link>
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("lifestyle") }}>LIFESTYLE</Link>
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("sustainability") }}>SUSTAINABILITY</Link>
-          <Link to="/category" style={{ '--custom-color': getCategoryColor("travel") }}>TRAVEL</Link>
+          <Link to="/category/civics" style={{ '--custom-color': getCategoryColor("civics") }}>CIVICS</Link>
+          <Link to="/category/culture" style={{ '--custom-color': getCategoryColor("culture") }}>CULTURE</Link>
+          <Link to="/category/science" style={{ '--custom-color': getCategoryColor("science") }}>SCIENCE</Link>
+          <Link to="/category/lifestyle" style={{ '--custom-color': getCategoryColor("lifestyle") }}>LIFESTYLE</Link>
+          <Link to="/category/sustainability" style={{ '--custom-color': getCategoryColor("sustainability") }}>SUSTAINABILITY</Link>
+          <Link to="/category/travel" style={{ '--custom-color': getCategoryColor("travel") }}>TRAVEL</Link>
         </div>
         <button onClick={openModal}>ADD PULSE</button>
       </div>

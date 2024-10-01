@@ -26,7 +26,7 @@ function Home(props) {
  .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
  .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
 
- console.log('Trending News Order by Views:', trendingNews);
+ //console.log('Trending News Order by Views:', trendingNews);
   return (
     <div className="home">
       <div className="hero"></div>
