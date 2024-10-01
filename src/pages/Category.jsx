@@ -1,10 +1,8 @@
-import { useParams } from "react-router"
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect} from "react";
 import CardM from "../component/CardM";
 import { Link } from "react-router-dom";
 import ModalForm from "../component/ModalForm";
-
+import { useParams } from "react-router-dom";
 function Category(props) {
   const {
   getCategoryColor,
@@ -17,16 +15,16 @@ function Category(props) {
   category
   }=props
 
-
+  const params = useParams()
   useEffect(() => {
-    getDataCategory();
-   
-  }, [params.category, news]);
-  
+    if (params.category) {
+      getDataCategory(params.category); // Pasa la categoría de params directamente
+    }
+  }, [params.category, news]); // Se ejecuta cuando cambia la categoría o las noticias
 
   
  /* Añadir aquí el loading*/
- if (!category.length) {
+ if (!category || category.length === 0) {
   return <div>Loading or news not found</div>;
 }
   return (

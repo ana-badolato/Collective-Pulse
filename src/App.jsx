@@ -10,18 +10,17 @@ import axios from "axios";
 import "./App.css";
 import NewsForm from "./component/NewsForm";
 import SearchResults from "./pages/SearchResults";
-import { useParams } from "react-router";
 
 function App() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [news, setNews] = useState([]);
-  const[category, setCategory]= useState([])
-  const params= useParams()
-  
+  const [category, setCategory] = useState([]);
+  // const params = useParams();
+
   useEffect(() => {
     getData();
-  }, [ ]);
+  }, []);
   const navigate = useNavigate();
   const getData = async () => {
     try {
@@ -33,18 +32,17 @@ function App() {
       console.log(error);
     }
   };
-  const getDataCategory = async ()=>{
-    try {
-    
-      const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`)
-      setCategory(response.data)
-    
-      console.log(response.data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
+  const getDataCategory = async (category) => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/news?categories=${category}` // Utiliza la categoría pasada como argumento
+      );
+      setCategory(response.data); // Actualiza el estado con los datos obtenidos
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // Función para incrementar las vistas
   const incrementViews = async (id) => {
     try {
@@ -164,6 +162,7 @@ function App() {
                 modalIsOpen={modalIsOpen}
                 isUpdate={false}
                 category={category}
+                getDataCategory={getDataCategory}
               />
             }
           />
