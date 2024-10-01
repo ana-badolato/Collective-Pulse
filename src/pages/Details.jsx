@@ -56,7 +56,7 @@ function Details(props) {
         isUpdate={isUpdate}
       />
 
-      <FormComment />
+      <FormComment newId={thisNew.id} setComment={setComment}/>
       {comment.map((eachComment) => {
         return (eachComment ?
           (<div>
