@@ -3,19 +3,24 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CardM from "../component/CardM";
 import { Link } from "react-router-dom";
+import ModalForm from "../component/ModalForm";
 
 function Category(props) {
   const {
-    getCategoryColor
-  , news
+    getCategoryColor,
+  news,
+  getData,
+  setIsOpen,
+  isUpdate,
+  modalIsOpen
   }=props
   const params= useParams()
   const[category, setCategory]= useState([])
   useEffect(() => {
-    getData();
+    getDataCategory();
   }, [params.category]);
   
-  const getData = async ()=>{
+  const getDataCategory = async ()=>{
     try {
     
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news?categories=${params.category}`)
@@ -42,11 +47,17 @@ function Category(props) {
           to={`/details/${eachNew.id}`}
           onClick={() => incrementViews(eachNew.id)}
         >
-          <CardM getCategoryColor={getCategoryColor}  {...eachNew}  getData={getData} />;
+          <CardM getCategoryColor={getCategoryColor}  {...eachNew}  getDataCategory={getData} />;
         </Link>
       );
     })}
   </div>
+  <ModalForm
+        getData={getData}
+        setIsOpen={setIsOpen}
+        modalIsOpen={modalIsOpen}
+        isUpdate={isUpdate}
+      />
   </div>
   )
 }

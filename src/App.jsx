@@ -20,8 +20,14 @@ function App() {
   }, []);
   const navigate = useNavigate();
   const getData = async () => {
-    const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/news`);
-    setNews(response.data);
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_SERVER_URL}/news`
+      );
+      setNews(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // Función para incrementar las vistas
@@ -90,7 +96,7 @@ function App() {
     });
 
     setFilteredNews(filterSearch);
-     navigate("/searchresults");
+    navigate("/searchresults");
   };
 
   //console.log(news);
@@ -133,15 +139,27 @@ function App() {
           <Route
             path="/category/:category"
             element={
-              <Category getCategoryColor={getCategoryColor} news={news} />
+              <Category
+                getCategoryColor={getCategoryColor}
+                news={news}
+                getData={getData}
+                setIsOpen={setIsOpen}
+                modalIsOpen={modalIsOpen}
+                isUpdate={false}
+              />
             }
           />
           <Route
             path="/searchresults"
-            element={<SearchResults  searchValue={searchValue}
-            setSearchValue={setSearchValue}
-            handleSearchChange={handleSearchChange}
-            getCategoryColor={getCategoryColor}  filteredNews={filteredNews}/>}
+            element={
+              <SearchResults
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                handleSearchChange={handleSearchChange}
+                getCategoryColor={getCategoryColor}
+                filteredNews={filteredNews}
+              />
+            }
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

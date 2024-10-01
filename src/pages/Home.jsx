@@ -8,35 +8,45 @@ import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
 
 function Home(props) {
-  const { setIsOpen, modalIsOpen, news, getData, isUpdate, incrementViews ,getCategoryColor, searchValue, setSearchValue, handleSearchChange } =
-    props;
+  const {
+    setIsOpen,
+    modalIsOpen,
+    news,
+    getData,
+    isUpdate,
+    incrementViews,
+    getCategoryColor,
+    searchValue,
+    setSearchValue,
+    handleSearchChange,
+  } = props;
 
-    useEffect(() => {
-
+  useEffect(() => {
+    if (!modalIsOpen) {
       getData();
-    }, []); 
+    }
+  }, [modalIsOpen]);
 
   const latestNews = news.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime();
   });
 
-
-  
-
   //console.log(latestNews);
- // Filtramos las 6 noticias con más vistas para la sección "Trending"
- const trendingNews = [...news] // Clonamos el array para evitar modificar el original
- .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
- .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
+  // Filtramos las 6 noticias con más vistas para la sección "Trending"
+  const trendingNews = [...news] // Clonamos el array para evitar modificar el original
+    .sort((a, b) => b.views - a.views) // Ordenamos por vistas, de mayor a menor
+    .slice(0, 6); // Tomamos las primeras 6 noticias más vistas
 
- //console.log('Trending News Order by Views:', trendingNews);
- //console.log(getCategoryColor("science"), "color")
+  //console.log('Trending News Order by Views:', trendingNews);
+  //console.log(getCategoryColor("science"), "color")
   return (
     <div className="home">
       <div className="hero"></div>
-      <SearchBar searchValue={searchValue}
+      <SearchBar
+        searchValue={searchValue}
         setSearchValue={setSearchValue}
-        handleSearchChange={handleSearchChange}/>
+        handleSearchChange={handleSearchChange}
+      />
       <h1 className="title">
         <span>COLLECTIVE</span> <br />
         PULSE
@@ -56,7 +66,13 @@ function Home(props) {
               to={`/details/${eachNew.id}`}
               onClick={() => incrementViews(eachNew.id)}
             >
-              <CardM {...eachNew} getData={getData} getCategoryColor={getCategoryColor} news={news}/>;
+              <CardM
+                {...eachNew}
+                getData={getData}
+                getCategoryColor={getCategoryColor}
+                news={news}
+              />
+              ;
             </Link>
           );
         })}
@@ -74,7 +90,11 @@ function Home(props) {
             onClick={() => incrementViews(eachNew.id)}
             key={eachNew.id}
           >
-            <CardM getCategoryColor={getCategoryColor} news={news} {...eachNew} />
+            <CardM
+              getCategoryColor={getCategoryColor}
+              news={news}
+              {...eachNew}
+            />
           </Link>
         ))}
       </div>

@@ -3,62 +3,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 function NewsForm(props) {
-  // const [category, setCategory] = useState("");
-  // const [title, setTitle] = useState("");
-  // const [author, setAuthor] = useState("");
-  // const [content, setContent] = useState("");
-  // const [image, setImage] = useState("");
 
-  // const handleTitle = (e) => {
-
-  //   setTitle(e.target.value)
-  // };
-  // const handleContent = (e) => setContent(e.target.value);
-  // const handleAuthor = (e) => setAuthor(e.target.value);
-  // const handleImage = (e) => setImage(e.target.value);
-  // const handleCategory = (e) => setCategory(e.target.value);
-
-  // const params = useParams();
-  // // useEffect(()=>{
-  // //   const response = axios.put("http://localhost:5000/news", newPulse)
-  // //   setNewPulse(newPulse)
-  // // }, [])
-
-  // const formToDisplay = isUpdate
-  //   ? news.find((eachNew) => {
-  //       return eachNew.id === Number(params.id);
-  //     })
-  //   : {
-  //       category: category,
-  //       title: title,
-  //       image: image,
-  //       content: content,
-  //       author: author,
-  //       date: new Date(),
-  //       views: 0,
-  //     };
-  // const [editNew, setEditNew] = useState(formToDisplay);
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   const newPulse = {
-  //     category: category,
-  //     title: title,
-  //     image: image,
-  //     content: content,
-  //     author: author,
-  //     date: new Date(),
-  //     views: 0,
-  //   };
-  //   props.getData();
-  //   try {
-  //     const response = await axios.post("http://localhost:5000/news", newPulse);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
- const {getData, isUpdate, news}=props
+  const { getData, isUpdate, news } = props;
   const [newsData, setNewsData] = useState({
     category: "",
     title: "",
@@ -66,8 +12,20 @@ function NewsForm(props) {
     content: "",
     image: "",
   });
-
+  const [editNew, setEditNew] = useState(null);
   const params = useParams();
+  useEffect(() => {
+    // Si estamos en modo edición, cargamos la noticia existente
+    if (isUpdate) {
+      const existingNews = news.find(
+        (eachNew) => eachNew.id === Number(params.id)
+      );
+      if (existingNews) {
+        setEditNew(existingNews);
+        setNewsData(existingNews); // Sincronizamos el estado para edición
+      }
+    }
+  }, [isUpdate, news, params.id]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -77,31 +35,31 @@ function NewsForm(props) {
     }));
   };
 
-  const formToDisplay = isUpdate
-    ? news.find((eachNew) => {
-        return eachNew.id === Number(params.id);
-      })
-    : {
-        ...newsData,
-        date: new Date(),
-        views: 0,
-      };
-
-  const [editNew, setEditNew] = useState(formToDisplay);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newPulse = {
       ...newsData,
       date: new Date(),
-      views: 0,
+      views: editNew ? editNew.views : 0,
     };
 
-  getData();
+    getData();
 
     try {
-      const response = await axios.post("http://localhost:5000/news", newPulse);
+      if (isUpdate) {
+        // Si es una actualización, hacemos un PUT request
+        await axios.put(
+          `${import.meta.env.VITE_SERVER_URL}/news/${params.id}`,
+          newPulse
+        );
+      } else {
+        // Si es una nueva noticia, hacemos un POST request
+
+        await axios.post(`${import.meta.env.VITE_SERVER_URL}/news`, newPulse);
+       
+      }
+      
     } catch (error) {
       console.log(error);
     }
@@ -112,7 +70,8 @@ function NewsForm(props) {
       <Form onSubmit={handleSubmit}>
         <Form.Select
           aria-label="Select category"
-          name="category"
+          name="categories"
+          value={newsData.categories} // Asegúrate de que este valor esté sincronizado
           onChange={handleChange}
         >
           <option>Select category</option>
@@ -128,7 +87,7 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="author"
-            value={editNew.author}
+            value={newsData.author}
             placeholder="author"
             onChange={handleChange}
           />
@@ -138,7 +97,7 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="title"
-            value={editNew.title}
+            value={newsData.title}
             placeholder="title"
             onChange={handleChange}
           />
@@ -148,7 +107,7 @@ function NewsForm(props) {
           <Form.Control
             type="text"
             name="image"
-            value={editNew.image}
+            value={newsData.image}
             placeholder="image"
             onChange={handleChange}
           />
@@ -159,7 +118,7 @@ function NewsForm(props) {
           <Form.Control
             as="textarea"
             name="content"
-            value={editNew.content}
+            value={newsData.content}
             rows={3}
             onChange={handleChange}
           />
