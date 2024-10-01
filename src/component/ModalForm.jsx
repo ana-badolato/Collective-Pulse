@@ -45,7 +45,7 @@ function ModalForm(props) {
 
   return (
     <div className="form-container">
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button> */}
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}

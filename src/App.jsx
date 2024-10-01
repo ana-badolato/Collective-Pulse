@@ -16,6 +16,7 @@ function App() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [news, setNews] = useState([]);
   const [category, setCategory] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
   // const params = useParams();
 
   useEffect(() => {
@@ -57,8 +58,9 @@ function App() {
     }
   };
 
-  function openModal() {
-    setIsOpen(true);
+  function openModal(isEditing) {
+    setIsUpdate(isEditing);  // Si pasamos true, estamos editando; si no, creando
+    setIsOpen(true);  
   }
 
   function afterOpenModal() {
@@ -133,6 +135,7 @@ function App() {
                 setSearchValue={setSearchValue}
                 handleSearchChange={handleSearchChange}
                 getDataCategory={getDataCategory}
+                openModal={openModal} 
               />
             }
           />
@@ -148,6 +151,7 @@ function App() {
                 isUpdate={true}
                 handleDelete={handleDelete}
                 getDataCategory={getDataCategory}
+                openModal={openModal} 
               />
             }
           />
@@ -163,6 +167,7 @@ function App() {
                 isUpdate={false}
                 category={category}
                 getDataCategory={getDataCategory}
+                openModal={openModal} 
               />
             }
           />

@@ -9,7 +9,7 @@ function Details(props) {
   const [comment, setComment] = useState([]);
   const[likes, setLikes]= useState(0) 
   const [loading, setLoading] = useState(true);
-  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete,   getDataCategory} =
+  const { news, getData, setIsOpen, modalIsOpen, isUpdate, handleDelete,   getDataCategory, openModal} =
     props;
 
     useEffect(() => {
@@ -63,7 +63,7 @@ function Details(props) {
       >
         delete
       </button>
-      <button>edit</button>
+      <button onClick={() => openModal(true)}>edit</button>
       <ModalForm
        getDataCategory={getDataCategory}
         news={news}

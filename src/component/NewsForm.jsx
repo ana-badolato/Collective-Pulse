@@ -61,6 +61,11 @@ function NewsForm(props) {
           `${import.meta.env.VITE_SERVER_URL}/news/${params.id}`,
           newPulse
         );
+        await getData();  // Asegurarse de que los datos se actualizan en el estado
+
+        // Cerrar el modal y redirigir a la página actualizada de detalles
+        closeModal();
+        navigate(`/details/${params.id}`);  // Redirigir a la misma página para mostrar la noticia actualizada
       } else {
         // Si es una nueva noticia, hacemos un POST request
 

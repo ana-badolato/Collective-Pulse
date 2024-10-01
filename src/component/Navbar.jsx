@@ -58,7 +58,7 @@ function Navbar(props) {
           <Link to="/category/sustainability" style={{ '--custom-color': getCategoryColor("sustainability") }}>SUSTAINABILITY</Link>
           <Link to="/category/travel" style={{ '--custom-color': getCategoryColor("travel") }}>TRAVEL</Link>
         </div>
-        <button onClick={openModal}>ADD PULSE</button>
+        <button onClick={() => openModal(false)}> ADD PULSE</button>
       </div>
     </div>
   );
