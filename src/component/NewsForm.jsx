@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom"; 
+import placeholderImg from "../assets/images/placeholder.jpg"
 
 // import "./App.css";
 import "../FormStyles.css";
 function NewsForm(props) {
   const { getData, isUpdate, news, getDataCategory, closeModal } = props;
   const [newsData, setNewsData] = useState({
-    category: "",
+    categories: "",
     title: "",
     author: "",
     content: "",
@@ -42,8 +43,10 @@ function NewsForm(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const imageToUse = newsData.image || placeholderImg;
     const newPulse = {
       ...newsData,
+      image: imageToUse,
       date: new Date(),
       views: editNew ? editNew.views : 0,
     };
@@ -83,23 +86,24 @@ function NewsForm(props) {
       <Form onSubmit={handleSubmit}>
       <div className="form-row">
       <Form.Group className="mb-3 form-block" controlId="exampleForm.ControlInput1">
-      <Form.Label>Category <span>*</span></Form.Label>
-        <Form.Select
-          aria-label="Select category"
-          name="categories"
-          value={newsData.categories} // Asegúrate de que este valor esté sincronizado
-          onChange={handleChange}
-          className="input-small"
-        >
-          <option>Select category</option>
-          <option value="civics">Civics</option>
-          <option value="culture">Culture</option>
-          <option value="science">Science</option>
-          <option value="lifestyle">Lifestyle</option>
-          <option value="sustainability">Sustainability</option>
-          <option value="travel">Travel</option>
-        </Form.Select>
-        </Form.Group>
+            <Form.Label>Category <span>*</span></Form.Label>
+            <Form.Select
+              aria-label="Select category"
+              name="categories"
+              value={newsData.categories} // Asegúrate de que este valor esté sincronizado
+              onChange={handleChange}
+              className="input-small"
+              required
+            >
+              <option value="">Select category</option> {/* Evitar que el valor vacío sea válido */}
+              <option value="civics">Civics</option>
+              <option value="culture">Culture</option>
+              <option value="science">Science</option>
+              <option value="lifestyle">Lifestyle</option>
+              <option value="sustainability">Sustainability</option>
+              <option value="travel">Travel</option>
+            </Form.Select>
+          </Form.Group>
         <Form.Group className="mb-3 form-block" controlId="exampleForm.ControlInput1">
           <Form.Label>Author <span>*</span></Form.Label>
           <Form.Control
@@ -110,6 +114,7 @@ function NewsForm(props) {
             placeholder="author"
             onChange={handleChange}
             className="input-small"
+            required
           />
         </Form.Group>
         </div>
@@ -122,10 +127,11 @@ function NewsForm(props) {
             value={newsData.title}
             placeholder="Give your article a catchy title!"
             onChange={handleChange}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3 form-block" controlId="exampleForm.ControlInput1">
-          <Form.Label>Image <span>*</span></Form.Label>
+          <Form.Label>Image</Form.Label>
           <Form.Control
           className="input-large"
             type="text"
@@ -146,9 +152,10 @@ function NewsForm(props) {
             rows={10}
             onChange={handleChange}
             placeholder="Start writing something amazing..."
+            required
           />
         </Form.Group>
-        <p className="form-required">(<span>*</span>) All fields are required</p>
+        <p className="form-required">(<span>*</span>) Required fields</p>
         <div className="form-submit-container">
         <button className="form-submit" type="submit">Submit</button></div>
       </Form>
