@@ -1,28 +1,28 @@
-import { Routes, Route, useNavigate } from "react-router";
-import Home from "./pages/Home";
-import NewsCategory from "./pages/Categories";
-import Details from "./pages/Details";
-import Category from "./pages/Category";
-import NotFound from "./pages/NotFound";
-import Navbar from "./component/Navbar";
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./App.css";
-import NewsForm from "./component/NewsForm";
-import SearchResults from "./pages/SearchResults";
-
+import { Routes, Route, useNavigate } from 'react-router'
+import Home from './pages/Home'
+import NewsCategory from './pages/Categories'
+import Details from './pages/Details'
+import Category from './pages/Category'
+import NotFound from './pages/NotFound'
+import Navbar from './component/Navbar'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import './App.css'
+import NewsForm from './component/NewsForm'
+import SearchResults from './pages/SearchResults'
+import Footer from './component/Footer'
 
 function App() {
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [news, setNews] = useState([]);
-  const [category, setCategory] = useState([]);
-  const [isUpdate, setIsUpdate] = useState(false);
+  let subtitle
+  const [modalIsOpen, setIsOpen] = useState(false)
+  const [news, setNews] = useState([])
+  const [category, setCategory] = useState([])
+  const [isUpdate, setIsUpdate] = useState(false)
 
   useEffect(() => {
-    getData();
-  }, []);
-  const navigate = useNavigate();
+    getData()
+  }, [])
+  const navigate = useNavigate()
   const getData = async () => {
     try {
       const response = await axios.get(
@@ -32,26 +32,31 @@ function App() {
     } catch (error) {
       console.log(error)
     }
-  };
+  }
 
   const getDataCategory = async (category) => {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/news?categories=${category}`
-      );
-      setCategory(response.data);
+      )
+      setCategory(response.data)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const incrementViews = async (id) => {
     try {
-      const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/news/${id}`, {
-        views:
-          (await axios.get(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)).data.views + 1,
-      });
-      console.log("Vistas incrementadas:", response.data.views);
+      const response = await axios.patch(
+        `${import.meta.env.VITE_SERVER_URL}/news/${id}`,
+        {
+          views:
+            (
+              await axios.get(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
+            ).data.views + 1,
+        }
+      )
+      console.log('Vistas incrementadas:', response.data.views)
     } catch (error) {
       console.error('Error al incrementar las vistas:', error)
     }
@@ -60,16 +65,16 @@ function App() {
   function openModal(isEditing) {
     // Si isEditing es true, estamos en modo edición
     if (isEditing) {
-      setIsUpdate(true);  // Poner el estado en modo edición
+      setIsUpdate(true) // Poner el estado en modo edición
     } else {
-      setIsUpdate(false); // Poner el estado en modo creación
+      setIsUpdate(false) // Poner el estado en modo creación
       // Limpiar el formulario aquí también si es necesario
     }
-    setIsOpen(true); // Abrir el modal
+    setIsOpen(true) // Abrir el modal
   }
 
   function afterOpenModal() {
-    subtitle.style.color = "#f00";
+    subtitle.style.color = '#f00'
   }
 
   function closeModal() {
@@ -77,20 +82,20 @@ function App() {
   }
 
   const getCategoryColor = (category) => {
-    let categoryColor = "";
+    let categoryColor = ''
 
-    if (category === "civics") {
-      categoryColor = "#27cbb8";
-    } else if (category === "culture") {
-      categoryColor = "#ea3f70";
-    } else if (category === "science") {
-      categoryColor = "#fe6316";
-    } else if (category === "lifestyle") {
-      categoryColor = "#8427ec";
-    } else if (category === "sustainability") {
-      categoryColor = "#80e65e";
-    } else if (category === "travel") {
-      categoryColor = "#fbfd57";
+    if (category === 'civics') {
+      categoryColor = '#27cbb8'
+    } else if (category === 'culture') {
+      categoryColor = '#ea3f70'
+    } else if (category === 'science') {
+      categoryColor = '#fe6316'
+    } else if (category === 'lifestyle') {
+      categoryColor = '#8427ec'
+    } else if (category === 'sustainability') {
+      categoryColor = '#80e65e'
+    } else if (category === 'travel') {
+      categoryColor = '#fbfd57'
     }
 
     return categoryColor
@@ -121,7 +126,11 @@ function App() {
   return (
     <>
       <div className="main">
-        <Navbar openModal={openModal} getCategoryColor={getCategoryColor} isUpdate={isUpdate}/>
+        <Navbar
+          openModal={openModal}
+          getCategoryColor={getCategoryColor}
+          isUpdate={isUpdate}
+        />
         <Routes>
           <Route
             path="/"
@@ -189,9 +198,8 @@ function App() {
           />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </div>
-
-      
     </>
   )
 }
