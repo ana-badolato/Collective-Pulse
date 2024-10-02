@@ -9,6 +9,8 @@ import ModalForm from '../component/ModalForm'
 import { Link } from 'react-router-dom'
 import SliderText from '../component/SliderText'
 
+
+
 function Home(props) {
   const {
     setIsOpen,
@@ -22,6 +24,7 @@ function Home(props) {
     setSearchValue,
     handleSearchChange,
     getDataCategory,
+    getRandomAvatar,
   } = props
 
   useEffect(() => {
@@ -44,10 +47,13 @@ function Home(props) {
         setSearchValue={setSearchValue}
         handleSearchChange={handleSearchChange}
       />
+      <div className='title-container'>
       <h1 className="title">
         <span>COLLECTIVE</span> <br />
         PULSE
       </h1>
+      </div>
+
       <Carousel news={news} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>LATEST</h2>
@@ -55,7 +61,10 @@ function Home(props) {
       </div>
 
       <div>
-        <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+        <div className="container-labels-colors">
+          <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+        </div>
+        
         <div className="cardM-section">
           {latestNews.slice(0, 4).map((eachNew) => {
             return (
@@ -70,13 +79,15 @@ function Home(props) {
                   getData={getData}
                   getCategoryColor={getCategoryColor}
                   news={news}
+                  getRandomAvatar={getRandomAvatar}
                 />
-                ;
+                
               </Link>
             )
           })}
         </div>
       </div>
+      <SliderText news={news} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
@@ -93,12 +104,13 @@ function Home(props) {
               getCategoryColor={getCategoryColor}
               news={news}
               {...eachNew}
+              getRandomAvatar={getRandomAvatar}
             />
           </Link>
         ))}
       </div>
 
-      <SliderText news={news} getCategoryColor={getCategoryColor} />
+      
       <ModalForm
         getDataCategory={getDataCategory}
         getData={getData}

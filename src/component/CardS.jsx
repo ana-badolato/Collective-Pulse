@@ -3,6 +3,11 @@ import new4 from '../assets/new4.jpg'
 import axios from 'axios'
 import { useParams } from 'react-router'
 import { useState } from 'react'
+
+
+
+
+
 function CardS(props) {
   //const [news, setNews] = useState([]);
   const {
@@ -15,6 +20,7 @@ function CardS(props) {
     title,
     getData,
     getCategoryColor,
+    getRandomAvatar,
   } = props
   const { category } = useParams()
 
@@ -32,7 +38,7 @@ function CardS(props) {
       </div>
 
       <div className="cardS-header">
-        <h3>{title}</h3>
+        <h3 style={{height: "48px"}}>{title}</h3>
         <p>{content.slice(0, 200)}...</p>
       </div>
 
@@ -40,10 +46,10 @@ function CardS(props) {
 
       <div className="cardS-data">
         <div className="author">
-          <img src="" alt="" />
+          <img src={getRandomAvatar()} alt=""/>
           <p>{author}</p>
         </div>
-        <p>{date}</p>
+        <p>{new Date(date).toLocaleDateString('es-ES')}</p>
       </div>
     </div>
   )

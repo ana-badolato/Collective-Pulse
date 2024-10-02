@@ -1,7 +1,7 @@
-import new4 from '../assets/new4.jpg'
-import axios from 'axios'
-import { useParams } from 'react-router'
-import { useState } from 'react'
+import new4 from "../assets/new4.jpg";
+import axios from "axios";
+import { useParams } from "react-router";
+import { useState } from "react";
 
 function CardM(props) {
   //const [news, setNews] = useState([]);
@@ -15,8 +15,9 @@ function CardM(props) {
     title,
     getData,
     getCategoryColor,
-  } = props
-  const { category } = useParams()
+    getRandomAvatar,
+  } = props;
+  const { category } = useParams();
   // const handleDelete = async (id) => {
   //   try {
   //     await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
@@ -38,29 +39,27 @@ function CardM(props) {
         <div className="cardM-info">
           <div
             className="cardM-category"
-            style={{ '--custom-color': getCategoryColor(categories) }}
+            style={{ "--custom-color": getCategoryColor(categories) }}
           >
             <p>{categories}</p>
           </div>
           <div className="cardM-hover-header">
             <h3>{title}</h3>
-            <p>{content.slice(0, 200)}...</p>
+            <p>{content.slice(0, 190)}...</p>
           </div>
-          <hr />
+          <hr className="cardM-hr" />
           <div className="cardM-hover-data">
             <div className="author">
-              <img src="" alt="" />
+              <img src={getRandomAvatar()} alt="" />
               <p>{author}</p>
             </div>
-            <p>{date}</p>
+            <p>{new Date(date).toLocaleDateString("es-ES")}</p>
           </div>
         </div>
       </div>
-      <h2 className="titlecardM" style={{ padding: '10pxs', color: '#fefdfb' }}>
-        {title}
-      </h2>
+      <h2 className="titlecardM">{title}</h2>
     </>
-  )
+  );
 }
 
-export default CardM
+export default CardM;
