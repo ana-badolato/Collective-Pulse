@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Questrial&display=swap');
+
+:root {
+  margin: 0 auto;
+  text-align: center;
+  max-width: 100%;
+  --color-neutral-white: #fefdfb;
+  --color-neutral-black: #1f1f1f;
+  --color-neutral-black-details: #3c3939;
+  --color-neutral-black-slider: #262626;
+  --color-fluor-yellow: #fbfd57;
+  --color-fluor-pink: #ea3f70;
+  --color-fluor-blue: #27cbb8;
+  --color-fluor-green: #80e65e;
+  --color-fluor-purple: #8427ec;
+  --color-fluor-orange: #fe6316;
+
+  --font-text: 'Questrial', sans-serif;
+  --font-heading: 'Oswald', sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-text);
+}
+
+.slider-text-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-neutral-black-slider);
+  padding: 10px 0;
+  position: relative;
+  height: 180px;
+}
+
+.slider-text-header {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-fluor-orange);
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.slider-text-content {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  animation: scroll 60s linear infinite; /* Animación continua del scroll */
+}
+
+.slider-title {
+  color: var(--custom-color); /* Usar el color dinámico */
+  font-family: var(--font-heading);
+  font-size: 24px;
+}
+
+.slider-text-link {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  font-size: 16px;
+  text-decoration: none;
+  color: white; /* El color del texto puede ser blanco, ajusta si es necesario */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.slider-text-link:hover {
+  text-decoration: underline;
+  transition: 0.5s;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%); /* Inicia fuera de la pantalla */
+  }
+  100% {
+    transform: translateX(-100%); /* Desaparece por la izquierda */
+  }
+}
+
+.news-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px; 
+  width: 100%; 
+}

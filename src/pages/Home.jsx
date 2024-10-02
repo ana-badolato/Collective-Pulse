@@ -6,6 +6,7 @@ import CardM from "../component/CardM";
 import LabelCategory from "../component/LabelCategory";
 import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
+import SliderText from "../component/SliderText";
 
 function Home(props) {
   const {
@@ -92,6 +93,8 @@ function Home(props) {
           </Link>
         ))}
       </div>
+
+      <SliderText news={news} getCategoryColor={getCategoryColor}/>
       <ModalForm
      
         getDataCategory={getDataCategory}
