@@ -131,6 +131,8 @@ html {
   color: var(--color-neutral-white);
   text-decoration: none;
 }
+
+
 .container-categories-nav {
   display: flex;
   gap: 48px;
@@ -299,7 +301,7 @@ transition: 0.2s;
   width: 100%; /* Asegúrate de que el ancho sea el adecuado */
   max-width: 80%; /* Limita el ancho máximo para mantener el carrusel centrado */
   position: relative;
-  border: 5px solid var(--custom-color); /* El borde será dinámico */
+  border: 2px solid var(--custom-color); /* El borde será dinámico */
 }
 
 .box-carousel {
@@ -369,6 +371,7 @@ transition: 0.2s;
   display: flex;
   align-items: center;
   margin: 128px auto 64px auto;
+  z-index: 3;
 }
 
 .section-header h2 {
@@ -383,6 +386,50 @@ transition: 0.2s;
   border-top: 0.5px solid var(--color-neutral-black-details);
   margin-left: 16px; /* Espacio entre el h2 y la línea */
 }
+
+/* Card L -------------------------------------------------*/
+.cardL-section {
+  width: 80%;
+position: relative;
+}
+
+.cardL-image {
+  width: 100%;
+  min-width: none;
+  max-height: 700px;
+  object-fit: cover; 
+  border: 2px solid var(--custom-color);
+}
+
+.cardL-overlay {
+  width: 100%;
+  
+}
+.cardL-title {
+  position: absolute;
+  bottom: 5px;
+  left: 2px;
+  width: 100%;
+  height: 96px;
+  text-align: left;
+  color: var(--color-neutral-black);
+  background: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  box-sizing: border-box;
+}
+
+
+
+
+
+
+
 
 /* Card M ----------------------------------------------------------------------*/
 .titlecardM{
@@ -850,7 +897,7 @@ height: 720px;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70%; /* Overlay más corto, cubre la mitad del contenedor */
+  height: 45%; /* Overlay más corto, cubre la mitad del contenedor */
   background-color: rgba(31, 31, 31, 0.5); /* Color #1f1f1f con 50% de opacidad */
   z-index: 2; /* Asegura que esté por encima de la imagen pero debajo del h1 */
 }

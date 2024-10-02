@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import menu from "../assets/menu.png";
 import logo from "../assets/icons/logo.svg";
 
 function Navbar(props) {
   const { openModal, getCategoryColor, isUpdate } = props;
+
+  const params = useParams();
+  const currentCategory = params.category; // Esto devolverá la categoría actual
 
   const allCategories = [
     "civics",
