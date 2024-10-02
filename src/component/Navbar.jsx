@@ -3,7 +3,7 @@ import menu from "../assets/menu.png";
 import logo from "../assets/icons/logo.svg";
 
 function Navbar(props) {
-  const { openModal, getCategoryColor } = props;
+  const { openModal, getCategoryColor, isUpdate } = props;
 
   const allCategories = [
     "civics",
@@ -64,7 +64,14 @@ function Navbar(props) {
             TRAVEL
           </Link>
         </div>
-        <button onClick={() => openModal(false)}> ADD PULSE</button>
+        {/* <button onClick={() => openModal(false)}> ADD PULSE</button> */}
+        <button onClick={() => {
+  console.log("Opening Add Pulse modal", isUpdate);
+  openModal(false);  // Modo creación
+}}>
+  ADD PULSE
+</button>
+
       </div>
     </div>
   );

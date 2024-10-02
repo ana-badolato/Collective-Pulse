@@ -46,6 +46,7 @@ function Category(props) {
     })}
   </div>
   <ModalForm
+ 
   getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}

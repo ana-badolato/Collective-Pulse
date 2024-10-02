@@ -73,8 +73,16 @@ function Details(props) {
       >
         delete
       </button>
-      <button onClick={() => openModal(true)}>edit</button>
+      {/* <button onClick={() => openModal(true)}>edit</button> */}
+      <button onClick={() => {
+  console.log("Opening Edit modal", isUpdate);
+  openModal(true);  // Modo edición
+}}>
+  Edit
+</button>
+
       <ModalForm
+      
         getDataCategory={getDataCategory}
         news={news}
         getData={getData}

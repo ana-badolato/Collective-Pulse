@@ -18,18 +18,25 @@ function NewsForm(props) {
   const [editNew, setEditNew] = useState(null);
   const navigate = useNavigate();
   const params = useParams();
+  
   useEffect(() => {
     if (isUpdate) {
-      const existingNews = news.find(
-        (eachNew) => eachNew.id === Number(params.id)
-      );
+      // Cargar los datos existentes si es modo edición
+      const existingNews = news.find((eachNew) => eachNew.id === Number(params.id));
       if (existingNews) {
-        setEditNew(existingNews);
         setNewsData(existingNews);
       }
+    } else {
+      // Limpiar los datos si es modo creación
+      setNewsData({
+        categories: "",
+        title: "",
+        author: "",
+        content: "",
+        image: "",
+      });
     }
-  }, [isUpdate, news, params.id]);
-
+  }, [isUpdate, news, params.id]); 
   const handleChange = (event) => {
     const { name, value } = event.target;
     setNewsData((prevData) => ({

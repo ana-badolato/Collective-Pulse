@@ -57,8 +57,14 @@ function App() {
   };
 
   function openModal(isEditing) {
-    setIsUpdate(isEditing);
-    setIsOpen(true);
+    // Si isEditing es true, estamos en modo edición
+    if (isEditing) {
+      setIsUpdate(true);  // Poner el estado en modo edición
+    } else {
+      setIsUpdate(false); // Poner el estado en modo creación
+      // Limpiar el formulario aquí también si es necesario
+    }
+    setIsOpen(true); // Abrir el modal
   }
 
   function afterOpenModal() {
@@ -114,7 +120,7 @@ function App() {
   return (
     <>
       <div className="main">
-        <Navbar openModal={openModal} getCategoryColor={getCategoryColor} />
+        <Navbar openModal={openModal} getCategoryColor={getCategoryColor} isUpdate={isUpdate}/>
         <Routes>
           <Route
             path="/"
@@ -144,7 +150,7 @@ function App() {
                 getData={getData}
                 setIsOpen={setIsOpen}
                 modalIsOpen={modalIsOpen}
-                isUpdate={true}
+                isUpdate={isUpdate}
                 handleDelete={handleDelete}
                 getDataCategory={getDataCategory}
                 openModal={openModal}

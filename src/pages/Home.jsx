@@ -93,11 +93,13 @@ function Home(props) {
         ))}
       </div>
       <ModalForm
+     
         getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
         modalIsOpen={modalIsOpen}
         isUpdate={isUpdate}
+        news={news}
       />
     </div>
   );

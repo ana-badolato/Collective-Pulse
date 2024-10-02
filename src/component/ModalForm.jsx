@@ -66,6 +66,7 @@ function ModalForm(props) {
         </div>
         <hr className="form-hr" />
         <NewsForm
+       
           getData={getData}
           getDataCategory={getDataCategory}
           news={news}
