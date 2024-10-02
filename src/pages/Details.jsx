@@ -21,6 +21,7 @@ function Details(props) {
     getDataCategory,
     openModal,
     getCategoryColor,
+    getRandomAvatar,
   } = props;
 
   useEffect(() => {

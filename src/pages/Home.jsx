@@ -9,6 +9,8 @@ import ModalForm from '../component/ModalForm'
 import { Link } from 'react-router-dom'
 import SliderText from '../component/SliderText'
 
+
+
 function Home(props) {
   const {
     setIsOpen,
@@ -22,6 +24,7 @@ function Home(props) {
     setSearchValue,
     handleSearchChange,
     getDataCategory,
+    getRandomAvatar,
   } = props
 
   useEffect(() => {
@@ -76,6 +79,7 @@ function Home(props) {
                   getData={getData}
                   getCategoryColor={getCategoryColor}
                   news={news}
+                  getRandomAvatar={getRandomAvatar}
                 />
                 
               </Link>
@@ -100,6 +104,7 @@ function Home(props) {
               getCategoryColor={getCategoryColor}
               news={news}
               {...eachNew}
+              getRandomAvatar={getRandomAvatar}
             />
           </Link>
         ))}

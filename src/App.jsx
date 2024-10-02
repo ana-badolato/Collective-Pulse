@@ -12,6 +12,27 @@ import NewsForm from './component/NewsForm'
 import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
 
+import avatar01Icon from "./assets/icons/avatar01Icon.png";
+import avatar02Icon from "./assets/icons/avatar02Icon.png";
+import avatar03Icon from "./assets/icons/avatar03Icon.png";
+import avatar04Icon from "./assets/icons/avatar04Icon.png";
+import avatar05Icon from "./assets/icons/avatar05Icon.png";
+import avatar06Icon from "./assets/icons/avatar06Icon.png";
+
+const avatarImages = [
+  avatar01Icon,
+  avatar02Icon,
+  avatar03Icon,
+  avatar04Icon,
+  avatar05Icon,
+  avatar06Icon,
+];
+
+function getRandomAvatar() {
+  const randomIndex = Math.floor(Math.random() * avatarImages.length);
+  return avatarImages[randomIndex];
+}
+
 function App() {
   let subtitle
   const [modalIsOpen, setIsOpen] = useState(false)
@@ -148,6 +169,7 @@ function App() {
                 handleSearchChange={handleSearchChange}
                 getDataCategory={getDataCategory}
                 openModal={openModal}
+                getRandomAvatar={getRandomAvatar}
               />
             }
           />
@@ -165,6 +187,7 @@ function App() {
                 getDataCategory={getDataCategory}
                 openModal={openModal}
                 getCategoryColor={getCategoryColor}
+                getRandomAvatar={getRandomAvatar}
               />
             }
           />
@@ -181,6 +204,7 @@ function App() {
                 category={category}
                 getDataCategory={getDataCategory}
                 openModal={openModal}
+                getRandomAvatar={getRandomAvatar}
               />
             }
           />

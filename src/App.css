@@ -342,6 +342,8 @@ transition: 0.2s;
   display: flex;
   align-items: center;
   font-size: 24px;
+  font-weight: 500;
+  color: var(--color-neutral-black-details);
 }
 
 .image-tag {
@@ -477,6 +479,17 @@ transition: 0.2s;
   opacity: 0.9;
 }
 
+.author {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.author img {
+  height: 24px;
+  width: 24px;
+}
+
 .titlecardM {
   opacity: 1;
   transition: opacity 0.5s ease-in-out;
@@ -531,7 +544,7 @@ transition: 0.2s;
 .cardS-container {
   position: relative;
   width: 100%;
-  max-width: 320px;
+  max-width: 300px;
   min-width: 256px;
   overflow: hidden;
   background-color: var(--color-neutral-white);
@@ -540,12 +553,14 @@ transition: 0.2s;
   text-decoration: none;
   color: var(--color-neutral-black);
   text-decoration: none;
+  
+  height: 600px;
 }
 
 /* Imagen dentro de la tarjeta */
 .cardS-image img {
   width: 100%;
-  height: 200px;
+  height: 260px;
   object-fit: cover; /* Mantiene las proporciones de la imagen */
 }
 
@@ -560,33 +575,35 @@ transition: 0.2s;
   height: 40px;
   display: flex;
   align-items: center;
-  padding-left: 16px; /* Espaciado a la izquierda del texto */
-  margin: 0;
+  padding-left: 24px; /* Espaciado a la izquierda del texto */
+  margin-top: -4px;
 }
 .cardS-header {
-  padding: 16px;
+  padding: 0 24px;
   text-align: left;
   margin: 0;
 }
 /* Título y contenido dentro de la tarjeta */
 .cardS-header h3 {
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-heading);
   font-size: 20px;
   color: var(--color-neutral-black);
+  padding-bottom: 8px;
 }
 
 .cardS-header p {
-  font-family: 'Questrial', sans-serif;
+  font-family: var(--font-text);
   font-size: 14px;
   color: var(--color-neutral-black);
-  margin: 0;
+  margin: 24px 0;
+  height: 96px;
 }
 
 /* Línea divisoria (hr) dentro de la tarjeta */
 .cardS-container hr {
   border: none;
   border-top: 1px solid var(--color-neutral-white-details);
-  margin: 8px 16px;
+  margin: 8px 24px;
   opacity: 0.5;
 }
 
@@ -595,9 +612,11 @@ transition: 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 16px 24px;
   font-size: 14px;
-  color: var(--color-neutral-black);
+  color: var(--color-neutral-black-details);
+  opacity: 0.9;
+  font-family: var(--font-heading);
 }
 
 .cardS-data .author {
@@ -703,18 +722,34 @@ transition: 0.2s;
 /* Footer*/
 
 .footer-section {
-  background-image: url('./assets/images/footer-background.png');
+  position: relative; /* Necesario para que el ::before y el contenido se posicionen correctamente */
+  background-image: url('./assets/images/footer-background.png'); /* Capa 1 */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: auto;
-  min-height: 400px; /* Si necesitas un mínimo de 400px */
+  min-height: 300px; /* Ajusta según tus necesidades */
   display: flex;
   align-items: flex-end;
   padding-bottom: 64px;
+  z-index: 0; /* Fondo base */
+}
+
+.footer-section::before {
+  content: '';
+  position: absolute; /* Se coloca encima del fondo, pero detrás del contenido */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(31, 31, 31, 1) 0%, rgba(31, 31, 31, 0) 50%); /* Capa 2 - Overlay */
+  z-index: 1; /* Se posiciona sobre el fondo, pero debajo del contenido */
+  pointer-events: none; /* El pseudo-elemento no interferirá con la interacción del usuario */
 }
 
 .footer-content {
+  position: relative; /* Asegura que el contenido esté encima del overlay */
+  z-index: 2; /* Capa 3 - El contenido como texto, iconos, etc. está por encima del overlay */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -724,14 +759,36 @@ transition: 0.2s;
 }
 
 .logo-footer {
-  width: 128px;
+  animation: changeColorFilter 4s infinite;
+  width: 96px;
+}
+
+@keyframes changeColorFilter {
+  0% {
+    filter: hue-rotate(0deg); /* Original color */
+  }
+  20% {
+    filter: hue-rotate(180deg); /* Different color */
+  }
+  40% {
+    filter: hue-rotate(360deg); /* Back to original color */
+  }
+  60% {
+    filter: hue-rotate(360deg); /* Back to original color */
+  }
+  80% {
+    filter: hue-rotate(360deg); /* Back to original color */
+  }
+  100% {
+    filter: hue-rotate(360deg); /* Back to original color */
+  }
 }
 
 .footer-copy {
   display: flex;
   color: var(--color-neutral-white);
   font-size: 16px;
-  gap: 16px;
+  gap:8px;
 }
 
 .footer-copy a {
@@ -746,7 +803,7 @@ transition: 0.2s;
 }
 
 .footer-copy img {
-  width: 16px;
+  width: 14px;
 }
 
 .social-media-links {
@@ -761,6 +818,10 @@ transition: 0.2s;
 
 .social-media-links a:hover {
   transform: translateY(-5px); /* Mover hacia arriba 5px */
+}
+.social-media-links img {
+  
+  height: 16px;
 }
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {

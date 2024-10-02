@@ -15,6 +15,7 @@ function CardM(props) {
     title,
     getData,
     getCategoryColor,
+    getRandomAvatar,
   } = props
   const { category } = useParams()
   // const handleDelete = async (id) => {
@@ -49,7 +50,7 @@ function CardM(props) {
           <hr className='cardM-hr'/>
           <div className="cardM-hover-data">
             <div className="author">
-              {/* <img src="" alt="" /> */}
+              <img src={getRandomAvatar()} alt="" />
               <p>{author}</p>
             </div>
             <p>{new Date(date).toLocaleDateString('es-ES')}</p>
