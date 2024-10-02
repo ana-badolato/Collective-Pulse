@@ -11,6 +11,7 @@ import './App.css'
 import NewsForm from './component/NewsForm'
 import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
+import LoadingPage from './pages/LoadingPage'
 
 function App() {
   let subtitle
@@ -196,6 +197,7 @@ function App() {
               />
             }
           />
+          <Route path="/loading" element={<LoadingPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

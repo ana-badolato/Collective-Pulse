@@ -684,6 +684,74 @@ html {
 .social-media-links a:hover {
   transform: translateY(-5px); /* Mover hacia arriba 5px */
 }
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-neutral-black);
+  height: 100vh;
+  margin: 0;
+}
+
+.logo-loading {
+  width: 500px;
+  height: auto;
+  animation: 1.5s ease 0s infinite beat;
+}
+@keyframes beat {
+  0%,
+  50%,
+  100% {
+    transform: scale(1, 1);
+  }
+  30%,
+  80% {
+    transform: scale(0.92, 0.95);
+  }
+}
+.dots {
+  position: relative;
+  display: flex;
+  margin-top: 10px;
+}
+
+.dot {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+  background-color: var(--color-neutral-white);
+  animation: dot-blink 1.5s ease infinite;
+}
+
+@keyframes dot-blink {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+}
+.dot:nth-child(1) {
+  top: 40px;
+  right: 150px;
+  animation-delay: 0.5s;
+}
+
+.dot:nth-child(2) {
+  top: 40px;
+  right: 80px;
+  animation-delay: 1s;
+}
+
+.dot:nth-child(3) {
+  top: 40px;
+  right: 10px;
+  animation-delay: 1.5s;
+}
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
   /* NavBar Mobile ------------------------------------------------------*/
