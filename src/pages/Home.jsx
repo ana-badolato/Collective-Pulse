@@ -48,7 +48,7 @@ function Home(props) {
         <span>COLLECTIVE</span> <br />
         PULSE
       </h1>
-      <Carousel latestNews={latestNews} getCategoryColor={getCategoryColor} />
+      <Carousel news={news} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>LATEST</h2>
         <hr />

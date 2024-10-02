@@ -1,46 +1,82 @@
-import { useState, useEffect } from 'react'
-import new1 from '../assets/new1.jpg'
-import new2 from '../assets/new2.jpg'
-import new3 from '../assets/new3.jpg'
+import { useState, useEffect, useRef } from 'react';
 
 function Carousel(props) {
-  const { getCategoryColor,latestNews } = props
-  const [imageIndex, setImageIndex] = useState(0)
+  const { getCategoryColor, news } = props;
+  const [imageIndex, setImageIndex] = useState(1); // Empezamos en el índice 1 (primera imagen real)
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const carouselRef = useRef(null);
 
-  let images = [new1, new2, new3]
-  // Esta función maneja el cambio automático a la siguiente imagen
-  const filterImage= latestNews.slice(0, 4).map((eachNew)=>{
-    console.log(eachNew.categories)
-    return eachNew.image
-  })
+  // Filtrar imágenes y crear array extendido para el bucle infinito
+  const filterImage = news.map((eachNew) => eachNew.image);
 
+  const extendedImages = [
+    filterImage[filterImage.length - 1], // Agregar la última imagen al principio
+    ...filterImage,
+    filterImage[0], // Agregar la primera imagen al final
+  ];
+
+  // Cambiar de imagen automáticamente cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setImageIndex((prevIndex) =>
-        prevIndex === filterImage.length - 1 ? 0 : prevIndex + 1
-      )
-    }, 5000)
+      setImageIndex((prevIndex) => prevIndex + 1);
+    }, 5000);
 
-    return () => clearInterval(interval)
-  }, [filterImage.length])
+    return () => clearInterval(interval);
+  }, []);
 
+  // Manejar el bucle infinito
+  useEffect(() => {
+    if (imageIndex === extendedImages.length - 1) {
+      // Al llegar al duplicado final, saltamos al índice real sin transición
+      setIsTransitioning(false); // Desactivamos la transición
+      setImageIndex(1); // Saltamos al primer índice real
+    }
+
+    if (imageIndex === 0) {
+      // Al llegar al duplicado del inicio, saltamos al índice real sin transición
+      setIsTransitioning(false); // Desactivamos la transición
+      setImageIndex(extendedImages.length - 2); // Saltamos al último índice real
+    }
+
+    // Reactivar la transición después del salto para los cambios normales
+    if (imageIndex > 0 && imageIndex < extendedImages.length - 1) {
+      setIsTransitioning(true); // Activamos la transición normal
+    }
+  }, [imageIndex, extendedImages.length]);
+  if (!news || news.length < 4) {
+    return <h1>Cargando...</h1>;
+  }
   return (
-    <div className="container-carousel">
-      <div className="box-carousel"style={{
-        "--custom-color": getCategoryColor(latestNews[imageIndex].categories)}}>
-      {latestNews.slice(0, 4).map((cada, i) => (
+    <div
+      className="container-carousel"
+      style={{
+        '--custom-color': getCategoryColor(news[imageIndex % news.length].categories),
+      }}
+    >
+      <div
+        className="box-carousel"
+        ref={carouselRef}
+        style={{
+          transform: `translateX(-${imageIndex * 100}%)`,
+          transition: isTransitioning ? 'transform 0.8s ease-in-out' : 'none',
+        }}
+      >
+        {extendedImages.map((image, i) => (
           <div className="image-container" key={i}>
-            <img
-              className="image-carousel"
-              src={filterImage[imageIndex]}
-              alt={`Imagen ${imageIndex}`}
-            />
-            <span className="image-tag" style={{
-              "--custom-color": getCategoryColor(latestNews[imageIndex].categories)}}>{latestNews[imageIndex].categories}</span> {/* Tag fijo */}
+            <img className="image-carousel" src={image} alt={`Imagen ${i}`} />
+            <span
+              className="image-tag"
+              style={{
+                '--custom-color': getCategoryColor(news[imageIndex % news.length].categories),
+              }}
+            >
+              {news[imageIndex % news.length].categories}
+            </span>
           </div>
         ))}
-        </div>
+      </div>
     </div>
-  )
+  );
 }
-export default Carousel
+
+export default Carousel;

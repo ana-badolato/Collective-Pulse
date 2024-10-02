@@ -35,6 +35,7 @@ html {
   padding: 10px 0;
   position: relative;
   height: 180px;
+  
 }
 
 .slider-text-header {
@@ -50,13 +51,14 @@ html {
   display: flex;
   align-items: center;
   position: relative;
+  white-space: nowrap; /* Asegura que el contenido no haga wrap */
 }
 
 .slider-text-content {
   display: flex;
   align-items: center;
   white-space: nowrap;
-  animation: scroll 60s linear infinite; /* Animación continua del scroll */
+  animation: scroll var(--animation-duration) linear infinite; /* Usar duración calculada */
 }
 
 .slider-title {
@@ -68,12 +70,11 @@ html {
 .slider-text-link {
   display: flex;
   align-items: center;
-  margin-right: 50px;
-  font-size: 16px;
-  text-decoration: none;
-  color: white; /* El color del texto puede ser blanco, ajusta si es necesario */
+  margin-right: 50px; /* Espacio entre cada noticia */
   padding: 10px;
-  border-radius: 5px;
+  text-decoration: none;
+  color: var(--color-neutral-white);
+  font-size: 16px;
 }
 
 .slider-text-link:hover {
@@ -87,9 +88,10 @@ html {
   margin-right: 8px;
 }
 
+
 @keyframes scroll {
   0% {
-    transform: translateX(100%); /* Inicia fuera de la pantalla */
+    transform: translateX(0); /* Inicia fuera de la pantalla */
   }
   100% {
     transform: translateX(-100%); /* Desaparece por la izquierda */

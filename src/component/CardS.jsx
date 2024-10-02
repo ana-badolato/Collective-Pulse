@@ -36,7 +36,7 @@ function CardS(props) {
 
 
 
-      <div className="cardS-hover-header">
+      <div className="cardS-header">
         <h3>{title}</h3>
         <p>{content.slice(0, 200)}...</p>
       </div>
@@ -45,7 +45,7 @@ function CardS(props) {
       <hr />
 
 
-      <div className="cardS-hover-data">
+      <div className="cardS-data">
         <div className="author">
           <img src="" alt="" />
           <p>{author}</p>
@@ -53,7 +53,7 @@ function CardS(props) {
         <p>{date}</p>
       </div>
 
-      
+
     </div>
   );
 }
