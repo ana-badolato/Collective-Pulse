@@ -263,7 +263,7 @@ html {
   aspect-ratio: 16 / 9; /* Define una relación de aspecto 16:9 para el contenedor */
   overflow: hidden;
   position: relative;
-  border: 5px solid var(--color-fluor-pink);
+  border: 5px solid var(--custom-color);
 }
 
 .image-carousel {
@@ -299,7 +299,7 @@ html {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--color-fluor-pink);
+  background-color: var(--custom-color);
   color: var(--color-neutral-black);
   font-family: 'Oswald', sans-serif;
   padding: 5px 10px;
@@ -335,6 +335,7 @@ html {
 
 /* Card M ----------------------------------------------------------------------*/
 .cardM-section {
+  position: relative;
   width: 60%;
   display: flex;
   margin: 0 auto;
@@ -359,7 +360,7 @@ html {
 /* Rectángulo de categoría en la parte inferior */
 .cardM-category {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 40px;
@@ -382,13 +383,13 @@ html {
 
 .cardM-info {
   position: absolute;
-  bottom: 0;
+  bottom: 0px;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--color-neutral-black);
-  transform: translateY(100%);
+  transform: translateY(90%);
   transition: transform 0.5s ease-in-out;
   padding: 20px;
   box-sizing: border-box;
@@ -409,30 +410,59 @@ html {
 .cardM-container:hover .cardM-info {
   transform: translateY(0);
 }
+
+
+/*Card S -------------------------------------------------------------------------*/
+
+.cardS-section{
+  position: relative;
+  width: 60%;
+  display: flex;
+  margin: 0 auto;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+
+.cardS-container{
+  position: relative;
+  width: 30%;
+  overflow: hidden;
+}
+
+
+
+
+
+
 .box-labelcategory {
   position: relative;
-  width: 300px;
-  height: 200px;
-  overflow: hidden;
-  background-color: lightgray;
+  width:100%;
+  height: 50%;
 }
 
 .labelcategory {
   position: absolute;
   top: 0;
-  right: 50px;
+  right: 0px;
   width: 300px;
   height: 50px;
-  background-color: var(--color-fluor-orange);
+  background-color: var(--custom-color);
   color: var(--color-neutral-black);
-  transform: translateX(100%);
+  transform: translateX(80%);
   transition: transform 0.5s ease-in-out;
-  padding: 20px;
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 64px;
+  font-family: var(--font-heading);
+}
+
+.labelcategory img {
+  width: 24px;
 }
 
 .box-labelcategory:hover .labelcategory {

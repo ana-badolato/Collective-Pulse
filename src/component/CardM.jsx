@@ -25,10 +25,10 @@ const {category} =useParams()
       <div className="cardM-image">
         <img src={image} alt="" />
       </div>
+      <div className="cardM-info">
       <div className="cardM-category" style={{ '--custom-color': getCategoryColor(categories) }} >
         <p>{categories}</p>
       </div>
-      <div className="cardM-info">
         <div className="cardM-hover-header">
           <h3>{title}</h3>
           <p>{content.slice(0, 200)}...</p>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import SearchBar from "../component/SearchBar";
 import CardM from "../component/CardM";
+import CardS from "../component/CardS"
 import LabelCategory from "../component/LabelCategory";
 import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
@@ -47,11 +48,14 @@ function Home(props) {
         <span>COLLECTIVE</span> <br />
         PULSE
       </h1>
-      <Carousel />
+      <Carousel latestNews={latestNews} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>LATEST</h2>
         <hr />
       </div>
+      
+      <div >
+        <LabelCategory getCategoryColor={getCategoryColor} news={news}/>
       <div className="cardM-section">
         {latestNews.slice(0, 4).map((eachNew) => {
           return (
@@ -72,20 +76,20 @@ function Home(props) {
           )
         })}
       </div>
-
+      </div>
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
       </div>
-      <div className="cardM-section">
+      <div className="cardS-section">
         {trendingNews.map((eachNew) => (
           <Link
-            className="cardM-section"
+            className="cardS-section"
             to={`/details/${eachNew.id}`}
             onClick={() => incrementViews(eachNew.id)}
             key={eachNew.id}
           >
-            <CardM
+            <CardS
               getCategoryColor={getCategoryColor}
               news={news}
               {...eachNew}
