@@ -259,26 +259,24 @@ html {
 }
 
 .container-carousel {
-  margin: 20px 0;
+  margin: 0 auto; /* Asegura que esté centrado horizontalmente */
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden; /* Oculta las imágenes que no están en el viewport */
-  width: 60%; /* El contenedor será del 60% del ancho de la pantalla */
+  width: 100%; /* Asegúrate de que el ancho sea el adecuado */
+  max-width: 80%; /* Limita el ancho máximo para mantener el carrusel centrado */
   position: relative;
-  border: 5px solid var(--custom-color)
+  border: 5px solid var(--custom-color); /* El borde será dinámico */
 }
 
-/* Contenedor que sostiene las imágenes del carrusel */
 .box-carousel {
   display: flex; /* Alinea las imágenes en fila horizontal */
-  width: 500%; /* El ancho es 5 veces el de una imagen visible (4 imágenes + 1 duplicada) */
   height: auto; /* Ajusta la altura según el contenido */
+  width: 100%; /* El ancho es 100% para que se ajuste al contenedor */
   aspect-ratio: 16 / 9; /* Mantiene una relación de aspecto 16:9 */
- /* El borde será dinámico */
 }
 
-/* Contenedor de cada imagen */
 .image-container {
   flex-shrink: 0; /* Evita que las imágenes se reduzcan */
   width: 100%; /* Cada imagen ocupa el 100% del espacio visible */
@@ -286,7 +284,6 @@ html {
   position: relative; /* Para posicionar el tag sobre la imagen */
 }
 
-/* Estilo de las imágenes */
 .image-carousel {
   width: 100%;
   height: 100%;
@@ -396,6 +393,10 @@ html {
   align-items: center;
   text-align: left;
 }
+.titlecardM{
+opacity: 1;
+transition: opacity 0.5s ease-in-out ;
+}
 
 .cardM-info h3 {
   font-family: var(--font-heading);
@@ -407,6 +408,10 @@ html {
 
 .cardM-container:hover .cardM-info {
   transform: translateY(0);
+}
+.cardM-container:hover  .titlecardM{
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 

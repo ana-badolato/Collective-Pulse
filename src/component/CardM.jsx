@@ -21,6 +21,8 @@ const {category} =useParams()
   // };
 
   return (
+    <>
+
     <div className="cardM-container">
       <div className="cardM-image">
         <img src={image} alt="" />
@@ -50,6 +52,8 @@ const {category} =useParams()
         </button> */}
       </div>
     </div>
+      <h2 className="titlecardM" style={{padding:'10pxs', color:'#fefdfb'}}>{title}</h2>
+    </>
   );
 }
 
