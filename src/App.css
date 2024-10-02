@@ -615,7 +615,7 @@ html {
     width: calc(
       100% - 32px
     ); /* Se coloca una carta por fila en pantallas pequeñas */
-  }
+  }}
 
 
 
