@@ -44,19 +44,19 @@ function CardM(props) {
           </div>
           <div className="cardM-hover-header">
             <h3>{title}</h3>
-            <p>{content.slice(0, 200)}...</p>
+            <p>{content.slice(0, 190)}...</p>
           </div>
-          <hr />
+          <hr className='cardM-hr'/>
           <div className="cardM-hover-data">
             <div className="author">
-              <img src="" alt="" />
+              {/* <img src="" alt="" /> */}
               <p>{author}</p>
             </div>
-            <p>{date}</p>
+            <p>{new Date(date).toLocaleDateString('es-ES')}</p>
           </div>
         </div>
       </div>
-      <h2 className="titlecardM" style={{ padding: '10pxs', color: '#fefdfb' }}>
+      <h2 className="titlecardM">
         {title}
       </h2>
     </>

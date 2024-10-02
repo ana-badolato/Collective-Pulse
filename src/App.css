@@ -12,7 +12,7 @@
   text-align: center;
   max-width: 100%;
   --color-neutral-white: #fefdfb;
-  --color-neutral-white-details: #bebebe;
+  --color-neutral-white-details: #9e9d9d;
   --color-neutral-black: #1f1f1f;
   --color-neutral-black-details: #3c3939;
   --color-fluor-yellow: #fbfd57;
@@ -318,54 +318,54 @@ transition: 0.2s;
 .image-carousel {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Mantiene la proporción de la imagen */
+  object-fit: cover; 
 }
 
 .carousel-overlay {
   position: absolute;
-  top: 90%; /* Puedes ajustar la posición según prefieras */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; /* Ajusta el ancho del título */
+  width: 100%; 
   text-align: center;
   color: var(--color-neutral-black);
-  background: rgba(255, 255, 255, 0.836); /* Fondo semitransparente para el título */
+  background: rgba(255, 255, 255, 0.836); 
   padding: 10px;
   border-radius: 5px;
  
 }
 .carousel-title {
-  font-size: 2vw; /* Ajusta el tamaño de la fuente según tu diseño */
-  font-family: var(--font-heading); /* Usa la fuente adecuada */
+  font-size: 2vw; 
+  font-family: var(--font-heading); 
   text-align: left;
   margin-left: 32px;
   display: flex;
   align-items: center;
   font-size: 24px;
 }
-/* Tag que aparece sobre las imágenes */
+
 .image-tag {
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--custom-color); /* Color dinámico del tag */
+  background-color: var(--custom-color); 
   color: var(--color-neutral-black);
   font-family: 'Oswald', sans-serif;
   padding: 5px 10px;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 500;
-  z-index: 1; /* Asegura que esté encima de la imagen */
+  z-index: 1; 
   margin: 16px;
 }
 /*- Section headers -------------------------------------------------------*/
 
 .section-header {
-  width: 60%;
+  width: 80%;
   font-family: var(--font-heading);
   display: flex;
   align-items: center;
-  margin: 64px auto;
+  margin: 128px auto 64px auto;
 }
 
 .section-header h2 {
@@ -382,6 +382,14 @@ transition: 0.2s;
 }
 
 /* Card M ----------------------------------------------------------------------*/
+.titlecardM{
+  margin-top: -16px;
+  color: var(--color-neutral-white);
+  text-align: left;
+  font-family: var(--font-heading);
+  font-weight: 300;
+}
+
 .cardM-section {
   position: relative;
   display: flex;
@@ -390,15 +398,18 @@ transition: 0.2s;
   gap: 32px;
   flex-wrap: wrap;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1400px;
+  margin-bottom: 128px;
 }
 
 .cardM-container {
   position: relative;
   width: calc(50% - 16px);
-  width: 500px;
+  width: 550px;
   overflow: hidden;
   margin-bottom: 32px;
+  box-sizing: border-box;
+  flex-wrap: wrap;
 }
 
 .cardM-image img {
@@ -422,6 +433,8 @@ transition: 0.2s;
   justify-content: flex-start;
   align-items: center;
   z-index: 2;
+  font-family: var(--font-heading);
+  
 }
 
 .cardM-category p {
@@ -430,8 +443,9 @@ transition: 0.2s;
   font-size: 16px;
   color: var(--color-neutral-black);
   justify-content: flex-start;
-  padding-left: 16px;
+  padding-left: 24px;
   font-weight: 500;
+  font-family: var(--font-heading);
 }
 
 .cardM-info {
@@ -440,22 +454,27 @@ transition: 0.2s;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   color: var(--color-neutral-black);
-  transform: translateY(92%);
+  transform: translateY(93%);
   transition: transform 0.5s ease-in-out;
-  padding: 20px;
+  padding: 40px 24px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: left;
+  
 }
 .cardM-hover-data {
+  width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  font-family: var(--font-heading);
+  color: var(--color-neutral-black-details);
+  font-weight: 500;
+  opacity: 0.9;
 }
 
 .titlecardM {
@@ -478,8 +497,13 @@ transition: 0.2s;
   font-family: var(--font-heading);
 }
 
-.cardM-info p {
-  font-family: var(--font-text);
+.cardM-hr {
+  border: none;
+  border-top: 1px solid var(--color-neutral-white-details);
+  margin: 8px 16px;
+  opacity: 0.5;
+  display: block;
+  width: 100%;
 }
 
 .cardM-container:hover .cardM-info {
@@ -593,10 +617,11 @@ transition: 0.2s;
   height: 50%;
 }
 
+
 .labelcategory {
   position: absolute;
   top: 0;
-  right: -160px;
+  right: 0;
   width: 250px;
   height: 50px;
   background-color: var(--custom-color);
@@ -611,6 +636,7 @@ transition: 0.2s;
   align-items: center;
   gap: 40px;
   font-family: var(--font-heading);
+  z-index: 3;
 }
 
 .labelcategory img {

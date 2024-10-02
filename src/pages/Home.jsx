@@ -58,7 +58,10 @@ function Home(props) {
       </div>
 
       <div>
-        <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+        <div className="container-labels-colors">
+          <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+        </div>
+        
         <div className="cardM-section">
           {latestNews.slice(0, 4).map((eachNew) => {
             return (
@@ -74,12 +77,13 @@ function Home(props) {
                   getCategoryColor={getCategoryColor}
                   news={news}
                 />
-                ;
+                
               </Link>
             )
           })}
         </div>
       </div>
+      <SliderText news={news} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
@@ -101,7 +105,7 @@ function Home(props) {
         ))}
       </div>
 
-      <SliderText news={news} getCategoryColor={getCategoryColor} />
+      
       <ModalForm
         getDataCategory={getDataCategory}
         getData={getData}
