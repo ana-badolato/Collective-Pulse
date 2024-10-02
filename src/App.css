@@ -266,6 +266,7 @@ transition: 0.2s;
   flex-direction: row;
   justify-content: flex-start;
   width: 80%;
+  z-index: 3;
 }
 
 .home {
@@ -823,6 +824,70 @@ transition: 0.2s;
   
   height: 16px;
 }
+
+
+/*Category */
+.hero-category{
+  position: inherit;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(31, 31, 31, 0) 70%,
+    #1f1f1f 100%
+  ),
+  url('./assets/images/catBackground.png');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center;
+min-width: 100%;
+height: 720px;
+
+
+}
+
+.hero-category::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%; /* Overlay más corto, cubre la mitad del contenedor */
+  background-color: rgba(31, 31, 31, 0.5); /* Color #1f1f1f con 50% de opacidad */
+  z-index: 2; /* Asegura que esté por encima de la imagen pero debajo del h1 */
+}
+
+.hero-stamp {
+  width: 570px;
+  position: absolute;
+  right: 128px;
+  top: 32px;
+  transform: rotate(15deg);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+.category-container{
+  min-height: 100vh;
+  background-color: var(--color-neutral-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ocupa toda la altura de la ventana */
+  background-color: var(--color-neutral-black); /* El mismo color de fondo que la página */
+  font-family: var(--font-heading);
+}
+
+.loading-message {
+  font-size: 24px;
+  color: var(--color-neutral-white); /* Color del texto de carga */
+}
+
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
   /* NavBar Mobile ------------------------------------------------------*/

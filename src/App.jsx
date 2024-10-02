@@ -205,6 +205,7 @@ function App() {
                 getDataCategory={getDataCategory}
                 openModal={openModal}
                 getRandomAvatar={getRandomAvatar}
+                incrementViews={incrementViews}
               />
             }
           />
@@ -217,6 +218,7 @@ function App() {
                 handleSearchChange={handleSearchChange}
                 getCategoryColor={getCategoryColor}
                 filteredNews={filteredNews}
+                getRandomAvatar={getRandomAvatar}
               />
             }
           />
