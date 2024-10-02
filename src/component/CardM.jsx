@@ -1,13 +1,22 @@
-import new4 from "../assets/new4.jpg";
-import axios from "axios";
-import { useParams } from "react-router";
-import { useState } from "react";
+import new4 from '../assets/new4.jpg'
+import axios from 'axios'
+import { useParams } from 'react-router'
+import { useState } from 'react'
 
 function CardM(props) {
   //const [news, setNews] = useState([]);
-  const { id, author, categories, content, date, image, title, getData,getCategoryColor } =
-    props;
-const {category} =useParams()
+  const {
+    id,
+    author,
+    categories,
+    content,
+    date,
+    image,
+    title,
+    getData,
+    getCategoryColor,
+  } = props
+  const { category } = useParams()
   // const handleDelete = async (id) => {
   //   try {
   //     await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
@@ -22,39 +31,36 @@ const {category} =useParams()
 
   return (
     <>
-
-    <div className="cardM-container">
-      <div className="cardM-image">
-        <img src={image} alt="" />
-      </div>
-      <div className="cardM-info">
-      <div className="cardM-category" style={{ '--custom-color': getCategoryColor(categories) }} >
-        <p>{categories}</p>
-      </div>
-        <div className="cardM-hover-header">
-          <h3>{title}</h3>
-          <p>{content.slice(0, 200)}...</p>
+      <div className="cardM-container">
+        <div className="cardM-image">
+          <img src={image} alt="" />
         </div>
-        <hr />
-        <div className="cardM-hover-data">
-          <div className="author">
-            <img src="" alt="" />
-            <p>{author}</p>
+        <div className="cardM-info">
+          <div
+            className="cardM-category"
+            style={{ '--custom-color': getCategoryColor(categories) }}
+          >
+            <p>{categories}</p>
           </div>
-          <p>{date}</p>
+          <div className="cardM-hover-header">
+            <h3>{title}</h3>
+            <p>{content.slice(0, 200)}...</p>
+          </div>
+          <hr />
+          <div className="cardM-hover-data">
+            <div className="author">
+              <img src="" alt="" />
+              <p>{author}</p>
+            </div>
+            <p>{date}</p>
+          </div>
         </div>
-        {/* <button
-          onClick={() => {
-            handleDelete(id);
-          }}
-        >
-          Delete
-        </button> */}
       </div>
-    </div>
-      <h2 className="titlecardM" style={{padding:'10pxs', color:'#fefdfb'}}>{title}</h2>
+      <h2 className="titlecardM" style={{ padding: '10pxs', color: '#fefdfb' }}>
+        {title}
+      </h2>
     </>
-  );
+  )
 }
 
-export default CardM;
+export default CardM

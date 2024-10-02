@@ -12,7 +12,7 @@
   text-align: center;
   max-width: 100%;
   --color-neutral-white: #fefdfb;
-  --color-neutral-white-details:#bebebe;
+  --color-neutral-white-details: #bebebe;
   --color-neutral-black: #1f1f1f;
   --color-neutral-black-details: #3c3939;
   --color-fluor-yellow: #fbfd57;
@@ -241,8 +241,11 @@ html {
 }
 
 .home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   background-color: var(--color-neutral-black);
-  padding-bottom: 64px;
 }
 .hero {
   background-image: linear-gradient(
@@ -331,17 +334,21 @@ html {
 /* Card M ----------------------------------------------------------------------*/
 .cardM-section {
   position: relative;
-  width: 60%;
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   gap: 32px;
   flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .cardM-container {
   position: relative;
-  width: 48%;
+  width: calc(50% - 16px);
+  width: 500px;
   overflow: hidden;
+  margin-bottom: 32px;
 }
 
 .cardM-image img {
@@ -366,6 +373,7 @@ html {
   align-items: center;
   z-index: 2;
 }
+
 .cardM-category p {
   text-transform: uppercase;
   z-index: 2;
@@ -384,7 +392,7 @@ html {
   height: 100%;
   background-color: rgba(255, 255, 255, 0.8);
   color: var(--color-neutral-black);
-  transform: translateY(90%);
+  transform: translateY(92%);
   transition: transform 0.5s ease-in-out;
   padding: 20px;
   box-sizing: border-box;
@@ -393,9 +401,27 @@ html {
   align-items: center;
   text-align: left;
 }
-.titlecardM{
-opacity: 1;
-transition: opacity 0.5s ease-in-out ;
+.cardM-hover-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.titlecardM {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 20px;
+  width: 100%;
+}
+
+.link-cardM:hover .titlecardM {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.link-cardM {
+  text-decoration: none;
 }
 
 .cardM-info h3 {
@@ -407,13 +433,8 @@ transition: opacity 0.5s ease-in-out ;
 }
 
 .cardM-container:hover .cardM-info {
-  transform: translateY(0);
+  transform: translateY(50%);
 }
-.cardM-container:hover  .titlecardM{
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
 
 /*Card S -------------------------------------------------------------------------*/
 
@@ -424,24 +445,23 @@ transition: opacity 0.5s ease-in-out ;
   display: flex;
   margin: 0 auto;
   gap: 32px;
-  flex-wrap: wrap; 
-  text-decoration: none !important; 
+  flex-wrap: wrap;
+  text-decoration: none !important;
 }
 
 .cardS-container {
   position: relative;
-  width: 100%; 
+  width: 100%;
   max-width: 320px;
   min-width: 256px;
   overflow: hidden;
   background-color: var(--color-neutral-white);
-  transition: none; 
-  cursor: pointer; 
-  text-decoration: none; 
+  transition: none;
+  cursor: pointer;
+  text-decoration: none;
   color: var(--color-neutral-black);
   text-decoration: none;
 }
-
 
 /* Imagen dentro de la tarjeta */
 .cardS-image img {
@@ -462,7 +482,7 @@ transition: opacity 0.5s ease-in-out ;
   display: flex;
   align-items: center;
   padding-left: 16px; /* Espaciado a la izquierda del texto */
-  margin: 0; 
+  margin: 0;
 }
 .cardS-header {
   padding: 16px;
@@ -512,23 +532,17 @@ transition: opacity 0.5s ease-in-out ;
   margin: 0;
 }
 
-
-
-
-
-
-
 .box-labelcategory {
   position: relative;
-  width:100%;
+  width: 100%;
   height: 50%;
 }
 
 .labelcategory {
   position: absolute;
   top: 0;
-  right: 0px;
-  width: 300px;
+  right: -160px;
+  width: 250px;
   height: 50px;
   background-color: var(--custom-color);
   color: var(--color-neutral-black);
@@ -540,7 +554,7 @@ transition: opacity 0.5s ease-in-out ;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 64px;
+  gap: 40px;
   font-family: var(--font-heading);
 }
 
@@ -595,7 +609,13 @@ transition: opacity 0.5s ease-in-out ;
 .author-date button {
   all: unset;
 }
-
+@media (max-width: 768px) {
+  .cardM-container {
+    width: calc(
+      100% - 32px
+    ); /* Se coloca una carta por fila en pantallas pequeñas */
+  }
+}
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
   /* NavBar Mobile ------------------------------------------------------*/

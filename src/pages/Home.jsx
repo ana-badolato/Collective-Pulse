@@ -1,13 +1,13 @@
-import Carousel from "../component/Carousel";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import SearchBar from "../component/SearchBar";
-import CardM from "../component/CardM";
-import CardS from "../component/CardS"
-import LabelCategory from "../component/LabelCategory";
-import ModalForm from "../component/ModalForm";
-import { Link } from "react-router-dom";
-import SliderText from "../component/SliderText";
+import Carousel from '../component/Carousel'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
+import SearchBar from '../component/SearchBar'
+import CardM from '../component/CardM'
+import CardS from '../component/CardS'
+import LabelCategory from '../component/LabelCategory'
+import ModalForm from '../component/ModalForm'
+import { Link } from 'react-router-dom'
+import SliderText from '../component/SliderText'
 
 function Home(props) {
   const {
@@ -22,7 +22,7 @@ function Home(props) {
     setSearchValue,
     handleSearchChange,
     getDataCategory,
-  } = props;
+  } = props
 
   useEffect(() => {
     if (!modalIsOpen) {
@@ -34,7 +34,7 @@ function Home(props) {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
   })
 
-  const trendingNews = [...news].sort((a, b) => b.views - a.views).slice(0, 6);
+  const trendingNews = [...news].sort((a, b) => b.views - a.views).slice(0, 6)
 
   return (
     <div className="home">
@@ -53,29 +53,28 @@ function Home(props) {
         <h2>LATEST</h2>
         <hr />
       </div>
-      
-      <div >
-        <LabelCategory getCategoryColor={getCategoryColor} news={news}/>
-      <div className="cardM-section">
-        {latestNews.slice(0, 4).map((eachNew) => {
-          return (
-            <Link
-              className="cardM-section"
-              key={eachNew.id}
-              to={`/details/${eachNew.id}`}
-              onClick={() => incrementViews(eachNew.id)}
-            >
-              <CardM
-                {...eachNew}
-                getData={getData}
-                getCategoryColor={getCategoryColor}
-                news={news}
-              />
-              ;
-            </Link>
-          )
-        })}
-      </div>
+
+      <div>
+        <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+        <div className="cardM-section">
+          {latestNews.slice(0, 4).map((eachNew) => {
+            return (
+              <Link
+                className="link-cardM"
+                key={eachNew.id}
+                to={`/details/${eachNew.id}`}
+                onClick={() => incrementViews(eachNew.id)}
+              >
+                <CardM
+                  {...eachNew}
+                  getData={getData}
+                  getCategoryColor={getCategoryColor}
+                  news={news}
+                />
+              </Link>
+            )
+          })}
+        </div>
       </div>
       <div className="section-header">
         <h2>TRENDING</h2>
@@ -98,9 +97,8 @@ function Home(props) {
         ))}
       </div>
 
-      <SliderText news={news} getCategoryColor={getCategoryColor}/>
+      <SliderText news={news} getCategoryColor={getCategoryColor} />
       <ModalForm
-     
         getDataCategory={getDataCategory}
         getData={getData}
         setIsOpen={setIsOpen}
