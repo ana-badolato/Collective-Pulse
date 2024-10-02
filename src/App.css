@@ -90,6 +90,7 @@ body,
 html {
   margin: 0;
   padding: 0;
+  
 }
 
 /* Aplicar un contenedor que centra y limita el ancho del contenido */
@@ -620,6 +621,74 @@ html {
       100% - 32px
     ); /* Se coloca una carta por fila en pantallas pequeñas */
   }
+
+
+
+
+/* Footer*/
+
+.footer-section{
+  background-image: url("./assets/images/footer-background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: auto;
+  min-height: 400px; /* Si necesitas un mínimo de 400px */
+display: flex;
+align-items: flex-end;
+padding-bottom: 64px;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+align-items: center;
+  width: 80%;
+  margin: 0 auto;
+
+
+}
+
+.logo-footer {
+  width: 128px;
+}
+
+.footer-copy{
+  display: flex;
+  color: var(--color-neutral-white);
+
+  font-size: 16px;
+  gap: 16px;
+}
+
+.footer-copy a{
+  text-decoration: none;
+  color: var(--color-neutral-white);
+}
+
+.footer-copy a:hover{
+  text-decoration: none;
+  color: var(--color-fluor-pink);
+  transition: 0.5s;
+}
+
+.footer-copy img{
+  width: 16px;
+}
+
+.social-media-links{
+  display: flex;
+  gap: 16px;
+}
+
+.social-media-links a {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out; /* Transición suave */
+}
+
+.social-media-links a:hover {
+  transform: translateY(-5px); /* Mover hacia arriba 5px */
 }
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
