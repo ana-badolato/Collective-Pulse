@@ -65,7 +65,7 @@ function Navbar(props) {
           </Link>
         </div>
         {/* <button onClick={() => openModal(false)}> ADD PULSE</button> */}
-        <button onClick={() => {
+        <button className="button-new-pulse" onClick={() => {
   console.log("Opening Add Pulse modal", isUpdate);
   openModal(false);  // Modo creación
 }}>

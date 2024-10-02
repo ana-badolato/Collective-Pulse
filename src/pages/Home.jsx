@@ -44,10 +44,13 @@ function Home(props) {
         setSearchValue={setSearchValue}
         handleSearchChange={handleSearchChange}
       />
+      <div className='title-container'>
       <h1 className="title">
         <span>COLLECTIVE</span> <br />
         PULSE
       </h1>
+      </div>
+
       <Carousel news={news} getCategoryColor={getCategoryColor} />
       <div className="section-header">
         <h2>LATEST</h2>

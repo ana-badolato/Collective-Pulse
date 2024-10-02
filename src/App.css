@@ -104,29 +104,29 @@ html {
 
 .wrapper-nav {
   min-width: 50%;
-  max-width: 60%;
+  max-width: 80%;
   margin: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box; /* Asegura que el padding y border no afecten el ancho */
+  box-sizing: border-box; 
 }
 .container-nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; /* La barra de navegación ocupa todo el ancho */
+  width: 100%; 
   background-color: rgba(0, 0, 0, 0.8);
   padding: 16px 0;
-  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+  box-sizing: border-box;
   z-index: 1000;
-  min-height: 80px;
-  justify-content: space-between; /* Distribuye los elementos uniformemente */
-  overflow-x: hidden; /* Evita desbordamientos horizontales */
+  min-height: 64px;
+  justify-content: space-between; 
+  overflow-x: hidden; 
 }
 
 .container-nav a {
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Oswald', sans-serif;
   color: var(--color-neutral-white);
   text-decoration: none;
@@ -148,6 +148,11 @@ html {
 .container-categories-nav a:hover::after {
   transform: scale(1, 1);
 }
+
+.logo-container{
+  display: flex;
+  align-items: center;
+}
 .logo-container a {
   margin: 0;
 }
@@ -161,11 +166,27 @@ html {
   display: none;
 }
 
+.button-new-pulse{
+  padding: 8px 24px;
+  background-color: var(--color-neutral-white);
+  border: none;
+  font-family: var(--font-heading);
+  color: var(--color-neutral-black);
+  font-weight: 500;
+}
+
+.button-new-pulse:hover{
+background-color: #8427ec;
+color: var(--color-neutral-white);
+ cursor: pointer;
+transition: 0.2s;
+}
+
 /*SearchBar------------------------------------------------------------------*/
 
 .search-bar-container {
   position: absolute;
-  top: 40%;
+  top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
@@ -236,8 +257,15 @@ html {
   color: var(--color-neutral-white);
   text-align: left;
   line-height: 7vw;
-  margin: -7% 20% 0 20%;
-  margin-bottom: 64px;
+  margin: -10% 0% 8% 0%;
+
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 80%;
 }
 
 .home {
@@ -258,7 +286,7 @@ html {
   background-repeat: no-repeat;
   background-position: center;
   min-width: 100%;
-  height: 1080px;
+  height: 720px;
 }
 
 .container-carousel {
@@ -293,6 +321,28 @@ html {
   object-fit: cover; /* Mantiene la proporción de la imagen */
 }
 
+.carousel-overlay {
+  position: absolute;
+  top: 90%; /* Puedes ajustar la posición según prefieras */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%; /* Ajusta el ancho del título */
+  text-align: center;
+  color: var(--color-neutral-black);
+  background: rgba(255, 255, 255, 0.836); /* Fondo semitransparente para el título */
+  padding: 10px;
+  border-radius: 5px;
+ 
+}
+.carousel-title {
+  font-size: 2vw; /* Ajusta el tamaño de la fuente según tu diseño */
+  font-family: var(--font-heading); /* Usa la fuente adecuada */
+  text-align: left;
+  margin-left: 32px;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+}
 /* Tag que aparece sobre las imágenes */
 .image-tag {
   position: absolute;

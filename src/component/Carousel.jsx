@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom'; // Importa Link para la navegación
 
 function Carousel(props) {
   const { getCategoryColor, news } = props;
@@ -43,14 +44,27 @@ function Carousel(props) {
       setIsTransitioning(true); // Activamos la transición normal
     }
   }, [imageIndex, extendedImages.length]);
+
   if (!news || news.length < 4) {
     return <h1>Cargando...</h1>;
   }
+
+  // Calcular el índice real de las noticias
+  const realNewsIndex = () => {
+    if (imageIndex === 0) {
+      return news.length - 1; // Último elemento real
+    } else if (imageIndex === extendedImages.length - 1) {
+      return 0; // Primer elemento real
+    } else {
+      return imageIndex - 1; // Ajuste por el duplicado al principio
+    }
+  };
+
   return (
     <div
       className="container-carousel"
       style={{
-        '--custom-color': getCategoryColor(news[imageIndex % news.length].categories),
+        '--custom-color': getCategoryColor(news[realNewsIndex()].categories),
       }}
     >
       <div
@@ -63,14 +77,20 @@ function Carousel(props) {
       >
         {extendedImages.map((image, i) => (
           <div className="image-container" key={i}>
-            <img className="image-carousel" src={image} alt={`Imagen ${i}`} />
+            <Link to={`/details/${news[realNewsIndex()].id}`}>
+              <img className="image-carousel" src={image} alt={`Imagen ${i}`} />
+            
+            <div className="carousel-overlay">
+              <h2 className="carousel-title">{news[realNewsIndex()].title}</h2>
+            </div>
+            </Link>
             <span
               className="image-tag"
               style={{
-                '--custom-color': getCategoryColor(news[imageIndex % news.length].categories),
+                '--custom-color': getCategoryColor(news[realNewsIndex()].categories),
               }}
             >
-              {news[imageIndex % news.length].categories}
+              {news[realNewsIndex()].categories}
             </span>
           </div>
         ))}
