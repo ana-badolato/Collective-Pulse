@@ -26,10 +26,10 @@ function App() {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_SERVER_URL}/news`
-      );
-      setNews(response.data);
+      )
+      setNews(response.data)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
   };
 
@@ -52,9 +52,9 @@ function App() {
       });
       console.log("Vistas incrementadas:", response.data.views);
     } catch (error) {
-      console.error("Error al incrementar las vistas:", error);
+      console.error('Error al incrementar las vistas:', error)
     }
-  };
+  }
 
   function openModal(isEditing) {
     // Si isEditing es true, estamos en modo edición
@@ -72,7 +72,7 @@ function App() {
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   const getCategoryColor = (category) => {
@@ -92,30 +92,30 @@ function App() {
       categoryColor = "#fbfd57";
     }
 
-    return categoryColor;
-  };
+    return categoryColor
+  }
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
 
-      getData();
-      navigate("/");
+      getData()
+      navigate('/')
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
-  const [searchValue, setSearchValue] = useState("");
-  const [filteredNews, setFilteredNews] = useState(news);
+  const [searchValue, setSearchValue] = useState('')
+  const [filteredNews, setFilteredNews] = useState(news)
   const handleSearchChange = () => {
     const filterSearch = news.filter((eachNew) => {
-      return eachNew.title.toLowerCase().includes(searchValue.toLowerCase());
-    });
+      return eachNew.title.toLowerCase().includes(searchValue.toLowerCase())
+    })
 
-    setFilteredNews(filterSearch);
-    navigate("/searchresults");
-  };
+    setFilteredNews(filterSearch)
+    navigate('/searchresults')
+  }
 
   return (
     <>
@@ -154,6 +154,7 @@ function App() {
                 handleDelete={handleDelete}
                 getDataCategory={getDataCategory}
                 openModal={openModal}
+                getCategoryColor={getCategoryColor}
               />
             }
           />
@@ -189,7 +190,7 @@ function App() {
         </Routes>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

@@ -1,8 +1,10 @@
-import { useParams } from "react-router";
-import ModalForm from "../component/ModalForm";
-import FormComment from "../component/FormComment";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useParams } from 'react-router'
+import ModalForm from '../component/ModalForm'
+import FormComment from '../component/FormComment'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import deleteIcon from '../assets/icons/deleteIcon.png'
+import editIcon from '../assets/icons/editIcon.png'
 
 function Details(props) {
   const params = useParams();
@@ -18,6 +20,7 @@ function Details(props) {
     handleDelete,
     getDataCategory,
     openModal,
+    getCategoryColor,
   } = props;
 
   useEffect(() => {
@@ -31,16 +34,16 @@ function Details(props) {
   const getComments = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_SERVER_URL}/comments?newId=${params.id}`
-    );
-    setComment(response.data);
-  };
+    )
+    setComment(response.data)
+  }
 
   let thisNew = news.find((eachNew) => {
-    return eachNew.id === Number(params.id);
-  });
+    return eachNew.id === Number(params.id)
+  })
 
   if (!thisNew) {
-    return <div>Loading or news not found</div>;
+    return <div>Loading or news not found</div>
   }
   const handleLike = async (commentId) => {
     const response = await axios.patch(
@@ -56,15 +59,106 @@ function Details(props) {
           ? { ...comment, likes: response.data.likes }
           : comment
       )
-    );
-  };
+    )
+  }
+  // function openModal() {
+  //   setIsOpen(true)
+  // }
 
   return (
-    <div>
-      <h1>{thisNew.title}</h1>
-      <img src="" alt="" />
-      <div>
-        <p>{thisNew.content}</p>
+    <div style={{ backgroundColor: 'var(--color-neutral-black)' }}>
+      <div className="details-title">
+        <h1>{thisNew.title}</h1>
+        <img
+          src={thisNew.image}
+          alt={thisNew.title}
+          style={{ '--custom-color': getCategoryColor(thisNew.categories) }}
+        />
+      </div>
+      <div className="container-content">
+        <div className="box-content">
+          <p>{thisNew.content}</p>
+          <p>{thisNew.content}</p>
+          <p>{thisNew.content}</p>
+          <p>{thisNew.content}</p>
+        </div>
+        <div style={{ margin: '10px', marginTop: '50px' }}>
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+          <div
+            style={{
+              width: '400px',
+              height: '100px',
+              backgroundColor: 'wheat',
+              margin: '10px',
+            }}
+          ></div>
+        </div>
+      </div>
+      <div className="author-date">
+        <div>
+          <h5>
+            {thisNew.author} | <span>{thisNew.date}</span>{' '}
+          </h5>
+        </div>
+        <button
+          onClick={() => {
+            handleDelete(params.id)
+          }}
+        >
+          <img src={deleteIcon} alt="" />
+          delete
+        </button>
+        <button onClick={openModal}>
+          <img src={editIcon} alt="" /> edit
+        </button>
+        <div
+          style={{
+            width: '400px',
+            height: '100px',
+            backgroundColor: 'wheat',
+            margin: '10px',
+          }}
+        ></div>
       </div>
       <button
         onClick={() => {
@@ -109,7 +203,7 @@ function Details(props) {
         );
       })}
     </div>
-  );
+  )
 }
 
-export default Details;
+export default Details

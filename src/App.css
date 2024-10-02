@@ -26,7 +26,7 @@
 }
 
 .culture-style-background {
- background-color: var(--color-fluor-pink);
+  background-color: var(--color-fluor-pink);
 }
 .culture-style-border {
   border: 2px solid var(--color-fluor-pink);
@@ -35,62 +35,55 @@
   color: var(--color-fluor-pink);
 }
 
-
 .science-style-background {
   background-color: var(--color-fluor-orange);
- }
- .science-style-border {
-   border: 2px solid var(--color-fluor-orange);
- }
- .science-style-text {
-   color: var(--color-fluor-orange);
- }
+}
+.science-style-border {
+  border: 2px solid var(--color-fluor-orange);
+}
+.science-style-text {
+  color: var(--color-fluor-orange);
+}
 
-
- .lifestyle-style-background {
+.lifestyle-style-background {
   background-color: var(--color-fluor-purple);
- }
- .lifestyle-style-border {
-   border: 2px solid var(--color-fluor-purple);
- }
- .lifestyle-style-text {
-   color: var(--color-fluor-purple);
- }
+}
+.lifestyle-style-border {
+  border: 2px solid var(--color-fluor-purple);
+}
+.lifestyle-style-text {
+  color: var(--color-fluor-purple);
+}
 
-
- .travel-style-background {
+.travel-style-background {
   background-color: var(--color-fluor-yellow);
- }
- .travel-style-border {
-   border: 2px solid var(--color-fluor-yellow);
- }
- .travel-style-text {
-   color: var(--color-fluor-yellow);
- }
+}
+.travel-style-border {
+  border: 2px solid var(--color-fluor-yellow);
+}
+.travel-style-text {
+  color: var(--color-fluor-yellow);
+}
 
-
- .civics-style-background {
+.civics-style-background {
   background-color: var(--color-fluor-blue);
- }
- .civics-style-border {
-   border: 2px solid var(--color-fluor-blue);
- }
- .civics-style-text {
-   color: var(--color-fluor-blue);
- }
+}
+.civics-style-border {
+  border: 2px solid var(--color-fluor-blue);
+}
+.civics-style-text {
+  color: var(--color-fluor-blue);
+}
 
-
- .sustainability-style-background {
+.sustainability-style-background {
   background-color: var(--color-fluor-green);
- }
- .sustainability-style-border {
-   border: 2px solid var(--color-fluor-green);
- }
- .sustainability-style-text {
-   color: var(--color-fluor-green);
- }
-
-
+}
+.sustainability-style-border {
+  border: 2px solid var(--color-fluor-green);
+}
+.sustainability-style-text {
+  color: var(--color-fluor-green);
+}
 
 body,
 html {
@@ -145,7 +138,7 @@ html {
   content: '';
   display: block;
   height: 3px;
-  background-color:var(--custom-color);
+  background-color: var(--custom-color);
   transform: scale(0, 1);
   transform-origin: center;
   transition: transform 0.25s;
@@ -445,7 +438,50 @@ html {
 .box-labelcategory:hover .labelcategory {
   transform: translateX(0);
 }
-
+.details-title {
+  background-image: url('./assets/basciHero.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+  height: 1000px;
+}
+.details-title img {
+  width: 1400px;
+  height: 707px;
+  border: solid 2px var(--custom-color);
+  margin-top: 40px;
+}
+.details-title h1 {
+  font-family: 'Oswald', sans-serif;
+  margin: 0;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--color-neutral-white);
+}
+.container-content {
+  display: flex;
+  justify-content: center;
+}
+.box-content {
+  text-align: left;
+  font-family: 'Questrial', sans-serif;
+  padding: 40px 60px;
+  color: var(--color-neutral-white);
+}
+.author-date {
+  font-family: 'Questrial', sans-serif;
+  color: var(--color-neutral-white);
+  padding: 0px 60px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.author-date button {
+  all: unset;
+}
 
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {

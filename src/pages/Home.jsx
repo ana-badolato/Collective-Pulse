@@ -25,13 +25,13 @@ function Home(props) {
 
   useEffect(() => {
     if (!modalIsOpen) {
-      getData();
+      getData()
     }
-  }, [modalIsOpen]);
+  }, [modalIsOpen])
 
   const latestNews = news.sort((a, b) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
-  });
+    return new Date(b.date).getTime() - new Date(a.date).getTime()
+  })
 
   const trendingNews = [...news].sort((a, b) => b.views - a.views).slice(0, 6);
 
@@ -69,7 +69,7 @@ function Home(props) {
               />
               ;
             </Link>
-          );
+          )
         })}
       </div>
 
@@ -105,7 +105,7 @@ function Home(props) {
         news={news}
       />
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home
