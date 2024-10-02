@@ -8,6 +8,7 @@ import LabelCategory from "../component/LabelCategory";
 import ModalForm from "../component/ModalForm";
 import { Link } from "react-router-dom";
 import SliderText from "../component/SliderText";
+import Footer from "../component/Footer";
 
 function Home(props) {
   const {
@@ -71,7 +72,7 @@ function Home(props) {
                 getCategoryColor={getCategoryColor}
                 news={news}
               />
-              ;
+              
             </Link>
           )
         })}
@@ -108,6 +109,7 @@ function Home(props) {
         isUpdate={isUpdate}
         news={news}
       />
+      <Footer />
     </div>
   )
 }

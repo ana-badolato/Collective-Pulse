@@ -46,6 +46,7 @@ const {category} =useParams()
         {/* <button
           onClick={() => {
             handleDelete(id);
+            
           }}
         >
           Delete

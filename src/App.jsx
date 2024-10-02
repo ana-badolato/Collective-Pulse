@@ -11,6 +11,7 @@ import "./App.css";
 import NewsForm from "./component/NewsForm";
 import SearchResults from "./pages/SearchResults";
 
+
 function App() {
   let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -189,6 +190,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
+
+      
     </>
   )
 }
