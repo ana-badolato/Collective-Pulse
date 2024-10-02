@@ -443,10 +443,15 @@ html {
   position: relative;
   width: 30%;
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
   gap: 32px;
   flex-wrap: wrap;
-  text-decoration: none !important;
+  width: 100%;
+  max-width: 1200px;
+}
+.link-cards {
+  text-decoration: none;
 }
 
 .cardS-container {

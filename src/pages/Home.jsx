@@ -83,7 +83,7 @@ function Home(props) {
       <div className="cardS-section">
         {trendingNews.map((eachNew) => (
           <Link
-            className="cardS-section"
+            className="link-cards"
             to={`/details/${eachNew.id}`}
             onClick={() => incrementViews(eachNew.id)}
             key={eachNew.id}
