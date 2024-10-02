@@ -5,12 +5,14 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import deleteIcon from '../assets/icons/deleteIcon.png'
 import editIcon from '../assets/icons/editIcon.png'
+import SliderText from '../component/SliderText'
+import avatar from '../assets/avatar.png'
 
 function Details(props) {
-  const params = useParams();
-  const [comment, setComment] = useState([]);
-  const [likes, setLikes] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const params = useParams()
+  const [comment, setComment] = useState([])
+  const [likes, setLikes] = useState(0)
+  const [loading, setLoading] = useState(true)
   const {
     news,
     getData,
@@ -21,15 +23,16 @@ function Details(props) {
     getDataCategory,
     openModal,
     getCategoryColor,
-  } = props;
+  } = props
 
   useEffect(() => {
     if (!news.length) {
-      getData().then(() => setLoading(false));
+      getData().then(() => setLoading(false))
     } else {
-      setLoading(false);
+      setLoading(false)
     }
-  }, [news, getData]);
+    getComments()
+  }, [news, getData])
 
   const getComments = async () => {
     const response = await axios.get(
@@ -51,8 +54,8 @@ function Details(props) {
       {
         likes: likes + 1,
       }
-    );
-    setLikes(response.data.likes);
+    )
+    setLikes(response.data.likes)
     setComment((prevComments) =>
       prevComments.map((comment) =>
         comment.id === commentId
@@ -69,11 +72,13 @@ function Details(props) {
     <div style={{ backgroundColor: 'var(--color-neutral-black)' }}>
       <div className="details-title">
         <h1>{thisNew.title}</h1>
-        <img
-          src={thisNew.image}
-          alt={thisNew.title}
-          style={{ '--custom-color': getCategoryColor(thisNew.categories) }}
-        />
+        <div className="container-img-details">
+          <img
+            src={thisNew.image}
+            alt={thisNew.title}
+            style={{ '--custom-color': getCategoryColor(thisNew.categories) }}
+          />
+        </div>
       </div>
       <div className="container-content">
         <div className="box-content">
@@ -134,23 +139,32 @@ function Details(props) {
           ></div>
         </div>
       </div>
-      <div className="author-date">
-        <div>
-          <h5>
-            {thisNew.author} | <span>{thisNew.date}</span>{' '}
-          </h5>
+      <div style={{ display: 'flex' }}>
+        <div className="author-date">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <h5>
+              {thisNew.author} |{' '}
+              <span style={{ color: '#3c3939' }}>{thisNew.date}</span>{' '}
+            </h5>
+          </div>
+          <button
+            onClick={() => {
+              handleDelete(params.id)
+            }}
+          >
+            <img src={deleteIcon} alt="" /> Delete
+          </button>
+          <button onClick={openModal}>
+            <img src={editIcon} alt="" /> Edit
+          </button>
         </div>
-        <button
-          onClick={() => {
-            handleDelete(params.id)
-          }}
-        >
-          <img src={deleteIcon} alt="" />
-          delete
-        </button>
-        <button onClick={openModal}>
-          <img src={editIcon} alt="" /> edit
-        </button>
+
         <div
           style={{
             width: '400px',
@@ -160,23 +174,8 @@ function Details(props) {
           }}
         ></div>
       </div>
-      <button
-        onClick={() => {
-          handleDelete(params.id);
-        }}
-      >
-        delete
-      </button>
-      {/* <button onClick={() => openModal(true)}>edit</button> */}
-      <button onClick={() => {
-  console.log("Opening Edit modal", isUpdate);
-  openModal(true);  // Modo edición
-}}>
-  Edit
-</button>
-
+      <hr style={{ width: '1000px', textAlign: 'left', marginLeft: '60px' }} />
       <ModalForm
-      
         getDataCategory={getDataCategory}
         news={news}
         getData={getData}
@@ -186,22 +185,53 @@ function Details(props) {
       />
 
       <FormComment likes={likes} newId={thisNew.id} setComment={setComment} />
-      <h4>{comment.length} COMMENTS</h4>
+      <h4 className="number-comments">{comment.length} COMMENTS</h4>
 
       {comment.map((eachComment) => {
         return eachComment ? (
-          <div key={eachComment.id}>
-            <img src="" alt="" />
-            <h3>{eachComment.author}</h3>
-            <p>{eachComment.comment}</p>
-            <p>{eachComment.date}</p>
-            <p>{eachComment.likes}</p>
-            <button onClick={() => handleLike(eachComment.id)}>like</button>
-          </div>
+          <>
+            <div className="comment-container" key={eachComment.id}>
+              <hr
+                style={{
+                  borderColor: getCategoryColor(thisNew.categories),
+                  marginBottom: '20px',
+                }}
+              />
+              <div className="author-comment">
+                <img
+                  style={{ width: '40px', height: '40px', borderRadius: '50%' }}
+                  src={avatar}
+                  alt="avatar"
+                />
+                <h3>{eachComment.author}</h3>
+                <p>20024/10/02</p>
+              </div>
+              <div className="comment-box">
+                <p>{eachComment.comment}</p>
+              </div>
+              <div className="likes-comment">
+                <p style={{ color: '#fefdfb', fontWeight: 'bold' }}>
+                  {eachComment.likes}
+                </p>
+                <button
+                  style={{
+                    backgroundColor: getCategoryColor(thisNew.categories),
+                    color: '#fefdfb',
+                    padding: '5px',
+                    border: 'none',
+                  }}
+                  onClick={() => handleLike(eachComment.id)}
+                >
+                  like
+                </button>
+              </div>
+            </div>
+          </>
         ) : (
           <p>No comments to show</p>
-        );
+        )
       })}
+      <SliderText news={news} getCategoryColor={getCategoryColor} />
     </div>
   )
 }
