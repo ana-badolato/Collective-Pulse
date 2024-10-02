@@ -72,7 +72,7 @@ function Details(props) {
   // }
 
   return (
-    <div style={{ backgroundColor: 'var(--color-neutral-black)' }}>
+    <div key={thisNew.id} style={{ backgroundColor: 'var(--color-neutral-black)' }}>
       <div className="details-title">
         <h1>{thisNew.title}</h1>
         <div className="container-img-details">

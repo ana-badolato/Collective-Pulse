@@ -1,8 +1,14 @@
 
 
-function CardL() {
+function CardL(props) {
+  const {
+    news,
+    getCategoryColor,
+  } = props;
   return (
-    <div>CardL</div>
+    <div>
+    cardL
+    </div>
   )
 }
 
