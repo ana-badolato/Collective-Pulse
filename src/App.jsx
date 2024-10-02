@@ -46,9 +46,9 @@ function App() {
 
   const incrementViews = async (id) => {
     try {
-      const response = await axios.patch(`http://localhost:5000/news/${id}`, {
+      const response = await axios.patch(`${import.meta.env.VITE_SERVER_URL}/news/${id}`, {
         views:
-          (await axios.get(`http://localhost:5000/news/${id}`)).data.views + 1,
+          (await axios.get(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)).data.views + 1,
       });
       console.log("Vistas incrementadas:", response.data.views);
     } catch (error) {
