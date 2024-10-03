@@ -675,12 +675,12 @@ html {
 .labelcategory {
   position: absolute;
   top: 0;
-  right: 0;
-  width: 250px;
+  right: -30px;
+  width: 200px;
   height: 50px;
   background-color: var(--custom-color);
   color: var(--color-neutral-black);
-  transform: translateX(80%);
+  transform: translateX(90%);
   transition: transform 0.5s ease-in-out;
   padding: 16px;
   box-sizing: border-box;
@@ -698,7 +698,7 @@ html {
 }
 
 .box-labelcategory:hover .labelcategory {
-  transform: translateX(0);
+  transform: translateX(25%);
 }
 
 /*Card xs----------------------------------*/

@@ -59,7 +59,7 @@ function Home(props) {
         <hr />
       </div>
 
-      <div>
+      <div sytel={{ positon: 'relative' }}>
         <div className="container-labels-colors">
           <LabelCategory getCategoryColor={getCategoryColor} news={news} />
         </div>
