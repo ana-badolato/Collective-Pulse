@@ -1,4 +1,5 @@
 import revista from '../assets/revista.mp4'
+import { Link } from 'react-router-dom'
 function NotFound() {
   return (
     <div
@@ -7,11 +8,11 @@ function NotFound() {
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'black',
+        backgroundColor: '#1f1f1f',
         padding: '100px',
       }}
     >
-      <h1 style={{ color: 'white' }}>This is not the magazine!!!</h1>
+      <h1 className='title-notFound'>This isn't our magazine!!!</h1>
       <video
         autoPlay
         loop
@@ -24,19 +25,9 @@ function NotFound() {
       >
         <source src={revista} type="video/mp4" />
       </video>
-      <button
-        style={{
-          width: '210px',
-          backgroundColor: '#3c3939',
-          color: 'white',
-          border: 'none',
-          padding: '25px',
-          fontSize: '25px',
-          textAlign: 'left',
-        }}
-      >
-        COLLECTIVE PULSE
-      </button>
+      <Link to="/" className='back-home'>
+        COLLECTIVE <br />PULSE
+      </Link>
     </div>
   )
 }

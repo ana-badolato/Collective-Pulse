@@ -154,7 +154,7 @@ function NewsForm(props) {
           className="mb-3 form-block"
           controlId="exampleForm.ControlInput1"
         >
-          <Form.Label>Image</Form.Label>
+          <Form.Label>Image <span>*</span></Form.Label>
           <Form.Control
             className="input-large"
             type="text"
@@ -162,6 +162,7 @@ function NewsForm(props) {
             value={newsData.image}
             placeholder="Drop a link to an awesome image here"
             onChange={handleChange}
+            required
           />
         </Form.Group>
 
@@ -184,7 +185,7 @@ function NewsForm(props) {
           />
         </Form.Group>
         <p className="form-required">
-          (<span>*</span>) Required fields
+          (<span>*</span>) All fields are required
         </p>
         <div className="form-submit-container">
           <button className="form-submit" type="submit">
