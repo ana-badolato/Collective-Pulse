@@ -1,9 +1,9 @@
 
 
-function CardXL() {
+function CardXs() {
   return (
     <div>CardXL</div>
   )
 }
 
-export default CardXL
+export default CardXs

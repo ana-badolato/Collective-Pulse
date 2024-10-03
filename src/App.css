@@ -714,6 +714,54 @@ z-index: 3;
 .box-labelcategory:hover .labelcategory {
   transform: translateX(0);
 }
+
+
+
+/*Card xs----------------------------------*/
+.cardXs-container {
+  display: flex;
+ flex-direction: column;
+gap: 16px;
+}
+
+.cardXs-h4{
+  background-color: var(--color-neutral-white);
+  font-family: var(--font-heading);
+  color: var(--color-neutral-black);
+}
+
+.cardXs{
+  display: flex;
+  gap: 16PX;
+}
+
+.cardXs img{
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+}
+
+.cardXs-content{
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  font-size: 16px;
+  color: var(--color-neutral-white);
+  align-items: flex-start;
+}
+
+
+.cardXs-content P{
+  text-align: left;
+}
+
+.cardXs-content a{
+  text-decoration: none;
+  font-family: var(--font-heading);
+  color: var(--color-neutral-white);
+  
+}
+
 .details-title {
   background-image: url('./assets/basciHero.png');
   background-size: cover;
@@ -769,8 +817,33 @@ z-index: 3;
 
 }
 .container-content {
+  font-size: 20px;
+  line-height: 1.5;
   display: flex;
-  justify-content: center;
+  justify-content: space-between; /* Cambia a space-between para espacio entre secciones */
+  width: 80%;
+  margin: 32px 10%;
+  gap: 64px;
+
+}
+
+.box-content {
+  text-align: left;
+  font-family: var(--font-text);
+  color: var(--color-neutral-white);
+  width: 70%; /* Asigna 70% de ancho */
+}
+
+.right-section {
+  width: 30%; /* Asigna 30% de ancho */
+  display: flex;
+  flex-direction: column; /* Asegura que las tarjetas estén en una columna */
+  gap: 20px; /* Añade un gap entre las tarjetas */
+}
+
+.cardXs-container {
+  background-color: var(--color-neutral-black); /* Añade un fondo si es necesario */
+  padding: 10px; /* Espaciado alrededor de las tarjetas */
 }
 .number-comments {
   margin: 0;
@@ -799,12 +872,7 @@ z-index: 3;
   color: var(--color-neutral-white);
   text-align: left;
 }
-.box-content {
-  text-align: left;
-  font-family: 'Questrial', sans-serif;
-  padding: 40px 60px;
-  color: var(--color-neutral-white);
-}
+
 .author-date {
   width: 1000px;
   font-family: 'Questrial', sans-serif;
