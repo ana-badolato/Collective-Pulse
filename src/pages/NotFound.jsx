@@ -1,6 +1,16 @@
 import revista from '../assets/revista.mp4'
 import { Link } from 'react-router-dom'
-function NotFound() {
+import ModalForm from '../component/ModalForm'
+
+function NotFound(props) {
+  const {
+    getDataCategory,
+    getData,
+    setIsOpen,
+    modalIsOpen,
+    isUpdate,
+    news,
+  }=props
   return (
     <div
       style={{
@@ -28,6 +38,14 @@ function NotFound() {
       <Link to="/" className='back-home'>
         COLLECTIVE <br />PULSE
       </Link>
+      <ModalForm
+        getDataCategory={getDataCategory}
+        getData={getData}
+        setIsOpen={setIsOpen}
+        modalIsOpen={modalIsOpen}
+        isUpdate={isUpdate}
+        news={news}
+      />
     </div>
   )
 }

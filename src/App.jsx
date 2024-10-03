@@ -12,6 +12,7 @@ import NewsForm from './component/NewsForm'
 import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
 import LoadingPage from './pages/LoadingPage'
+import ScrollToTop from './component/ScrollToTop'
 
 import avatar01Icon from './assets/icons/avatar01Icon.png'
 import avatar02Icon from './assets/icons/avatar02Icon.png'
@@ -126,15 +127,13 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
-
-      getData()
-      navigate('/')
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
+      await getData(); // Espera que los datos se actualicen después de la eliminación
+      navigate('/'); // Redirige a Home solo después de la actualización
     } catch (error) {
-      console.log(error)
+      console.error('Error deleting the news:', error);
     }
-  }
-
+  };
   const [searchValue, setSearchValue] = useState('')
   const [filteredNews, setFilteredNews] = useState(news)
   const handleSearchChange = () => {
@@ -151,8 +150,10 @@ function App() {
   }
 
   return (
+    
     <>
       <div className="main">
+      <ScrollToTop /> 
         <Navbar
           openModal={openModal}
           getCategoryColor={getCategoryColor}
@@ -228,12 +229,22 @@ function App() {
                 getCategoryColor={getCategoryColor}
                 filteredNews={filteredNews}
                 getRandomAvatar={getRandomAvatar}
+                setIsOpen={setIsOpen}
+                modalIsOpen={modalIsOpen}
+                isUpdate={false}
+                getDataCategory={getDataCategory}
+                getData={getData}
                 news={news}
               />
             }
           />
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />}         getDataCategory={getDataCategory}
+          getData={getData}
+          setIsOpen={setIsOpen}
+          modalIsOpen={modalIsOpen}
+          isUpdate={isUpdate}
+          news={news}/>
         </Routes>
         <Footer />
       </div>

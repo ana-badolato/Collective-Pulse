@@ -864,6 +864,12 @@ html {
   height: 16px;
 }
 
+.actions-article-button img:hover, .actions-article-button p:hover {
+  cursor: pointer;
+}
+
+
+
 .data-author-article img {
   width: 32px;
 }
@@ -1182,6 +1188,117 @@ html {
   height: 16px;
 }
 
+/*Delete Modal----------------------------------*/
+/* Estilos para el contenedor principal del modal */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  z-index: 1000; /* Asegura que esté encima del contenido */
+}
+
+/* Estilos para el cuadro del modal */
+.modal-content {
+  background-color: #333; /* Fondo oscuro */
+  color: #fff; /* Texto blanco */
+  border-radius: 2px; /* Bordes redondeados mínimos */
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Encabezado del modal */
+.modal-header {
+  padding: 16px;
+  border-bottom: 1px solid #444; /* Borde inferior del encabezado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #fefefe;
+  font-weight: 500;
+  font-family: var(--font-heading);
+}
+
+/* Botón de cerrar en el encabezado */
+.modal-header .close {
+  background: none;
+  border: none;
+  color: var(--color-neutral-white); /* Color naranja */
+  font-size: 1.5rem; /* Tamaño de la "X" */
+  cursor: pointer;
+}
+
+.modal-header .close:hover {
+  color: var(--color-neutral-white); /* Un poco más oscuro en hover */
+}
+
+/* Cuerpo del modal */
+.modal-body {
+  padding: 16px;
+  font-size: 1rem;
+  color: #ccc;
+}
+
+/* Pie del modal con botones */
+.modal-footer {
+  padding: 16px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #444;
+}
+
+/* Estilos de los botones */
+.modal-footer button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 2px; /* Bordes muy sutiles */
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: 8px;
+}
+
+/* Botón secundario (Close) */
+.modal-footer .secondary-btn {
+  background-color: #666; /* Gris oscuro */
+  color: #fff;
+}
+
+.modal-footer .secondary-btn:hover {
+  background-color: #555; /* Un poco más oscuro en hover */
+}
+
+/* Botón primario (Yes) */
+.modal-footer .primary-btn {
+  background-color: var(--color-fluor-orange); /* Color azul similar al de Bootstrap */
+  color: #fff;
+}
+
+.modal-footer .primary-btn:hover {
+  background-color: var(--color-fluor-orange); /* Más oscuro en hover */
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /*Category */
 .hero-category {
   position: inherit;
@@ -1276,6 +1393,12 @@ html {
   transition: 0.5s;
 }
 
+
+.button-like:hover {
+  cursor: pointer;
+  color: var(--color-neutral-white);
+  transition: 0.3s;
+}
 
 
 
