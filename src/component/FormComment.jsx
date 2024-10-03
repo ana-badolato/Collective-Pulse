@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
+
 function FormComment(props) {
-  const {
-    newId,
-    setComment,
-    likes
-  }=props
+  const { newId, setComment, likes, getRandomAvatar, getCategoryColor,categories} = props;
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState(null);
+  const [avatar, setAvatar] = useState("");
 
+  useEffect(() => {
+    // Ejecutar solo una vez cuando el componente se monte
+    setAvatar(getRandomAvatar());
+  }, [getRandomAvatar]); // Dependencia vacía para ejecutarlo solo al montar
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,11 +23,12 @@ function FormComment(props) {
           newId,
           author,
           comment: content,
-          likes:likes,
+          likes: likes,
+          date: new Date(),
         }
       );
-    
-     // Actualizar la lista de comentarios con el nuevo comentario
+
+      // Actualizar la lista de comentarios con el nuevo comentario
       setComment((prevComments) => [...prevComments, response.data]);
 
       // Limpiar el formulario
@@ -37,36 +40,43 @@ function FormComment(props) {
     }
   };
   return (
-    <div>
-      <div>commentForm</div>
-      <form
+    <div className="all-form-comment">
+      <div className="comment-avatar">
+      <img src={avatar} alt="Avatar" /> 
+  </div>
+      <form className="form-comment-container"
         action=""
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
         onSubmit={handleSubmit}
       >
         <textarea
+        className="textarea-comment"
           id="content"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
+          placeholder="Leave a comment!"
         />
 
-        <div style={{ display: "flex" }}>
-          <input
+        <div  className="bottom-form-comment">
+          <input 
+          className="input-comment"
             type="text"
             id="author"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
+            placeholder="Name / Alias"
             required
           />
-          <button type="submit">submit</button>
+          
+          <button className="submit-comment"
+            type="submit"
+            style={{
+              backgroundColor: getCategoryColor(categories), 
+            }}
+          >
+            submit
+          </button>
         </div>
-        
       </form>
     </div>
   );
