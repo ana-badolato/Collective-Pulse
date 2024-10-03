@@ -13,13 +13,13 @@ function CardHorocopo() {
     setChiste(response.data)
   }
   return (
-    <div style={{ display: 'flex', alignItems: 'center' }}>
+    <div  className="complete-card-api">
       <div className="horscopo">
         {' '}
-        <img src={chiste.icon_url} alt="" />
+        <img className='img-api' src={chiste.icon_url} alt="" />
       </div>
-      <div className="content-horscopo">
-        <h3>{chiste.value}</h3>
+      <div className="content-api">
+        <p>{chiste.value}</p>
       </div>
     </div>
   )

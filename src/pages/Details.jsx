@@ -321,10 +321,27 @@ function Details(props) {
                 </p>
               </div>
             </div>
-            <CardHorocopo />
-            <CardHorocopo />
-            <CardHorocopo />
-            <CardHorocopo />
+            <div>
+            <h4
+              className="cardXs-h4"
+              style={{
+                backgroundColor: getCategoryColor(thisNew.categories),marginTop:"64px"
+              }}
+            >
+              CHUCKLES WITH CHUCK
+            </h4>
+            <div className='list-api'>
+              <CardHorocopo />
+              <hr />
+              <CardHorocopo />
+              <hr />
+              <CardHorocopo />
+              <hr />
+              <CardHorocopo />
+            </div>
+
+            </div>
+
           </div>
         </div>
       </div>

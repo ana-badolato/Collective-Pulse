@@ -1359,6 +1359,43 @@ html {
   transition: 0.3s;
 }
 
+/* Card API */
+.img-api {
+  width: 40px;
+}
+
+.complete-card-api{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  color: var(--color-neutral-white);
+  /* background-color: var(--color-neutral-white); */
+}
+
+.content-api {
+  font-size: 16px;
+}
+
+.content-api p{
+  margin: 0px;
+  text-align: left;
+}
+
+.list-api {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.list-api hr {
+  width: 100%;
+  border: none;
+  border-top: 0.5px solid var(--color-neutral-black-details);
+}
+
+
+
 /* Mobile -------------------------------------------------------------------*/
 
 /* NavBar Mobile ------------------------------------------------------*/
