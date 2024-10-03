@@ -231,11 +231,22 @@ function App() {
                 getCategoryColor={getCategoryColor}
                 filteredNews={filteredNews}
                 getRandomAvatar={getRandomAvatar}
+                setIsOpen={setIsOpen}
+                modalIsOpen={modalIsOpen}
+                isUpdate={false}
+                getDataCategory={getDataCategory}
+                getData={getData}
+                news={news}
               />
             }
           />
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound />}         getDataCategory={getDataCategory}
+          getData={getData}
+          setIsOpen={setIsOpen}
+          modalIsOpen={modalIsOpen}
+          isUpdate={isUpdate}
+          news={news}/>
         </Routes>
         <Footer />
       </div>

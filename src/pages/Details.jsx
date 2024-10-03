@@ -198,8 +198,8 @@ function Details(props) {
                     <p
                       style={{
                         color: '#fefdfb',
-                        fontWeight: 'bold',
-                        fontSize: '18px',
+                        
+                        fontSize: '16px',
                       }}
                     >
                       {eachComment.likes}
@@ -323,6 +323,14 @@ function Details(props) {
       <div style={{ marginTop: '96px' }}>
         <SliderText news={news} getCategoryColor={getCategoryColor} />
       </div>
+      <ModalForm
+        getDataCategory={getDataCategory}
+        getData={getData}
+        setIsOpen={setIsOpen}
+        modalIsOpen={modalIsOpen}
+        isUpdate={isUpdate}
+        news={news}
+      />
     </div>
   );
 }

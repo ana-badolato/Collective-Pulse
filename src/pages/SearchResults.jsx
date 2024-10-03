@@ -3,6 +3,7 @@ import CardM from "../component/CardM";
 import SearchBar from "../component/SearchBar";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ModalForm from "../component/ModalForm";
 
 function SearchResults(props) {
   
@@ -13,7 +14,12 @@ function SearchResults(props) {
     getCategoryColor,
     news,
     getRandomAvatar,
-    incrementViews
+    incrementViews,
+    setIsOpen,
+    modalIsOpen,
+    isUpdate,
+    getDataCategory,
+    getData,
   } = props;
 
   const [filteredNews, setFilteredNews] = useState([]);
@@ -58,6 +64,14 @@ function SearchResults(props) {
           );
         })}
       </div>
+      <ModalForm
+        getDataCategory={getDataCategory}
+        getData={getData}
+        setIsOpen={setIsOpen}
+        modalIsOpen={modalIsOpen}
+        isUpdate={isUpdate}
+        news={news}
+      />
     </div>
   );
 }
