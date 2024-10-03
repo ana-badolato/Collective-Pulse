@@ -1327,6 +1327,35 @@ gap: 16px;
   color: var(--color-neutral-white); /* Color del texto de carga */
 }
 
+
+.title-notFound{
+  font-family: var(--font-heading);
+  color: var(--color-neutral-white);
+  margin: 32px 0;
+}
+
+.back-home{
+  background-color: var(--color-fluor-purple);
+  color: var(--color-neutral-black);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 18px;
+  text-align: left;
+  font-weight: 500;
+  padding: 8px 32px;
+  margin-top:16px;
+}
+.back-home:hover{
+  background-color: var(--color-neutral-white);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+
+
+
 /* Mobile -------------------------------------------------------------------*/
 @media (max-width: 480px) {
   /* NavBar Mobile ------------------------------------------------------*/
