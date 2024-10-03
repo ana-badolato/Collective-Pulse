@@ -1,4 +1,5 @@
 import revista from '../assets/revista.mp4'
+import { Link } from 'react-router-dom'
 function NotFound() {
   return (
     <div
@@ -24,9 +25,9 @@ function NotFound() {
       >
         <source src={revista} type="video/mp4" />
       </video>
-      <button className='back-home'>
+      <Link to="/" className='back-home'>
         COLLECTIVE <br />PULSE
-      </button>
+      </Link>
     </div>
   )
 }
