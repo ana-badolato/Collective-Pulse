@@ -12,6 +12,8 @@ import catTravel from '../assets/images/catTravel.png'
 import catLifestyle from '../assets/images/catLifestyle.png'
 import catVivics from '../assets/images/catCivics.png'
 import CardL from '../component/CardL'
+import LoadingPage from './LoadingPage'
+import NotContent from '../component/NotContent'
 
 function Category(props) {
   const {
@@ -68,8 +70,10 @@ function Category(props) {
     .sort((a, b) => b.views - a.views)
     .slice(0, 6) // Limitar a las 6 noticias más vistas
 
-  if (!category || category.length === 0) {
-    return navigate('/loading')
+  if (!category) {
+    return <LoadingPage />
+  } else if (category.length === 0) {
+    return <NotContent />
   }
   return (
     <div className="category-container">

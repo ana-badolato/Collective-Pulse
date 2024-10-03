@@ -231,7 +231,7 @@ function App() {
               />
             }
           />
-          <Route path="/loading" element={<LoadingPage />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

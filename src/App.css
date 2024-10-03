@@ -998,6 +998,13 @@ html {
   height: auto;
   animation: 1.5s ease 0s infinite beat;
 }
+.not-content {
+  animation: 1.5s ease 0s infinite beat;
+  width: 500px;
+  height: auto;
+  font-size: 50px;
+  color: var(--color-neutral-white);
+}
 @keyframes beat {
   0%,
   50%,
