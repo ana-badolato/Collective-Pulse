@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'; // Importa Link para la navegación
+import LoadingPage from '../pages/LoadingPage';
 
 function Carousel(props) {
   const { getCategoryColor, news } = props;
@@ -46,7 +47,7 @@ function Carousel(props) {
   }, [imageIndex, extendedImages.length]);
 
   if (!news || news.length < 4) {
-    return <h1>Cargando...</h1>;
+    return <LoadingPage />;
   }
 
   // Calcular el índice real de las noticias

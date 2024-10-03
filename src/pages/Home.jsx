@@ -26,6 +26,7 @@ function Home(props) {
     handleCategoryClick,
   } = props
 
+  
   // Añadir useEffect para limpiar la barra de búsqueda al volver a Home
   useEffect(() => {
     // Limpiar el valor de búsqueda cuando el componente Home se cargue

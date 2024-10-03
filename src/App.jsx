@@ -127,15 +127,13 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
-
-      getData()
-      navigate('/')
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
+      await getData(); // Espera que los datos se actualicen después de la eliminación
+      navigate('/'); // Redirige a Home solo después de la actualización
     } catch (error) {
-      console.log(error)
+      console.error('Error deleting the news:', error);
     }
-  }
-
+  };
   const [searchValue, setSearchValue] = useState('')
   const [filteredNews, setFilteredNews] = useState(news)
   const handleSearchChange = () => {
