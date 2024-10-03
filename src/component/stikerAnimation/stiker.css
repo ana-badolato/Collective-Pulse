@@ -1,0 +1,48 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.sticker {
+  width: 150px;
+  height: 150px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  position: absolute;
+  opacity: 0;
+  transform: rotate(160deg);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.left {
+  left: -100px;
+}
+
+.right {
+  right: -150px;
+}
+
+.animate {
+  opacity: 1;
+}
+
+.animate.left {
+  transform: translate(200px, 200px) rotate(0deg);
+}
+
+.animate.right {
+  transform: translate(-200px, 200px) rotate(-160deg);
+}
