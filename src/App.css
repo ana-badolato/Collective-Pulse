@@ -15,6 +15,7 @@
   --color-neutral-white-details: #9e9d9d;
   --color-neutral-black: #1f1f1f;
   --color-neutral-black-details: #3c3939;
+  --color-neutral-grey: #7D7D7D;
   --color-fluor-yellow: #fbfd57;
   --color-fluor-pink: #ea3f70;
   --color-fluor-blue: #27cbb8;
@@ -839,6 +840,7 @@ gap: 16px;
   display: flex;
   flex-direction: column; /* Asegura que las tarjetas estén en una columna */
   gap: 20px; /* Añade un gap entre las tarjetas */
+  flex-grow: 1; 
 }
 
 .cardXs-container {
@@ -873,19 +875,77 @@ gap: 16px;
   text-align: left;
 }
 
-.author-date {
-  width: 1000px;
+
+.bottom-section-article {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 64px 0 96px 0;
+}
+
+.author-date-article {
+  
   font-family: 'Questrial', sans-serif;
   color: var(--color-neutral-white);
-  padding: 0px 60px 20px;
   display: flex;
   justify-content: space-between;
 }
-.author-date button {
+
+.actions-article {
   display: flex;
-  gap: 5px;
-  all: unset;
+  gap: 16px;
 }
+
+
+.actions-article{
+  display: flex;
+  gap: 32px;
+}
+
+.data-author-article{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+
+.actions-article button{
+  display: flex;
+  width: 100%;
+  border: 0;
+  background-color: transparent;
+  gap: 8px;
+  align-items: center;
+  color: var(--color-neutral-grey);
+  font-family: var(--font-heading);
+  font-size: 18px;
+}
+
+.actions-article-button img{
+ height: 16px;
+}
+
+
+.data-author-article img {
+  width: 32px;
+}
+
+.author-article {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+}
+
+.date-article {
+  color: var(--color-neutral-grey);
+}
+
+
 @media (max-width: 768px) {
   .cardM-container {
     width: calc(
