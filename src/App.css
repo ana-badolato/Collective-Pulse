@@ -1021,13 +1021,7 @@ html {
   margin-top: 16px;
 }
 
-<<<<<<< HEAD
 .block-author-comment {
-=======
-
-
-.block-author-comment{
->>>>>>> anaFixes
   display: flex;
   align-items: center;
   display: flex;
@@ -1052,21 +1046,6 @@ html {
   margin-bottom: 32px;
 }
 
-<<<<<<< HEAD
-=======
-
-.searchResults-container{
-  min-height: 100vh;
-  background-color: var(--color-neutral-black);
-}
-
-
-
-
-
-
-
->>>>>>> anaFixes
 @media (max-width: 768px) {
   .cardM-container {
     width: calc(
