@@ -46,9 +46,16 @@ function Details(props) {
     const response = await axios.get(
       `${import.meta.env.VITE_SERVER_URL}/comments?newId=${params.id}`
     );
-    setComment(response.data);
+    
+    // Agregamos el avatar aleatorio a cada comentario cuando se cargan
+    const commentsWithAvatars = response.data.map(comment => ({
+      ...comment,
+      avatar: getRandomAvatar() // Asigna un avatar aleatorio al comentario
+    }));
+    
+    setComment(commentsWithAvatars); // Guardamos los comentarios con avatares en el estado
   };
-
+  
   const thisNew = news.find((eachNew) => eachNew.id === Number(params.id));
 
   if (!thisNew) {
@@ -184,7 +191,7 @@ function Details(props) {
                   <div className="block-author-comment">
                     <div className="img-author-comment">
                       <div>
-                        <img src={getRandomAvatar()} alt="avatar" />
+                        <img src={eachComment.avatar}  alt="avatar" />
                       </div>
                       <p>{eachComment.author}</p>
                     </div>
