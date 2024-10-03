@@ -27,66 +27,6 @@
   --font-heading: 'Oswald', sans-serif;
 }
 
-.culture-style-background {
-  background-color: var(--color-fluor-pink);
-}
-.culture-style-border {
-  border: 2px solid var(--color-fluor-pink);
-}
-.culture-style-text {
-  color: var(--color-fluor-pink);
-}
-
-.science-style-background {
-  background-color: var(--color-fluor-orange);
-}
-.science-style-border {
-  border: 2px solid var(--color-fluor-orange);
-}
-.science-style-text {
-  color: var(--color-fluor-orange);
-}
-
-.lifestyle-style-background {
-  background-color: var(--color-fluor-purple);
-}
-.lifestyle-style-border {
-  border: 2px solid var(--color-fluor-purple);
-}
-.lifestyle-style-text {
-  color: var(--color-fluor-purple);
-}
-
-.travel-style-background {
-  background-color: var(--color-fluor-yellow);
-}
-.travel-style-border {
-  border: 2px solid var(--color-fluor-yellow);
-}
-.travel-style-text {
-  color: var(--color-fluor-yellow);
-}
-
-.civics-style-background {
-  background-color: var(--color-fluor-blue);
-}
-.civics-style-border {
-  border: 2px solid var(--color-fluor-blue);
-}
-.civics-style-text {
-  color: var(--color-fluor-blue);
-}
-
-.sustainability-style-background {
-  background-color: var(--color-fluor-green);
-}
-.sustainability-style-border {
-  border: 2px solid var(--color-fluor-green);
-}
-.sustainability-style-text {
-  color: var(--color-fluor-green);
-}
-
 body,
 html {
   margin: 0;
@@ -104,8 +44,7 @@ html {
 /* Navbar------------------------------------------------------------------------*/
 
 .wrapper-nav {
-  min-width: 50%;
-  max-width: 80%;
+  padding: 0 50px;
   margin: auto;
   display: flex;
   justify-content: space-between;
@@ -116,14 +55,14 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 16px 0;
   box-sizing: border-box;
-  z-index: 1000;
   min-height: 64px;
   justify-content: space-between;
   overflow-x: hidden;
+  z-index: 100;
 }
 
 .container-nav a {
@@ -191,18 +130,15 @@ html {
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 12%;
-
   background: radial-gradient(
     circle,
     var(--color-neutral-black) 10%,
     transparent 70%
   );
-
   width: 90%;
   max-width: 500px;
   min-width: 200px;
@@ -292,22 +228,22 @@ html {
 }
 
 .container-carousel {
-  margin: 0 auto; /* Asegura que esté centrado horizontalmente */
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden; /* Oculta las imágenes que no están en el viewport */
-  width: 100%; /* Asegúrate de que el ancho sea el adecuado */
-  max-width: 80%; /* Limita el ancho máximo para mantener el carrusel centrado */
+  overflow: hidden;
+  width: 100%;
+  max-width: 80%;
   position: relative;
-  border: 2px solid var(--custom-color); /* El borde será dinámico */
+  border: 2px solid var(--custom-color);
 }
 
 .box-carousel {
-  display: flex; /* Alinea las imágenes en fila horizontal */
-  height: auto; /* Ajusta la altura según el contenido */
-  width: 100%; /* El ancho es 100% para que se ajuste al contenedor */
-  aspect-ratio: 16 / 9; /* Mantiene una relación de aspecto 16:9 */
+  display: flex;
+  height: auto;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .image-container {
@@ -1306,41 +1242,83 @@ html {
 }
 
 /* Mobile -------------------------------------------------------------------*/
-@media (max-width: 480px) {
-  /* NavBar Mobile ------------------------------------------------------*/
+
+/* NavBar Mobile ------------------------------------------------------*/
+
+@media (max-width: 768px) {
+  .hero {
+    height: 400px;
+  }
 
   .container-nav {
     padding: 10px;
-    justify-content: space-between;
     height: 64px;
-    display: flex;
-    align-items: center;
+    overflow-x: visible;
   }
 
-  /* Ocultar las categorías del navbar en móvil */
   .container-categories-nav {
     display: none;
+    flex-direction: column;
+    position: absolute;
+
+    padding-bottom: 10px;
+    background-color: rgba(0, 0, 0, 0.85);
+    top: 64px;
+    left: 0;
+    width: 100%;
+    gap: 15px;
+    z-index: 10;
   }
 
-  /* Ocultar el logo en móvil */
+  .container-categories-nav.open {
+    display: flex; /* Show categories when the menu is open */
+  }
+
   .logo-container {
-    display: none;
+    display: block;
   }
 
   .wrapper-nav {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    padding: 5px;
+  }
+  .container-menu {
+    display: block;
+  }
+
+  .search-container {
+    display: flex;
+    flex-grow: 1; /* Allow search bar to grow */
     margin-left: 16px;
   }
 
-  .container-menu {
-    display: flex;
-    align-items: center;
+  .search-container input {
+    width: 100%; /* Full width */
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
   }
-
   .menu {
     display: block;
     width: 24px;
+  }
+  .box-carousel {
+    aspect-ratio: 1 / 1;
+  }
+
+  .carousel-overlay {
+    display: none;
+  }
+  .link-cardM {
+    display: flex;
+    justify-content: center;
+  }
+  .titlecardM {
+    display: none;
+  }
+  .cardM-info {
+    transform: translateY(76%);
   }
 
   /* SearchBar Mobile --------------------------------------*/

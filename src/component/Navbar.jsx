@@ -14,6 +14,7 @@ function Navbar(props) {
 
   const { category } = useParams()
   // Esto devolverá la categoría actual
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const allCategories = [
     'civics',
@@ -24,12 +25,20 @@ function Navbar(props) {
     'travel',
   ]
   console.log(category)
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen)
+  }
 
   return (
     <div className="container-nav">
       <div className="wrapper-nav">
         <div className="container-menu">
-          <img className="menu" src={menu} alt="menu" />
+          <img
+            className="menu"
+            src={menu}
+            alt="menu"
+            onClick={toggleMobileMenu}
+          />
         </div>
 
         <div className="logo-container">
@@ -37,79 +46,27 @@ function Navbar(props) {
             <img src={logo} alt="" />
           </Link>
         </div>
-        <div className="container-categories-nav">
-          <Link
-            onClick={() => handleCategoryClick('civics')}
-            to="/category/civics"
-            style={{
-              '--custom-color':
-                activeCategory === 'civics'
-                  ? getCategoryColor('civics')
-                  : '#fefdfb',
-            }}
-          >
-            CIVICS
-          </Link>
-          <Link
-            onClick={() => handleCategoryClick('culture')}
-            to="/category/culture"
-            style={{
-              '--custom-color':
-                activeCategory === 'culture'
-                  ? getCategoryColor('culture')
-                  : '#fefdfb',
-            }}
-          >
-            CULTURE
-          </Link>
-          <Link
-            onClick={() => handleCategoryClick('science')}
-            to="/category/science"
-            style={{
-              '--custom-color':
-                activeCategory === 'science'
-                  ? getCategoryColor('science')
-                  : '#fefdfb',
-            }}
-          >
-            SCIENCE
-          </Link>
-          <Link
-            onClick={() => handleCategoryClick('lifestyle')}
-            to="/category/lifestyle"
-            style={{
-              '--custom-color':
-                activeCategory === 'lifestyle'
-                  ? getCategoryColor('lifestyle')
-                  : '#fefdfb',
-            }}
-          >
-            LIFESTYLE
-          </Link>
-          <Link
-            onClick={() => handleCategoryClick('sustainability')}
-            to="/category/sustainability"
-            style={{
-              '--custom-color':
-                activeCategory === 'sustainability'
-                  ? getCategoryColor('sustainability')
-                  : '#fefdfb',
-            }}
-          >
-            SUSTAINABILITY
-          </Link>
-          <Link
-            onClick={() => handleCategoryClick('travel')}
-            to="/category/travel"
-            style={{
-              '--custom-color':
-                activeCategory === 'travel'
-                  ? getCategoryColor('travel')
-                  : '#fefdfb',
-            }}
-          >
-            TRAVEL
-          </Link>
+        <div
+          className={`container-categories-nav ${
+            isMobileMenuOpen ? 'open' : ''
+          }`}
+        >
+          {allCategories.map((cat) => (
+            <Link
+              key={cat}
+              onClick={() => {
+                handleCategoryClick(cat)
+                setMobileMenuOpen(false) // Close menu after selecting a category
+              }}
+              to={`/category/${cat}`}
+              style={{
+                '--custom-color':
+                  activeCategory === cat ? getCategoryColor(cat) : '#fefdfb',
+              }}
+            >
+              {cat.toUpperCase()}
+            </Link>
+          ))}
         </div>
         {/* <button onClick={() => openModal(false)}> ADD PULSE</button> */}
         <button
