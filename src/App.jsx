@@ -12,6 +12,7 @@ import NewsForm from './component/NewsForm'
 import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
 import LoadingPage from './pages/LoadingPage'
+import ScrollToTop from './component/ScrollToTop'
 
 import avatar01Icon from './assets/icons/avatar01Icon.png'
 import avatar02Icon from './assets/icons/avatar02Icon.png'
@@ -151,8 +152,10 @@ function App() {
   }
 
   return (
+    
     <>
       <div className="main">
+      <ScrollToTop /> 
         <Navbar
           openModal={openModal}
           getCategoryColor={getCategoryColor}
