@@ -920,15 +920,14 @@ html {
 .input-submit-container {
   display: flex;
   width: 100%;
-  gap: 8px; /* Espacio entre el input y el botón */
+  gap: 16px;
 }
 
 .input-comment {
-  width: 80%;
+  width: 75%;
   height: 40px;
   background-color: var(--color-neutral-black-details);
   padding-left: 24px;
-
   color: var(--color-neutral-white);
   font-family: var(--font-text);
   font-size: 16px;
@@ -1394,18 +1393,7 @@ html {
   border-top: 0.5px solid var(--color-neutral-black-details);
 }
 
-.bottom-form-comment{
-  display: flex;
-  flex-direction: column;
-}
 
-.input-comment{
-  width: 90%;
-}
-
-.submit-comment {
-  width: 100%;
-}
 
 /* Mobile -------------------------------------------------------------------*/
 
@@ -1593,5 +1581,18 @@ html {
 
   .all-form-comment{
     flex-direction:column;
+  }
+
+  .bottom-form-comment{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-comment{
+    width: 90%;
+  }
+  
+  .submit-comment {
+    width: 100%;
   }
 }
