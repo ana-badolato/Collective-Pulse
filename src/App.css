@@ -305,7 +305,7 @@ html {
   display: flex;
   align-items: center;
   margin: 128px auto 64px auto;
-  z-index: 3;
+  z-index: 100;
 }
 
 .section-header h2 {
@@ -377,6 +377,14 @@ html {
   width: 100%;
   max-width: 1400px;
   margin-bottom: 128px;
+}
+
+.cardM-section-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  margin: 0 10%;
 }
 
 .cardM-container {
@@ -1196,7 +1204,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; /* Overlay más corto, cubre la mitad del contenedor */
+  height: 60%; /* Overlay más corto, cubre la mitad del contenedor */
   background-color: rgba(
     31,
     31,
@@ -1240,6 +1248,36 @@ html {
   font-size: 24px;
   color: var(--color-neutral-white); /* Color del texto de carga */
 }
+
+
+.title-notFound{
+  font-family: var(--font-heading);
+  color: var(--color-neutral-white);
+  margin: 32px 0;
+}
+
+.back-home{
+  background-color: var(--color-fluor-purple);
+  color: var(--color-neutral-black);
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 18px;
+  line-height: 18px;
+  text-align: left;
+  font-weight: 500;
+  padding: 8px 32px;
+  margin-top:16px;
+  text-decoration: none;
+}
+.back-home:hover{
+  background-color: var(--color-neutral-white);
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+
+
+
 
 /* Mobile -------------------------------------------------------------------*/
 

@@ -5,19 +5,20 @@ import NewsForm from "./NewsForm";
 import cancelIcon from "../assets/icons/cancel.png";
 const customStyles = {
   content: {
-    top: "50%",
+    top: "45%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    width: "50%",
-    height: "70%",
+    width: "40%",
+    height: "60%",
     zIndex: "9999",
     position: "fixed",
     backgroundColor: "#1f1f1f",
     border: "none",
     borderRadius: "2px",
+
   },
   overlay: {
     backgroundColor: "rgba(60, 57, 57, 0.75)",
