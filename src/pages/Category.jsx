@@ -1,42 +1,40 @@
-import { useEffect} from "react";
-import ModalForm from "../component/ModalForm";
-import { useParams, Link } from "react-router-dom";
-import LabelCategory from "../component/LabelCategory";
-import SliderText from "../component/SliderText";
-import CardM from "../component/CardM";
-import CardS from "../component/CardS";
-
-import catCulture from "../assets/images/catCulture.png"
-import catScience from "../assets/images/catScience.png"
-import catSustainability from "../assets/images/catSustainability.png"
-import catTravel from "../assets/images/catTravel.png"
-import catLifestyle from "../assets/images/catLifestyle.png"
-import catVivics from "../assets/images/catCivics.png"
-import CardL from "../component/CardL";
-
+import { useEffect } from 'react'
+import ModalForm from '../component/ModalForm'
+import { useParams, Link, useNavigate } from 'react-router-dom'
+import LabelCategory from '../component/LabelCategory'
+import SliderText from '../component/SliderText'
+import CardM from '../component/CardM'
+import CardS from '../component/CardS'
+import catCulture from '../assets/images/catCulture.png'
+import catScience from '../assets/images/catScience.png'
+import catSustainability from '../assets/images/catSustainability.png'
+import catTravel from '../assets/images/catTravel.png'
+import catLifestyle from '../assets/images/catLifestyle.png'
+import catVivics from '../assets/images/catCivics.png'
+import CardL from '../component/CardL'
 
 function Category(props) {
   const {
-  getCategoryColor,
-  news,
-  getData,
-  setIsOpen,
-  isUpdate,
-  modalIsOpen,
-  getDataCategory,
-  category,
-  getRandomAvatar,
-  incrementViews,
-  }=props
-
+    getCategoryColor,
+    news,
+    getData,
+    setIsOpen,
+    isUpdate,
+    modalIsOpen,
+    getDataCategory,
+    category,
+    getRandomAvatar,
+    incrementViews,
+  } = props
+  const navigate = useNavigate()
   const categoryImages = {
     culture: catCulture,
     science: catScience,
     sustainability: catSustainability,
     travel: catTravel,
     lifestyle: catLifestyle,
-    civics: catVivics
-  };
+    civics: catVivics,
+  }
 
   useEffect(() => {
     if (!modalIsOpen) {
@@ -44,69 +42,65 @@ function Category(props) {
     }
   }, [modalIsOpen])
 
-
   const params = useParams()
-  const selectedImage = categoryImages[params.category];
+  const selectedImage = categoryImages[params.category]
   useEffect(() => {
     if (params.category) {
-      getDataCategory(params.category); // Pasa la categoría de params directamente
+      getDataCategory(params.category) // Pasa la categoría de params directamente
     }
-  }, [params.category, news]); // Se ejecuta cuando cambia la categoría o las noticias
+  }, [params.category, news]) // Se ejecuta cuando cambia la categoría o las noticias
 
   const getRandomNew = (newsArray) => {
-    const randomIndex = Math.floor(Math.random() * newsArray.length);
-    return newsArray[randomIndex];
-  };
-
-
+    const randomIndex = Math.floor(Math.random() * newsArray.length)
+    return newsArray[randomIndex]
+  }
 
   const latestNews = category
-  .slice() // Hacer una copia del array
-  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-  .slice(0, 4); // Limitar a las últimas 4 noticias
+    .slice() // Hacer una copia del array
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 4) // Limitar a las últimas 4 noticias
 
-  const randomNew = latestNews.length > 0 ? getRandomNew(latestNews) : null;
+  const randomNew = latestNews.length > 0 ? getRandomNew(latestNews) : null
 
-// Obtener las noticias en tendencia dentro de la categoría (por vistas)
-const trendingNews = category
-  .slice() // Hacer una copia del array
-  .sort((a, b) => b.views - a.views)
-  .slice(0, 6); // Limitar a las 6 noticias más vistas
-
+  // Obtener las noticias en tendencia dentro de la categoría (por vistas)
+  const trendingNews = category
+    .slice() // Hacer una copia del array
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 6) // Limitar a las 6 noticias más vistas
 
   if (!category || category.length === 0) {
-    return (
-      <div className="loading-container">
-        <div className="loading-message">Loading or news not found</div>
-      </div>
-    );
+    return navigate('/loading')
   }
   return (
     <div className="category-container">
       <div className="hero-category">
-        <img className="hero-stamp" src={selectedImage}  alt="" />
+        <img className="hero-stamp" src={selectedImage} alt="" />
       </div>
-     
-      <div className='title-container'>
-      <h1 className="title">
-      <span style={{ color: getCategoryColor(params.category) }}>{params.category.toUpperCase()}</span> <br />
-      PULSE <br />
 
-      </h1>
+      <div className="title-container">
+        <h1 className="title">
+          <span style={{ color: getCategoryColor(params.category) }}>
+            {params.category.toUpperCase()}
+          </span>{' '}
+          <br />
+          PULSE <br />
+        </h1>
       </div>
       {randomNew && (
         <div className="cardL-section">
           <Link to={`/details/${randomNew.id}`}>
-          <img
-            className="cardL-image"
-            src={randomNew.image}
-            alt={randomNew.title}
-            style={{ '--custom-color': getCategoryColor(randomNew.categories) }}
-          />
-           <div className="cardL-overlay">
+            <img
+              className="cardL-image"
+              src={randomNew.image}
+              alt={randomNew.title}
+              style={{
+                '--custom-color': getCategoryColor(randomNew.categories),
+              }}
+            />
+            <div className="cardL-overlay">
               <h2 className="cardL-title">{randomNew.title}</h2>
-           </div>
-           </Link>
+            </div>
+          </Link>
         </div>
       )}
       {/* <Carousel news={news} getCategoryColor={getCategoryColor} /> */}
@@ -119,7 +113,7 @@ const trendingNews = category
         <div className="container-labels-colors">
           <LabelCategory getCategoryColor={getCategoryColor} news={news} />
         </div>
-        
+
         <div className="cardM-section">
           {latestNews.slice(0, 4).map((eachNew) => {
             return (
@@ -136,7 +130,6 @@ const trendingNews = category
                   news={news}
                   getRandomAvatar={getRandomAvatar}
                 />
-                
               </Link>
             )
           })}
@@ -165,7 +158,6 @@ const trendingNews = category
         ))}
       </div>
 
-      
       <ModalForm
         getDataCategory={getDataCategory}
         getData={getData}
