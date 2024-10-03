@@ -27,6 +27,7 @@ function Category(props) {
     category,
     getRandomAvatar,
     incrementViews,
+    handleCategoryClick,
   } = props
   const navigate = useNavigate()
   const categoryImages = {
@@ -115,7 +116,11 @@ function Category(props) {
 
       <div>
         <div className="container-labels-colors">
-          <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+          <LabelCategory
+            handleCategoryClick={handleCategoryClick}
+            getCategoryColor={getCategoryColor}
+            news={news}
+          />
         </div>
 
         <div className="cardM-section">

@@ -127,13 +127,13 @@ function App() {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`);
-      await getData(); // Espera que los datos se actualicen después de la eliminación
-      navigate('/'); // Redirige a Home solo después de la actualización
+      await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
+      await getData() // Espera que los datos se actualicen después de la eliminación
+      navigate('/') // Redirige a Home solo después de la actualización
     } catch (error) {
-      console.error('Error deleting the news:', error);
+      console.error('Error deleting the news:', error)
     }
-  };
+  }
   const [searchValue, setSearchValue] = useState('')
   const [filteredNews, setFilteredNews] = useState(news)
   const handleSearchChange = () => {
@@ -150,10 +150,9 @@ function App() {
   }
 
   return (
-    
     <>
       <div className="main">
-      <ScrollToTop /> 
+        <ScrollToTop />
         <Navbar
           openModal={openModal}
           getCategoryColor={getCategoryColor}
@@ -216,6 +215,7 @@ function App() {
                 openModal={openModal}
                 getRandomAvatar={getRandomAvatar}
                 incrementViews={incrementViews}
+                handleCategoryClick={handleCategoryClick}
               />
             }
           />
@@ -239,12 +239,16 @@ function App() {
             }
           />
 
-          <Route path="*" element={<NotFound />}         getDataCategory={getDataCategory}
-          getData={getData}
-          setIsOpen={setIsOpen}
-          modalIsOpen={modalIsOpen}
-          isUpdate={isUpdate}
-          news={news}/>
+          <Route
+            path="*"
+            element={<NotFound />}
+            getDataCategory={getDataCategory}
+            getData={getData}
+            setIsOpen={setIsOpen}
+            modalIsOpen={modalIsOpen}
+            isUpdate={isUpdate}
+            news={news}
+          />
         </Routes>
         <Footer />
       </div>

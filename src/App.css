@@ -1466,6 +1466,31 @@ html {
   .cardM-info {
     transform: translateY(76%);
   }
+  .container-labels-colors {
+    display: none;
+  }
+  .cardL-section {
+    aspect-ratio: 1 / 1;
+  }
+  .details-title img {
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .cardXs-container {
+    display: none;
+  }
+  .right-section {
+    display: none;
+  }
+  .container-content {
+    width: 100%;
+  }
+  .box-content {
+    width: 80%;
+  }
+  .details-title h1 {
+    font-size: 40px;
+  }
 
   /* SearchBar Mobile --------------------------------------*/
 
