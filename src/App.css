@@ -1051,26 +1051,7 @@ html {
   color: var(--color-neutral-white);
 }
 
-@keyframes changeColorFilter {
-  0% {
-    filter: hue-rotate(0deg); /* Original color */
-  }
-  20% {
-    filter: hue-rotate(180deg); /* Different color */
-  }
-  40% {
-    filter: hue-rotate(360deg); /* Back to original color */
-  }
-  60% {
-    filter: hue-rotate(360deg); /* Back to original color */
-  }
-  80% {
-    filter: hue-rotate(360deg); /* Back to original color */
-  }
-  100% {
-    filter: hue-rotate(360deg); /* Back to original color */
-  }
-}
+
 
 .footer-copy {
   display: flex;
@@ -1107,6 +1088,11 @@ html {
 .social-media-links a:hover {
   transform: translateY(-5px); /* Mover hacia arriba 5px */
 }
+
+
+
+
+
 .loading {
   display: flex;
   justify-content: center;
@@ -1304,21 +1290,7 @@ html {
   height: 720px;
 }
 
-.hero-category::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 60%; /* Overlay más corto, cubre la mitad del contenedor */
-  background-color: rgba(
-    31,
-    31,
-    31,
-    0.5
-  ); /* Color #1f1f1f con 50% de opacidad */
-  z-index: 2; /* Asegura que esté por encima de la imagen pero debajo del h1 */
-}
+
 
 .hero-stamp {
   width: 400px;
@@ -1464,7 +1436,7 @@ html {
     display: none;
   }
   .cardM-info {
-    transform: translateY(76%);
+    transform: translateY(72%);
   }
   .container-labels-colors {
     display: none;
@@ -1515,4 +1487,49 @@ html {
   .box-carousel {
     width: 90%;
   }
+
+  /*footer*/
+  .footer-section{
+    height: auto;
+    min-height: 300px;
+    background-size: auto;
+  }
+
+  .footer-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    gap: 16px;
+    bottom: -48px;
+  }
+
+  .footer-copy{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+
+  .hero-category {
+    height:400px;
+  }
+  
+  
+  
+  .hero-stamp {
+    width: 200px;
+    position: absolute;
+    right: 24px;
+  }
+
+  .section-header{
+    margin-top: 48px;
+  }
+
+  .cardM-section-results {
+    width: 95vw;
+    margin: 0 auto;
+  }
+
 }

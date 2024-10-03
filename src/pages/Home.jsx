@@ -28,11 +28,21 @@ function Home(props) {
   } = props
 
   const [showIntro, setShowIntro] = useState(true)
+
+
   const handleIntroEnd = () => {
     setShowIntro(false)
+    // Guardamos en localStorage para que la intro no se muestre la próxima vez
+    localStorage.setItem('introShown', 'true')
   }
+
   useEffect(() => {
-    setSearchValue('')
+    // Verificar si la intro ya se ha mostrado
+    const introShown = localStorage.getItem('introShown')
+    if (introShown) {
+      setShowIntro(false) // Ocultar la intro si ya se ha mostrado antes
+    }
+    setSearchValue('') // Limpiar la barra de búsqueda
   }, [])
 
   useEffect(() => {
@@ -40,6 +50,7 @@ function Home(props) {
       getData()
     }
   }, [modalIsOpen])
+
 
   const latestNews = news.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
