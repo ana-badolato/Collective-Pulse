@@ -3,28 +3,28 @@ import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import NewsForm from "./NewsForm";
 import cancelIcon from "../assets/icons/cancel.png";
-const customStyles = {
-  content: {
-    top: "45%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "40%",
-    height: "60%",
-    zIndex: "9999",
-    position: "fixed",
-    backgroundColor: "#1f1f1f",
-    border: "none",
-    borderRadius: "2px",
+// const customStyles = {
+//   content: {
+//     top: "45%",
+//     left: "50%",
+//     right: "auto",
+//     bottom: "auto",
+//     marginRight: "-50%",
+//     transform: "translate(-50%, -50%)",
+//     width: "40%",
+//     height: "60%",
+//     zIndex: "9999",
+//     position: "fixed",
+//     backgroundColor: "#1f1f1f",
+//     border: "none",
+//     borderRadius: "2px",
 
-  },
-  overlay: {
-    backgroundColor: "rgba(60, 57, 57, 0.75)",
-    zIndex: "900",
-  },
-};
+//   },
+//   overlay: {
+//     backgroundColor: "rgba(60, 57, 57, 0.75)",
+//     zIndex: "900",
+//   },
+// };
 
 Modal.setAppElement("#root");
 
@@ -51,8 +51,9 @@ function ModalForm(props) {
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
-        style={customStyles}
         contentLabel="Example Modal"
+        className="ReactModal__Content" // Usa la clase CSS para el contenido del modal
+        overlayClassName="ReactModal__Overlay" 
       >
         <div className="form-top">
           <h2
