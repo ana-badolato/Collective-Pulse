@@ -134,31 +134,47 @@ function Details(props) {
 
       </div>
 
-      <hr className="content-comments-hr"/>
+      <hr className="content-comments-hr" />
 
       {/* Sección de comentarios */}
       <FormComment likes={likes} newId={thisNew.id} setComment={setComment} getRandomAvatar={getRandomAvatar} getCategoryColor={getCategoryColor} categories={thisNew.categories}/>
-      <h4 className="number-comments">{comment.length} COMMENTS</h4>
-      <div className="comment-container">
-        {comment.map((eachComment) => (
-          <div className="author-comment" key={eachComment.id}>
+
+
+      <p className="number-comments"><span style={{
+              color: getCategoryColor(thisNew.categories), 
+            }}>{comment.length}</span> COMMENTS</p>
+      <hr  style={{
+              borderTop: `0.5px solid ${getCategoryColor(thisNew.categories)}`, 
+            }}/>
+     <div className="comment-container">
+  {comment.slice().reverse().map((eachComment) => (
+    <div className="complete-comment" key={eachComment.id}>
+      <div className="block-author-comment">
+        <div className="img-author-comment">
+          <div>
             <img
-              style={{ width: "40px", height: "40px", borderRadius: "50%" }}
               src={getRandomAvatar()}
               alt="avatar"
             />
-            <h3>{eachComment.author}</h3>
-            <p>{new Date(eachComment.date).toLocaleDateString("es-ES")}</p>
-            <p>{eachComment.comment}</p>
           </div>
-        ))}
+          <p>{eachComment.author}</p>
+        </div>   
+        <p className="date-comment">{new Date(eachComment.date).toLocaleDateString("es-ES")}</p>
       </div>
+      <p className="comment-content">{eachComment.comment}</p>
+      <hr className="content-comments-hr" />
+    </div>
+  ))}
+</div>
+
     </div>
 
     {/* Sección derecha (podcasts y videoblogs) */}
     <div className="right-section">
       <div className="cardXs-container">
-        <h4 className="cardXs-h4">PODCASTS</h4>
+        <h4 className="cardXs-h4" style={{
+              backgroundColor: getCategoryColor(thisNew.categories), 
+            }}>PODCASTS</h4>
 
         <div className="cardXs">
           <img src={podcast01} alt="" />
@@ -197,7 +213,9 @@ function Details(props) {
       </div>
 
       <div className="cardXs-container">
-        <h4 className="cardXs-h4">VIDEOBLOGS</h4>
+        <h4 className="cardXs-h4"   style={{
+              backgroundColor: getCategoryColor(thisNew.categories), 
+            }}>VIDEOBLOGS</h4>
 
         <div className="cardXs">
           <img src={vblog01} alt="" />
@@ -237,10 +255,12 @@ function Details(props) {
     </div>
   </div>
 
-  <hr style={{ width: "1000px", textAlign: "left", marginLeft: "60px" }} />
+
 
   {/* Slider de noticias relacionadas */}
+  <div style={{ marginTop: "96px" }}>
   <SliderText news={news} getCategoryColor={getCategoryColor} />
+</div>
 </div>
 
 

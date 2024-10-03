@@ -24,7 +24,7 @@ function FormComment(props) {
           author,
           comment: content,
           likes: likes,
-          date: currentDate,
+          date: new Date(),
         }
       );
 

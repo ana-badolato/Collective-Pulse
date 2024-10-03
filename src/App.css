@@ -729,6 +729,8 @@ gap: 16px;
   background-color: var(--color-neutral-white);
   font-family: var(--font-heading);
   color: var(--color-neutral-black);
+  font-size: 18px;
+  padding: 4px 0;
 }
 
 .cardXs{
@@ -848,15 +850,15 @@ gap: 16px;
   padding: 10px; /* Espaciado alrededor de las tarjetas */
 }
 .number-comments {
-  margin: 0;
-  padding: 0 60px;
   text-align: left;
   color: var(--color-neutral-white);
+  font-family: var(--font-heading);
+  margin: 0;
 }
-.comment-container {
+/* .comment-container {
   width: 1000px;
   padding: 0px 60px;
-}
+} */
 .author-comment {
   gap: 20px;
   display: flex;
@@ -1026,6 +1028,45 @@ gap: 16px;
   width: 100%;
   gap: 8px;
   justify-content: space-between;
+}
+
+
+.comment-container{
+  margin-top: 16px;
+
+}
+
+.complete-comment{
+  
+}
+
+.block-author-comment{
+  display: flex;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  padding-top: 16px;
+}
+
+.img-author-comment{
+display: flex;
+align-items: center;
+gap: 16px;
+}
+
+.img-author-comment img{
+  width: 32px;
+}
+
+.comment-content {
+  margin-top: 0px;
+  margin-bottom: 32px;
+}
+
+.date-comment{
+
 }
 
 
