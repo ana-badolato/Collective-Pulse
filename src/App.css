@@ -881,7 +881,13 @@ gap: 16px;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 64px 0 96px 0;
+  margin: 48px 0 32px 0;
+}
+
+.content-comments-hr{
+  flex-grow: 1;
+  border: none;
+  border-top: 0.5px solid var(--color-neutral-black-details);
 }
 
 .author-date-article {
@@ -944,6 +950,89 @@ gap: 16px;
 .date-article {
   color: var(--color-neutral-grey);
 }
+
+
+
+.all-form-comment {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  gap: 16px; /* Añadir espacio entre avatar y formulario */
+  margin: 48px 0 64px 0
+}
+
+.comment-avatar {
+  flex-shrink: 0; /* Evita que el avatar se reduzca de tamaño */
+}
+
+.comment-avatar img {
+  width: 32px; /* Tamaño del avatar */
+  height: 32px;
+  border-radius: 50%; /* Hace que el avatar sea circular */
+}
+
+.form-comment-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%; /* Ocupa todo el ancho restante */
+}
+
+.textarea-comment {
+  height: 96px;
+  background-color: var(--color-neutral-black-details);
+  margin-bottom: 8px; /* Espacio entre textarea y input */
+  padding-left: 24px;
+  padding-top:16px;
+  color: var(--color-neutral-white);
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+
+.input-submit-container {
+  display: flex;
+  width: 100%;
+  gap: 8px; /* Espacio entre el input y el botón */
+}
+
+.input-comment {
+  width: 80%;
+  height: 40px;
+  background-color: var(--color-neutral-black-details);
+  padding-left: 24px;
+
+  color: var(--color-neutral-white);
+  font-family: var(--font-text);
+  font-size: 16px;
+}
+
+.submit-comment {
+  width: 20%;
+  color: var(--color-neutral-black);
+  background-color: var(--color-neutral-white);
+  height: 46px;
+  border: 0;
+  padding: 0;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 500px;
+}
+
+.submit-comment:hover {
+  color: var(--color-neutral-white);
+}
+
+.bottom-form-comment {
+  display: flex;
+  width: 100%;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+
+
+
+
+
 
 
 @media (max-width: 768px) {

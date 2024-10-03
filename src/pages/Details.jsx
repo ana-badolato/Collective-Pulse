@@ -134,8 +134,10 @@ function Details(props) {
 
       </div>
 
+      <hr className="content-comments-hr"/>
+
       {/* Sección de comentarios */}
-      <FormComment likes={likes} newId={thisNew.id} setComment={setComment} />
+      <FormComment likes={likes} newId={thisNew.id} setComment={setComment} getRandomAvatar={getRandomAvatar} getCategoryColor={getCategoryColor} categories={thisNew.categories}/>
       <h4 className="number-comments">{comment.length} COMMENTS</h4>
       <div className="comment-container">
         {comment.map((eachComment) => (
