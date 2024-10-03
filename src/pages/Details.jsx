@@ -6,15 +6,14 @@ import axios from 'axios'
 import deleteIcon from '../assets/icons/deleteIcon.png'
 import editIcon from '../assets/icons/editIcon.png'
 import SliderText from '../component/SliderText'
-
 import podcast01 from '../assets/images/podcast01.webp'
 import podcast02 from '../assets/images/podcast02.jpg'
 import podcast03 from '../assets/images/podcast03.png'
-
 import vblog01 from '../assets/images/vblog01.webp'
 import vblog02 from '../assets/images/vblog02.jpg'
 import vblog03 from '../assets/images/vblog03.jpg'
 import DeleteModal from '../component/DeleteModal'
+import CardHorocopo from '../component/CardHorocopo'
 
 function Details(props) {
   const params = useParams()
@@ -275,6 +274,10 @@ function Details(props) {
                 </p>
               </div>
             </div>
+            <CardHorocopo />
+            <CardHorocopo />
+            <CardHorocopo />
+            <CardHorocopo />
           </div>
         </div>
       </div>
