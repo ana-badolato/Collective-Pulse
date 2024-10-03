@@ -74,9 +74,11 @@ function Details(props) {
   return (
     <div key={thisNew.id} style={{ backgroundColor: 'var(--color-neutral-black)' }}>
       <div className="details-title">
-        <h1>{thisNew.title}</h1>
-        <div className="container-img-details">
+        
+      <h1 className="title-left">{thisNew.title}</h1> 
+        <div className="cardL-section">
           <img
+          className="cardL-image"
             src={thisNew.image}
             alt={thisNew.title}
             style={{ '--custom-color': getCategoryColor(thisNew.categories) }}

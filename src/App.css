@@ -391,6 +391,7 @@ transition: 0.2s;
 .cardL-section {
   width: 80%;
 position: relative;
+z-index: 3;
 }
 
 .cardL-image {
@@ -722,6 +723,29 @@ position: relative;
   align-items: center;
   flex-direction: column;
   height: 1000px;
+  position: relative; /* Asegura que el overlay se posicione correctamente */
+}
+
+.title-left {
+  margin: 0; /* Eliminar margen para evitar desplazamiento */
+  padding: 20px; /* Espacio interno */
+  font-family: 'Oswald', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: var(--color-neutral-white);
+  text-align: left; /* Alinear el texto a la izquierda */
+  width: 80%; /* Asegura que ocupe todo el ancho */
+}
+
+.details-title::before {
+  content: "";
+  position: absolute; /* Para que se posicione encima de la imagen */
+  top: 0; /* Empieza desde la parte superior */
+  left: 0; /* Alineado a la izquierda */
+  right: 0; /* Alineado a la derecha */
+  bottom: 0; /* Ocupa todo el contenedor */
+  background: linear-gradient(to bottom, rgba(31, 31, 31, 0) 0%, #1f1f1f 100%); /* Gradiente de transparente a #1f1f1f */
+  z-index: 1; /* Asegúrate de que esté por encima de la imagen pero debajo del contenido */
 }
 
 .details-title img {
@@ -730,14 +754,19 @@ position: relative;
   height: 707px;
   border: solid 2px var(--custom-color);
   margin-top: 40px;
+  z-index: 2; /* Cambiado a 2 para que esté por encima del overlay */
 }
+
 .details-title h1 {
-  font-family: 'Oswald', sans-serif;
+  font-family: var(--font-heading);
   margin: 0;
   padding: 20px;
-  font-size: 50px;
+  font-size: 64px;
   font-weight: bold;
   color: var(--color-neutral-white);
+  z-index: 3; /* Asegúrate de que el texto esté por encima del overlay */
+  text-align: left;
+
 }
 .container-content {
   display: flex;
