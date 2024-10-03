@@ -57,7 +57,7 @@ function FormComment(props) {
           placeholder="Leave a comment!"
         />
 
-        <div  className="bottom-form-comment">
+        <div  className="">
           <input 
           className="input-comment"
             type="text"
