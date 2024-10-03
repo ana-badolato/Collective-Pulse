@@ -99,7 +99,6 @@ function NewsForm(props) {
               Category <span>*</span>
             </Form.Label>
             <Form.Select
-              aria-label="Select category"
               name="categories"
               value={newsData.categories}
               onChange={handleChange}
