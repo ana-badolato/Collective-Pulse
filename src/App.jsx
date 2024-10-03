@@ -228,6 +228,7 @@ function App() {
                 getCategoryColor={getCategoryColor}
                 filteredNews={filteredNews}
                 getRandomAvatar={getRandomAvatar}
+                news={news}
               />
             }
           />

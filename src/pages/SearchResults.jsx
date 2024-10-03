@@ -1,17 +1,27 @@
-import { useState } from "react";
+
 import CardM from "../component/CardM";
 import SearchBar from "../component/SearchBar";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function SearchResults(props) {
-  const { getRandomAvatar } = props;
+  
   const {
     searchValue,
     setSearchValue,
     handleSearchChange,
     getCategoryColor,
-    filteredNews,
+    news,
+    getRandomAvatar,
   } = props;
+
+  const [filteredNews, setFilteredNews] = useState([]);
+  useEffect(() => {
+    const filtered = news.filter((eachNew) =>
+      eachNew.title.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredNews(filtered);
+  }, [searchValue, news]); // Se ejecuta cada vez que el valor de searchValue cambie
   return (
     <div className="searchResults-container">
       <div className="hero-category"></div>
@@ -22,7 +32,11 @@ function SearchResults(props) {
       <SearchBar
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        handleSearchChange={handleSearchChange}
+        // Aquí el cambio para que sea dinámico
+        handleSearchChange={(e) => {
+          setSearchValue(e.target.value);
+          handleSearchChange(e);
+        }}
       />
       <div className="cardM-section-results">
         {filteredNews.map((eachNew) => {
