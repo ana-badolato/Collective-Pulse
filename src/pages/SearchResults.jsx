@@ -13,6 +13,7 @@ function SearchResults(props) {
     getCategoryColor,
     news,
     getRandomAvatar,
+    incrementViews
   } = props;
 
   const [filteredNews, setFilteredNews] = useState([]);
@@ -23,7 +24,7 @@ function SearchResults(props) {
     setFilteredNews(filtered);
   }, [searchValue, news]); // Se ejecuta cada vez que el valor de searchValue cambie
   return (
-    <div className="searchResults-container">
+    <div className="searchResults-container" style={{backgroundColor:"#1f1f1f"}}>
       <div className="hero-category"></div>
       <div className="section-header">
         <h2>LATEST</h2>
