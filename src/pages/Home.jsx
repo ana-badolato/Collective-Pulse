@@ -29,8 +29,8 @@ function Home(props) {
   // Añadir useEffect para limpiar la barra de búsqueda al volver a Home
   useEffect(() => {
     // Limpiar el valor de búsqueda cuando el componente Home se cargue
-    setSearchValue("");
-  }, []); // Solo se ejecuta al cargar el componente
+    setSearchValue('')
+  }, []) // Solo se ejecuta al cargar el componente
 
   useEffect(() => {
     if (!modalIsOpen) {
@@ -67,7 +67,11 @@ function Home(props) {
 
       <div sytel={{ positon: 'relative' }}>
         <div className="container-labels-colors">
-          <LabelCategory getCategoryColor={getCategoryColor} news={news} />
+          <LabelCategory
+            handleCategoryClick={handleCategoryClick}
+            getCategoryColor={getCategoryColor}
+            news={news}
+          />
         </div>
 
         <div className="cardM-section">
