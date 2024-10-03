@@ -109,29 +109,28 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 .container-nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%; 
+  width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   padding: 16px 0;
   box-sizing: border-box;
   z-index: 1000;
   min-height: 64px;
-  justify-content: space-between; 
-  overflow-x: hidden; 
+  justify-content: space-between;
+  overflow-x: hidden;
 }
 
 .container-nav a {
   font-size: 16px;
   font-family: 'Oswald', sans-serif;
-  color: var(--color-neutral-white);
+  color: var(--custom-color);
   text-decoration: none;
 }
-
 
 .container-categories-nav {
   display: flex;
@@ -151,7 +150,7 @@ html {
   transform: scale(1, 1);
 }
 
-.logo-container{
+.logo-container {
   display: flex;
   align-items: center;
 }
@@ -168,7 +167,7 @@ html {
   display: none;
 }
 
-.button-new-pulse{
+.button-new-pulse {
   padding: 8px 24px;
   background-color: var(--color-neutral-white);
   border: none;
@@ -177,11 +176,11 @@ html {
   font-weight: 500;
 }
 
-.button-new-pulse:hover{
-background-color: #8427ec;
-color: var(--color-neutral-white);
- cursor: pointer;
-transition: 0.2s;
+.button-new-pulse:hover {
+  background-color: #8427ec;
+  color: var(--color-neutral-white);
+  cursor: pointer;
+  transition: 0.2s;
 }
 
 /*SearchBar------------------------------------------------------------------*/
@@ -260,7 +259,6 @@ transition: 0.2s;
   text-align: left;
   line-height: 7vw;
   margin: -10% 0% 8% 0%;
-
 }
 
 .title-container {
@@ -321,7 +319,7 @@ transition: 0.2s;
 .image-carousel {
   width: 100%;
   height: 100%;
-  object-fit: cover; 
+  object-fit: cover;
 }
 
 .carousel-overlay {
@@ -329,17 +327,16 @@ transition: 0.2s;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%; 
+  width: 100%;
   text-align: center;
   color: var(--color-neutral-black);
-  background: rgba(255, 255, 255, 0.836); 
+  background: rgba(255, 255, 255, 0.836);
   padding: 10px;
   border-radius: 5px;
- 
 }
 .carousel-title {
-  font-size: 2vw; 
-  font-family: var(--font-heading); 
+  font-size: 2vw;
+  font-family: var(--font-heading);
   text-align: left;
   margin-left: 32px;
   display: flex;
@@ -353,14 +350,14 @@ transition: 0.2s;
   position: absolute;
   top: 10px;
   right: 10px;
-  background-color: var(--custom-color); 
+  background-color: var(--custom-color);
   color: var(--color-neutral-black);
   font-family: 'Oswald', sans-serif;
   padding: 5px 10px;
   font-size: 16px;
   text-transform: uppercase;
   font-weight: 500;
-  z-index: 1; 
+  z-index: 1;
   margin: 16px;
 }
 /*- Section headers -------------------------------------------------------*/
@@ -390,21 +387,20 @@ transition: 0.2s;
 /* Card L -------------------------------------------------*/
 .cardL-section {
   width: 80%;
-position: relative;
-z-index: 3;
+  position: relative;
+  z-index: 3;
 }
 
 .cardL-image {
   width: 100%;
   min-width: none;
   max-height: 700px;
-  object-fit: cover; 
+  object-fit: cover;
   border: 2px solid var(--custom-color);
 }
 
 .cardL-overlay {
   width: 100%;
-  
 }
 .cardL-title {
   position: absolute;
@@ -425,15 +421,8 @@ z-index: 3;
   box-sizing: border-box;
 }
 
-
-
-
-
-
-
-
 /* Card M ----------------------------------------------------------------------*/
-.titlecardM{
+.titlecardM {
   margin-top: -16px;
   color: var(--color-neutral-white);
   text-align: left;
@@ -485,7 +474,6 @@ z-index: 3;
   align-items: center;
   z-index: 2;
   font-family: var(--font-heading);
-  
 }
 
 .cardM-category p {
@@ -515,7 +503,6 @@ z-index: 3;
   flex-direction: column;
   align-items: center;
   text-align: left;
-  
 }
 .cardM-hover-data {
   width: 100%;
@@ -602,7 +589,7 @@ z-index: 3;
   text-decoration: none;
   color: var(--color-neutral-black);
   text-decoration: none;
-  
+
   height: 600px;
 }
 
@@ -685,7 +672,6 @@ z-index: 3;
   height: 50%;
 }
 
-
 .labelcategory {
   position: absolute;
   top: 0;
@@ -715,33 +701,31 @@ z-index: 3;
   transform: translateX(0);
 }
 
-
-
 /*Card xs----------------------------------*/
 .cardXs-container {
   display: flex;
- flex-direction: column;
-gap: 16px;
+  flex-direction: column;
+  gap: 16px;
 }
 
-.cardXs-h4{
+.cardXs-h4 {
   background-color: var(--color-neutral-white);
   font-family: var(--font-heading);
   color: var(--color-neutral-black);
 }
 
-.cardXs{
+.cardXs {
   display: flex;
-  gap: 16PX;
+  gap: 16px;
 }
 
-.cardXs img{
+.cardXs img {
   width: 96px;
   height: 96px;
   object-fit: cover;
 }
 
-.cardXs-content{
+.cardXs-content {
   display: flex;
   flex-direction: column;
   line-height: 1;
@@ -750,16 +734,14 @@ gap: 16px;
   align-items: flex-start;
 }
 
-
-.cardXs-content P{
+.cardXs-content P {
   text-align: left;
 }
 
-.cardXs-content a{
+.cardXs-content a {
   text-decoration: none;
   font-family: var(--font-heading);
   color: var(--color-neutral-white);
-  
 }
 
 .details-title {
@@ -786,13 +768,17 @@ gap: 16px;
 }
 
 .details-title::before {
-  content: "";
+  content: '';
   position: absolute; /* Para que se posicione encima de la imagen */
   top: 0; /* Empieza desde la parte superior */
   left: 0; /* Alineado a la izquierda */
   right: 0; /* Alineado a la derecha */
   bottom: 0; /* Ocupa todo el contenedor */
-  background: linear-gradient(to bottom, rgba(31, 31, 31, 0) 0%, #1f1f1f 100%); /* Gradiente de transparente a #1f1f1f */
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 31, 31, 0) 0%,
+    #1f1f1f 100%
+  ); /* Gradiente de transparente a #1f1f1f */
   z-index: 1; /* Asegúrate de que esté por encima de la imagen pero debajo del contenido */
 }
 
@@ -814,7 +800,6 @@ gap: 16px;
   color: var(--color-neutral-white);
   z-index: 3; /* Asegúrate de que el texto esté por encima del overlay */
   text-align: left;
-
 }
 .container-content {
   font-size: 20px;
@@ -824,7 +809,6 @@ gap: 16px;
   width: 80%;
   margin: 32px 10%;
   gap: 64px;
-
 }
 
 .box-content {
@@ -842,7 +826,9 @@ gap: 16px;
 }
 
 .cardXs-container {
-  background-color: var(--color-neutral-black); /* Añade un fondo si es necesario */
+  background-color: var(
+    --color-neutral-black
+  ); /* Añade un fondo si es necesario */
   padding: 10px; /* Espaciado alrededor de las tarjetas */
 }
 .number-comments {
@@ -917,7 +903,11 @@ gap: 16px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(31, 31, 31, 1) 0%, rgba(31, 31, 31, 0) 50%); /* Capa 2 - Overlay */
+  background: linear-gradient(
+    to bottom,
+    rgba(31, 31, 31, 1) 0%,
+    rgba(31, 31, 31, 0) 50%
+  ); /* Capa 2 - Overlay */
   z-index: 1; /* Se posiciona sobre el fondo, pero debajo del contenido */
   pointer-events: none; /* El pseudo-elemento no interferirá con la interacción del usuario */
 }
@@ -963,7 +953,7 @@ gap: 16px;
   display: flex;
   color: var(--color-neutral-white);
   font-size: 16px;
-  gap:8px;
+  gap: 8px;
 }
 
 .footer-copy a {
@@ -1063,37 +1053,38 @@ gap: 16px;
   animation-delay: 1.5s;
 }
 .social-media-links img {
-  
   height: 16px;
 }
 
-
 /*Category */
-.hero-category{
+.hero-category {
   position: inherit;
   background-image: linear-gradient(
-    to bottom,
-    rgba(31, 31, 31, 0) 70%,
-    #1f1f1f 100%
-  ),
-  url('./assets/images/catBackground.png');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-min-width: 100%;
-height: 720px;
-
-
+      to bottom,
+      rgba(31, 31, 31, 0) 70%,
+      #1f1f1f 100%
+    ),
+    url('./assets/images/catBackground.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-width: 100%;
+  height: 720px;
 }
 
 .hero-category::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 45%; /* Overlay más corto, cubre la mitad del contenedor */
-  background-color: rgba(31, 31, 31, 0.5); /* Color #1f1f1f con 50% de opacidad */
+  background-color: rgba(
+    31,
+    31,
+    31,
+    0.5
+  ); /* Color #1f1f1f con 50% de opacidad */
   z-index: 2; /* Asegura que esté por encima de la imagen pero debajo del h1 */
 }
 
@@ -1107,7 +1098,7 @@ height: 720px;
   z-index: 1;
 }
 
-.category-container{
+.category-container {
   min-height: 100vh;
   background-color: var(--color-neutral-black);
   display: flex;
@@ -1121,7 +1112,9 @@ height: 720px;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Ocupa toda la altura de la ventana */
-  background-color: var(--color-neutral-black); /* El mismo color de fondo que la página */
+  background-color: var(
+    --color-neutral-black
+  ); /* El mismo color de fondo que la página */
   font-family: var(--font-heading);
 }
 

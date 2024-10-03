@@ -9,8 +9,6 @@ import ModalForm from '../component/ModalForm'
 import { Link } from 'react-router-dom'
 import SliderText from '../component/SliderText'
 
-
-
 function Home(props) {
   const {
     setIsOpen,
@@ -25,6 +23,7 @@ function Home(props) {
     handleSearchChange,
     getDataCategory,
     getRandomAvatar,
+    handleCategoryClick,
   } = props
 
   useEffect(() => {
@@ -47,11 +46,11 @@ function Home(props) {
         setSearchValue={setSearchValue}
         handleSearchChange={handleSearchChange}
       />
-      <div className='title-container'>
-      <h1 className="title">
-        <span>COLLECTIVE</span> <br />
-        PULSE
-      </h1>
+      <div className="title-container">
+        <h1 className="title">
+          <span>COLLECTIVE</span> <br />
+          PULSE
+        </h1>
       </div>
 
       <Carousel news={news} getCategoryColor={getCategoryColor} />
@@ -64,7 +63,7 @@ function Home(props) {
         <div className="container-labels-colors">
           <LabelCategory getCategoryColor={getCategoryColor} news={news} />
         </div>
-        
+
         <div className="cardM-section">
           {latestNews.slice(0, 4).map((eachNew) => {
             return (
@@ -72,7 +71,10 @@ function Home(props) {
                 className="link-cardM"
                 key={eachNew.id}
                 to={`/details/${eachNew.id}`}
-                onClick={() => incrementViews(eachNew.id)}
+                onClick={() => {
+                  incrementViews(eachNew.id),
+                    handleCategoryClick(eachNew.categories)
+                }}
               >
                 <CardM
                   {...eachNew}
@@ -81,13 +83,16 @@ function Home(props) {
                   news={news}
                   getRandomAvatar={getRandomAvatar}
                 />
-                
               </Link>
             )
           })}
         </div>
       </div>
-      <SliderText news={news} getCategoryColor={getCategoryColor} />
+      <SliderText
+        handleCategoryClick={handleCategoryClick}
+        news={news}
+        getCategoryColor={getCategoryColor}
+      />
       <div className="section-header">
         <h2>TRENDING</h2>
         <hr />
@@ -97,7 +102,10 @@ function Home(props) {
           <Link
             className="link-cards"
             to={`/details/${eachNew.id}`}
-            onClick={() => incrementViews(eachNew.id)}
+            onClick={() => {
+              handleCategoryClick(eachNew.categories),
+                incrementViews(eachNew.id)
+            }}
             key={eachNew.id}
           >
             <CardS
@@ -110,7 +118,6 @@ function Home(props) {
         ))}
       </div>
 
-      
       <ModalForm
         getDataCategory={getDataCategory}
         getData={getData}

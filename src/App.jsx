@@ -13,12 +13,12 @@ import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
 import LoadingPage from './pages/LoadingPage'
 
-import avatar01Icon from "./assets/icons/avatar01Icon.png";
-import avatar02Icon from "./assets/icons/avatar02Icon.png";
-import avatar03Icon from "./assets/icons/avatar03Icon.png";
-import avatar04Icon from "./assets/icons/avatar04Icon.png";
-import avatar05Icon from "./assets/icons/avatar05Icon.png";
-import avatar06Icon from "./assets/icons/avatar06Icon.png";
+import avatar01Icon from './assets/icons/avatar01Icon.png'
+import avatar02Icon from './assets/icons/avatar02Icon.png'
+import avatar03Icon from './assets/icons/avatar03Icon.png'
+import avatar04Icon from './assets/icons/avatar04Icon.png'
+import avatar05Icon from './assets/icons/avatar05Icon.png'
+import avatar06Icon from './assets/icons/avatar06Icon.png'
 
 const avatarImages = [
   avatar01Icon,
@@ -27,11 +27,11 @@ const avatarImages = [
   avatar04Icon,
   avatar05Icon,
   avatar06Icon,
-];
+]
 
 function getRandomAvatar() {
-  const randomIndex = Math.floor(Math.random() * avatarImages.length);
-  return avatarImages[randomIndex];
+  const randomIndex = Math.floor(Math.random() * avatarImages.length)
+  return avatarImages[randomIndex]
 }
 
 function App() {
@@ -40,6 +40,7 @@ function App() {
   const [news, setNews] = useState([])
   const [category, setCategory] = useState([])
   const [isUpdate, setIsUpdate] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('')
 
   useEffect(() => {
     getData()
@@ -145,6 +146,10 @@ function App() {
     navigate('/searchresults')
   }
 
+  const handleCategoryClick = (selectedCategory) => {
+    setActiveCategory(selectedCategory)
+  }
+
   return (
     <>
       <div className="main">
@@ -152,6 +157,8 @@ function App() {
           openModal={openModal}
           getCategoryColor={getCategoryColor}
           isUpdate={isUpdate}
+          handleCategoryClick={handleCategoryClick}
+          activeCategory={activeCategory}
         />
         <Routes>
           <Route
@@ -171,6 +178,7 @@ function App() {
                 getDataCategory={getDataCategory}
                 openModal={openModal}
                 getRandomAvatar={getRandomAvatar}
+                handleCategoryClick={handleCategoryClick}
               />
             }
           />
