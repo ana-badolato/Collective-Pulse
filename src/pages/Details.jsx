@@ -1,26 +1,25 @@
-import { useParams } from 'react-router'
-import ModalForm from '../component/ModalForm'
-import FormComment from '../component/FormComment'
-import { useEffect, useState } from 'react'
-import axios from 'axios'
-import deleteIcon from '../assets/icons/deleteIcon.png'
-import editIcon from '../assets/icons/editIcon.png'
-import SliderText from '../component/SliderText'
-import podcast01 from '../assets/images/podcast01.webp'
-import podcast02 from '../assets/images/podcast02.jpg'
-import podcast03 from '../assets/images/podcast03.png'
-import vblog01 from '../assets/images/vblog01.webp'
-import vblog02 from '../assets/images/vblog02.jpg'
-import vblog03 from '../assets/images/vblog03.jpg'
-import DeleteModal from '../component/DeleteModal'
+import { useParams } from 'react-router';
+import ModalForm from '../component/ModalForm';
+import FormComment from '../component/FormComment';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import deleteIcon from '../assets/icons/deleteIcon.png';
+import editIcon from '../assets/icons/editIcon.png';
+import SliderText from '../component/SliderText';
+import podcast01 from '../assets/images/podcast01.webp';
+import podcast02 from '../assets/images/podcast02.jpg';
+import podcast03 from '../assets/images/podcast03.png';
+import vblog01 from '../assets/images/vblog01.webp';
+import vblog02 from '../assets/images/vblog02.jpg';
+import vblog03 from '../assets/images/vblog03.jpg';
+import DeleteModal from '../component/DeleteModal';
 import CardHorocopo from '../component/CardHorocopo'
 
 function Details(props) {
-  const params = useParams()
-  const [comment, setComment] = useState([])
-  const [likes, setLikes] = useState(0)
-  const [loading, setLoading] = useState(true)
-  const [show, setShow] = useState(false)
+  const params = useParams();
+  const [comment, setComment] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
   const {
     news,
     getData,
@@ -32,47 +31,63 @@ function Details(props) {
     openModal,
     getCategoryColor,
     getRandomAvatar,
-  } = props
+  } = props;
 
   useEffect(() => {
     if (!news.length) {
-      getData().then(() => setLoading(false))
+      getData().then(() => setLoading(false));
     } else {
-      setLoading(false)
+      setLoading(false);
     }
-    getComments()
-  }, [news, getData])
+    getComments();
+  }, [news, getData]);
 
   const getComments = async () => {
     const response = await axios.get(
       `${import.meta.env.VITE_SERVER_URL}/comments?newId=${params.id}`
-    )
-    setComment(response.data)
-  }
+    );
+    setComment(response.data);
+  };
 
-  const thisNew = news.find((eachNew) => eachNew.id === Number(params.id))
+  const thisNew = news.find((eachNew) => eachNew.id === Number(params.id));
 
   if (!thisNew) {
-    return <div>Loading or news not found</div>
+    return <div>Loading or news not found</div>;
   }
 
+  // Aquí está la lógica para manejar los likes
   const handleLike = async (commentId) => {
-    const response = await axios.patch(
-      `${import.meta.env.VITE_SERVER_URL}/comments/${commentId}`,
-      {
-        likes: likes + 1,
+    try {
+      // Encuentra el comentario específico que se va a actualizar
+      const commentToLike = comment.find((comment) => comment.id === commentId);
+
+      if (!commentToLike) {
+        console.error('Comentario no encontrado');
+        return;
       }
-    )
-    setLikes(response.data.likes)
-    setComment((prevComments) =>
-      prevComments.map((comment) =>
-        comment.id === commentId
-          ? { ...comment, likes: response.data.likes }
-          : comment
-      )
-    )
-  }
-  const handleShow = () => setShow(true)
+
+      // Envía una petición para incrementar los likes de este comentario
+      const response = await axios.patch(
+        `${import.meta.env.VITE_SERVER_URL}/comments/${commentId}`,
+        {
+          likes: commentToLike.likes + 1, // Sumar 1 al número actual de likes del comentario
+        }
+      );
+
+      // Actualiza el estado de los comentarios localmente
+      setComment((prevComments) =>
+        prevComments.map((comment) =>
+          comment.id === commentId
+            ? { ...comment, likes: response.data.likes } // Actualiza solo el comentario que cambió
+            : comment
+        )
+      );
+    } catch (error) {
+      console.error('Error al incrementar los likes:', error);
+    }
+  };
+
+  const handleShow = () => setShow(true);
 
   return (
     <div
@@ -137,7 +152,7 @@ function Details(props) {
 
           {/* Sección de comentarios */}
           <FormComment
-            likes={likes}
+            likes={0} // Este es el valor inicial de los likes al agregar un nuevo comentario
             newId={thisNew.id}
             setComment={setComment}
             getRandomAvatar={getRandomAvatar}
@@ -178,6 +193,31 @@ function Details(props) {
                     </p>
                   </div>
                   <p className="comment-content">{eachComment.comment}</p>
+                  <div className="likes-comment">
+                    <p
+                      style={{
+                        color: '#fefdfb',
+                        
+                        fontSize: '16px',
+                      }}
+                    >
+                      {eachComment.likes}
+                    </p>
+                    <button
+                      className="button-like"
+                      style={{
+                        backgroundColor: getCategoryColor(thisNew.categories),
+                        textolor: '#f1f1f1',
+                        padding: '8px 24px',
+                        border: 'none',
+                        fontFamily: "'Oswald', sans-serif",
+                        textTransform: 'uppercase',
+                      }}
+                      onClick={() => handleLike(eachComment.id)}
+                    >
+                      like
+                    </button>
+                  </div>
                   <hr className="content-comments-hr" />
                 </div>
               ))}
@@ -286,8 +326,16 @@ function Details(props) {
       <div style={{ marginTop: '96px' }}>
         <SliderText news={news} getCategoryColor={getCategoryColor} />
       </div>
+      <ModalForm
+        getDataCategory={getDataCategory}
+        getData={getData}
+        setIsOpen={setIsOpen}
+        modalIsOpen={modalIsOpen}
+        isUpdate={isUpdate}
+        news={news}
+      />
     </div>
-  )
+  );
 }
 
-export default Details
+export default Details;
