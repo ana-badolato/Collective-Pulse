@@ -3,7 +3,7 @@
 **See the App!** [Collective Pulse Deployment](https://collective-pulse.netlify.app/)
 
 **App Logo**  
-![App Logo](....\assets\imageLogo.png)
+![App Logo](/public/cover.png)
 
 ---
 
