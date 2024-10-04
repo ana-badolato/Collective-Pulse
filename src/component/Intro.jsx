@@ -4,10 +4,12 @@ import logo from '../assets/icons/logo.svg'
 function Intro({ onVideoEnd }) {
   const videoRef = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
+  
 
   const handlePlayVideo = () => {
     const video = videoRef.current
     if (video) {
+      video.volume = 0.05;
       video.play()
       setVideoStarted(true)
 
