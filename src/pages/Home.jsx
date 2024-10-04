@@ -27,21 +27,22 @@ function Home(props) {
     handleCategoryClick,
   } = props
 
-  const [showIntro, setShowIntro] = useState(true)
-
+  const [introWatched, setIntroWatched] = useState(
+    localStorage.getItem('introWatched')
+  )
 
   const handleIntroEnd = () => {
-    setShowIntro(false)
+    setIntroWatched(true)
     // Guardamos en localStorage para que la intro no se muestre la próxima vez
-    localStorage.setItem('introShown', 'true')
+    localStorage.setItem('introWatched', 'true')
   }
 
   useEffect(() => {
     // Verificar si la intro ya se ha mostrado
-    const introShown = localStorage.getItem('introShown')
+    /*const introShown = localStorage.getItem('introShown')
     if (introShown) {
       setShowIntro(false) // Ocultar la intro si ya se ha mostrado antes
-    }
+    }*/
     setSearchValue('') // Limpiar la barra de búsqueda
   }, [])
 
@@ -50,7 +51,6 @@ function Home(props) {
       getData()
     }
   }, [modalIsOpen])
-
 
   const latestNews = news.sort((a, b) => {
     return new Date(b.date).getTime() - new Date(a.date).getTime()
@@ -61,7 +61,7 @@ function Home(props) {
   return (
     <div className="home">
       {/* Solo mostrar el contenido principal cuando la intro haya desaparecido */}
-      {showIntro ? (
+      {!introWatched ? (
         <Intro onVideoEnd={handleIntroEnd} />
       ) : (
         <>
