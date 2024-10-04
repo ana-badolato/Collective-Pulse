@@ -117,10 +117,15 @@ function Details(props) {
       <div className="container-content">
         {/* Contenido principal (párrafos de texto) */}
         <div className="box-content">
-          <p style={{ color: '#ffffff' }}>{thisNew.content}</p>
-          <p style={{ color: '#ffffff' }}>{thisNew.content}</p>
-          <p style={{ color: '#ffffff' }}>{thisNew.content}</p>
-          <p style={{ color: '#ffffff' }}>{thisNew.content}</p>
+        <p style={{ color: '#ffffff' }}>
+  {thisNew.content.split("\n").map((paragraph, index) => (
+    <span key={index}>
+      {paragraph}
+      <br />
+    </span>
+  ))}
+</p>
+
 
           {/* Sección inferior del artículo (autor y acciones) */}
           <div className="bottom-section-article">
