@@ -698,7 +698,7 @@ html {
   justify-content: flex-end;
   align-items: center;
   flex-direction: column;
-  height: 1000px;
+  height: 1050px;
   position: relative; /* Asegura que el overlay se posicione correctamente */
 }
 
