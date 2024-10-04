@@ -64,7 +64,8 @@ function Intro({ onVideoEnd }) {
       )}
       <video
         ref={videoRef}
-        style={{ width: 800, display: videoStarted ? 'block' : 'none' }}
+        className="video-intro"
+        style={{ display: videoStarted ? 'block' : 'none' }}
         controls
       >
         <source src={introVideo} type="video/mp4" />
