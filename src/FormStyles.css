@@ -183,19 +183,20 @@ textarea::placeholder {
 
 /* Estilos para el modal */
 .ReactModal__Content {
-  top: 45%; /* Ajusta la posición vertical */
+  top: 450px; /* Ajusta la posición vertical */
   left: 50%; /* Ajusta la posición horizontal */
   right: auto;
   bottom: auto;
   margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 40%;
-  height: 60%;
+  height: 720px;
   z-index: 9999;
   position: fixed;
   background-color: #1f1f1f;
   border: none;
   border-radius: 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
 }
 
 .ReactModal__Overlay {
