@@ -68,17 +68,17 @@ Collective Pulse is a collaborative urban digital magazine where everyone can su
 
 ## Client Routes
 
-| Path                  | Page            | Components                        | Behavior                                                                             |
-| --------------------- | --------------- | --------------------------------- | ------------------------------------------------------------------------------------ |
-| `/`                   | Home            | `Home`, `SearchBar`, `NewsList`   | Homepage showing recent and featured articles, with a search bar and category links. |
-| `/signup`             | Signup          | `SignupForm`                      | Sign-up form for new users, redirects to the homepage after successful signup.       |
-| `/login`              | Login           | `LoginForm`                       | Login form for existing users, redirects to homepage after successful login.         |
-| `/profile`            | Profile         | `EditProfile`                     | Profile page with options to edit user details, logout option available.             |
-| `/details/:id`        | Article Details | `ArticleDetails`, `Footer`        | View a detailed page of the selected article, with edit and delete options.          |
-| `/category/:category` | Category        | `CategoryPage`                    | Filtered view showing all articles under the selected category.                      |
-| `/searchresults`      | Search Results  | `SearchResultsList`               | Displays the articles matching the search criteria.                                  |
-| `/games/list`         | Game List       | `GameList`, `AddGame`, `GameCard` | Displays all games available for review.                                             |
-| `/games/favourites`   | Favourites      | `FavouriteList`, `GameCard`       | Shows the user's favorite games.                                                     |
+| Method  | URL                           | Request Body | Description                                                  |
+|---------|-------------------------------|--------------|--------------------------------------------------------------|
+| GET     | /news                         | n/a          | Returns an array of all news                                  |
+| GET     | /news?categories={category}      | n/a          | Returns news filtered by category                             |
+| GET     | /news/:id                     | n/a          | Returns details of a specific news by ID                      |
+| POST    | /news                         | n/a          | Creates a new news item                                       |
+| PUT     | /news/:id                     | n/a          | Updates the news item by ID                                   |
+| DELETE  | /news/:id                     | n/a          | Deletes a specific news by ID                                 |
+| GET     | /comments?newId={id}             | n/a          | Returns comments associated with a specific news ID           |
+| GET     | /comments                     | n/a          | Returns all comments                                          |
+| DELETE  | /comments/:id                 | n/a          | Deletes a specific comment by ID                              |
 
 ---
 
