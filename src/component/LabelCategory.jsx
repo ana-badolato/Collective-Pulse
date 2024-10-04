@@ -8,7 +8,7 @@ import { Link, useParams } from 'react-router-dom'
 
 function LabelCategory(props) {
   const { getCategoryColor, handleCategoryClick } = props
-  const { category } = useParams()
+
   return (
     <>
       <Link

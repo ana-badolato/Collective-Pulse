@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { PulseLoader } from 'react-spinners' // Importa PulseLoader
+import { PulseLoader } from 'react-spinners'
 import '../SliderText.css'
 import arrowIcon from '../assets/icons/arrowIcon.png'
 
 function SliderText({ news, getCategoryColor }) {
   const [visibleNews, setVisibleNews] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [animationDuration, setAnimationDuration] = useState('20s') // Duración por defecto
+  const [animationDuration, setAnimationDuration] = useState('20s')
 
-  const sliderContentRef = useRef(null) // Ref para medir el ancho del contenido
-  const sliderContainerRef = useRef(null) // Ref para medir el ancho del contenedor
+  const sliderContentRef = useRef(null)
+  const sliderContainerRef = useRef(null)
 
   useEffect(() => {
     let interval
@@ -18,7 +18,6 @@ function SliderText({ news, getCategoryColor }) {
     const updateVisibleNews = () => {
       if (news.length > 0) {
         const shuffledNews = [...news].sort(() => 0.5 - Math.random())
-        // const selectedNews = shuffledNews.slice(0, 20);
         setVisibleNews(shuffledNews)
         setIsLoading(false)
       }
@@ -28,20 +27,18 @@ function SliderText({ news, getCategoryColor }) {
 
     interval = setInterval(() => {
       updateVisibleNews()
-    }, 120000) // Cambiar cada 10 segundos
+    }, 120000)
 
     return () => clearInterval(interval)
   }, [news])
 
   useEffect(() => {
     if (sliderContentRef.current && sliderContainerRef.current) {
-      const contentWidth = sliderContentRef.current.offsetWidth // Ancho del contenido
-      const containerWidth = sliderContainerRef.current.offsetWidth // Ancho del contenedor
+      const contentWidth = sliderContentRef.current.offsetWidth
+      const containerWidth = sliderContainerRef.current.offsetWidth
+      const duration = (contentWidth / containerWidth) * 20
 
-      // Cálculo dinámico de la duración de la animación basado en el ancho
-      const duration = (contentWidth / containerWidth) * 20 // Ajusta 30 según la velocidad deseada
-
-      setAnimationDuration(`${duration}s`) // Actualiza la duración de la animación
+      setAnimationDuration(`${duration}s`)
     }
   }, [visibleNews])
 

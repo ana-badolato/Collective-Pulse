@@ -31,8 +31,8 @@ html {
   font-family: var(--font-heading);
   color: var(--color-neutral-white) !important;
   text-align: left;
-  font-size: 32px;
-  flex-grow: 1; /* Asegurar que el título ocupe todo el espacio posible */
+  font-size: 24px;
+  flex-grow: 1;
 }
 
 .main {
@@ -41,7 +41,6 @@ html {
   width: 100%;
 }
 
-/* Centrar el contenedor del formulario */
 .form-container {
   padding: 0 64px;
 }
@@ -50,11 +49,10 @@ html {
   color: var(--color-fluor-pink);
 }
 
-/* Hacer que las etiquetas sean blancas */
 .form-container label {
   color: var(--color-neutral-white);
   text-align: left;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .form-button-cancel {
@@ -72,23 +70,21 @@ html {
   width: 24px;
 }
 
-/* Alinear los campos de Category y Author horizontalmente */
 .form-row {
   display: flex;
   justify-content: space-between;
   gap: 16px;
 }
 
-/* Alinear el título y el botón de cerrar */
 .form-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 16px 64px 0 64px;
+  margin: 0px 64px 0 64px;
 }
 
 .form-hr {
-  margin: 0 64px 32px 64px;
+  margin: 0 64px 24px 64px;
   border: none;
   border-top: 0.5px solid var(--color-neutral-black-details);
 }
@@ -109,7 +105,7 @@ textarea::placeholder {
 .input-large,
 .input-small,
 .textarea-large {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 16px;
   border-radius: 2px;
   padding-left: 16px;
@@ -120,34 +116,33 @@ textarea::placeholder {
 
 .input-small {
   width: 100%;
-  height: 40px;
+  height: 35px;
 }
 
 .input-large {
   width: 100%;
-  height: 40px;
+  height: 35px;
 }
 
 .textarea-large {
   width: 100%;
-  height: 96px;
+  height: 80px;
   padding-top: 16px;
-  resize: vertical; /* Permite solo el redimensionado vertical */
+  resize: vertical;
   max-width: 100%;
 }
 
-/* Ajustar los formularios en bloque */
 .form-block {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   gap: 8px;
 }
 
 .form-required {
   color: var(--color-neutral-black-form);
-  font-size: 16px;
+  font-size: 14px;
   text-align: left;
   font-style: italic;
 }
@@ -156,7 +151,6 @@ textarea::placeholder {
   color: var(--color-fluor-pink);
 }
 
-/* Centrar el botón en el formulario */
 .form-submit {
   width: 128px;
   align-self: center;
@@ -177,20 +171,19 @@ textarea::placeholder {
 
 .form-submit-container {
   display: flex;
-  justify-content: center; /* Alinea el botón hacia el centro */
+  justify-content: center;
   width: 100%;
 }
 
-/* Estilos para el modal */
 .ReactModal__Content {
-  top: 450px; /* Ajusta la posición vertical */
-  left: 50%; /* Ajusta la posición horizontal */
+  top: 390px;
+  left: 50%;
   right: auto;
   bottom: auto;
   margin-right: -50%;
   transform: translate(-50%, -50%);
   width: 40%;
-  height: 720px;
+  height: 620px;
   z-index: 9999;
   position: fixed;
   background-color: #1f1f1f;
@@ -204,35 +197,37 @@ textarea::placeholder {
   z-index: 900;
 }
 
-/* Responsivo */
+/* Responsive */
 @media (max-width: 768px) {
   .form-container {
-    padding: 0 16px; /* Ajustar padding de ambos lados */
+    padding: 0 16px;
   }
 
   .form-title {
     font-size: 24px;
     text-align: center;
+    display: flex;
+    margin: 0;
+    padding: 0;
   }
 
   .form-row {
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
   }
 
-  /* Asegurar que todos los inputs ocupen el 100% del ancho del contenedor */
   .input-small,
   .input-large,
   .textarea-large {
-    width: 100%; /* Ocupa el 100% del contenedor */
-    box-sizing: border-box; /* Asegura que padding y border se incluyan en el ancho total */
+    width: 100%;
+    box-sizing: border-box;
     font-size: 14px;
-    padding: 8px; /* Ajustar padding interno */
-    height: 40px; /* Para inputs */
+    padding: 8px;
+    height: 35px;
   }
 
   .textarea-large {
-    height: 80px; /* Para textarea */
+    height: 72px;
   }
 
   .form-submit {
@@ -241,19 +236,21 @@ textarea::placeholder {
     font-size: 14px;
   }
 
-  .form-button-cancel img {
-    width: 20px;
-    margin-bottom: 32px;
+  .form-submit-container {
+    padding-bottom: 12px;
   }
 
-  /* Ajustes del modal */
+  .form-button-cancel img {
+    width: 20px;
+  }
+
   .ReactModal__Content {
-    width: 85vw; 
-    max-width: 400px; 
-    top: 10vh; 
-    left:50vw;
-    transform: translate(-50%, 0); 
-    padding: 16px;
+    width: 85vw;
+    max-width: 400px;
+    top: 10vh;
+    left: 50vw;
+    transform: translate(-50%, 0);
+    padding: 0 16px;
     margin: 0;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
     overflow-y: visible;
@@ -262,21 +259,30 @@ textarea::placeholder {
   }
 
   .form-top {
-    margin: 16px 16px 0px 16px;
+    margin: 10px 16px 0px 16px;
   }
 
   .form-hr {
-    margin: 0 16px 32px 16px;
+    margin: 0 16px 16px 16px;
   }
 
   .form-required {
     font-size: 14px;
+    margin: 0 0 4 0px;
   }
 
-  /* Añadir padding debajo del botón */
+  .form-required p {
+    margin: 0;
+    padding: 0;
+  }
+
   .form-submit-container {
-    padding-bottom: 24px;
+    padding-bottom: 16px;
+  }
+
+  .input-large,
+  .input-small,
+  .input-textarea-large {
+    margin-bottom: 6px;
   }
 }
-
-

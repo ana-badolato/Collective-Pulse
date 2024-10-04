@@ -1,6 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router'
 import Home from './pages/Home'
-import NewsCategory from './pages/Categories'
 import Details from './pages/Details'
 import Category from './pages/Category'
 import NotFound from './pages/NotFound'
@@ -8,19 +7,16 @@ import Navbar from './component/Navbar'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './App.css'
-import NewsForm from './component/NewsForm'
 import SearchResults from './pages/SearchResults'
 import Footer from './component/Footer'
-import LoadingPage from './pages/LoadingPage'
 import ScrollToTop from './component/ScrollToTop'
-
 import avatar01Icon from './assets/icons/avatar01Icon.png'
 import avatar02Icon from './assets/icons/avatar02Icon.png'
 import avatar03Icon from './assets/icons/avatar03Icon.png'
 import avatar04Icon from './assets/icons/avatar04Icon.png'
 import avatar05Icon from './assets/icons/avatar05Icon.png'
 import avatar06Icon from './assets/icons/avatar06Icon.png'
-
+//Avatar Author......................................................................
 const avatarImages = [
   avatar01Icon,
   avatar02Icon,
@@ -36,7 +32,6 @@ function getRandomAvatar() {
 }
 
 function App() {
-  let subtitle
   const [modalIsOpen, setIsOpen] = useState(false)
   const [news, setNews] = useState([])
   const [category, setCategory] = useState([])
@@ -57,7 +52,6 @@ function App() {
       console.log(error)
     }
   }
-
   const getDataCategory = async (category) => {
     try {
       const response = await axios.get(
@@ -80,29 +74,18 @@ function App() {
             ).data.views + 1,
         }
       )
-      console.log('Vistas incrementadas:', response.data.views)
     } catch (error) {
       console.error('Error al incrementar las vistas:', error)
     }
   }
 
   function openModal(isEditing) {
-    // Si isEditing es true, estamos en modo edición
     if (isEditing) {
-      setIsUpdate(true) // Poner el estado en modo edición
+      setIsUpdate(true)
     } else {
-      setIsUpdate(false) // Poner el estado en modo creación
-      // Limpiar el formulario aquí también si es necesario
+      setIsUpdate(false)
     }
-    setIsOpen(true) // Abrir el modal
-  }
-
-  function afterOpenModal() {
-    subtitle.style.color = '#f00'
-  }
-
-  function closeModal() {
-    setIsOpen(false)
+    setIsOpen(true)
   }
 
   const getCategoryColor = (category) => {
@@ -128,8 +111,8 @@ function App() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`${import.meta.env.VITE_SERVER_URL}/news/${id}`)
-      await getData() // Espera que los datos se actualicen después de la eliminación
-      navigate('/') // Redirige a Home solo después de la actualización
+      await getData()
+      navigate('/')
     } catch (error) {
       console.error('Error deleting the news:', error)
     }

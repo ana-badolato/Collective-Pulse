@@ -1,28 +1,14 @@
-// import nature from '../assets/naturalez.png'
-import new4 from '../assets/new4.jpg'
-import axios from 'axios'
-import { useParams } from 'react-router'
-import { useState } from 'react'
-
-
-
-
-
 function CardS(props) {
-  //const [news, setNews] = useState([]);
   const {
-    id,
     author,
     categories,
     content,
     date,
     image,
     title,
-    getData,
     getCategoryColor,
     getRandomAvatar,
   } = props
-  const { category } = useParams()
 
   return (
     <div className="cardS-container">
@@ -38,7 +24,7 @@ function CardS(props) {
       </div>
 
       <div className="cardS-header">
-        <h3 style={{height: "48px"}}>{title}</h3>
+        <h3 style={{ height: '48px' }}>{title}</h3>
         <p>{content.slice(0, 200)}...</p>
       </div>
 
@@ -46,7 +32,7 @@ function CardS(props) {
 
       <div className="cardS-data">
         <div className="author">
-          <img src={getRandomAvatar()} alt=""/>
+          <img src={getRandomAvatar()} alt="" />
           <p>{author}</p>
         </div>
         <p>{new Date(date).toLocaleDateString('es-ES')}</p>

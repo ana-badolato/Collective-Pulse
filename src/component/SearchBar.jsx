@@ -1,7 +1,7 @@
-import searchIcon from "../assets/icons/searchIcon.svg";
+import searchIcon from '../assets/icons/searchIcon.svg'
 
 function SearchBar(props) {
-  const { searchValue, setSearchValue, handleSearchChange } = props;
+  const { searchValue, setSearchValue, handleSearchChange } = props
 
   return (
     <div className="search-bar-container">
@@ -26,7 +26,7 @@ function SearchBar(props) {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-export default SearchBar;
+export default SearchBar

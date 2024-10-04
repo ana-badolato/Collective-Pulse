@@ -1,12 +1,10 @@
-
-import CardM from "../component/CardM";
-import SearchBar from "../component/SearchBar";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import ModalForm from "../component/ModalForm";
+import CardM from '../component/CardM'
+import SearchBar from '../component/SearchBar'
+import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import ModalForm from '../component/ModalForm'
 
 function SearchResults(props) {
-  
   const {
     searchValue,
     setSearchValue,
@@ -20,17 +18,20 @@ function SearchResults(props) {
     isUpdate,
     getDataCategory,
     getData,
-  } = props;
+  } = props
 
-  const [filteredNews, setFilteredNews] = useState([]);
+  const [filteredNews, setFilteredNews] = useState([])
   useEffect(() => {
     const filtered = news.filter((eachNew) =>
       eachNew.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
-    setFilteredNews(filtered);
-  }, [searchValue, news]); // Se ejecuta cada vez que el valor de searchValue cambie
+    )
+    setFilteredNews(filtered)
+  }, [searchValue, news])
   return (
-    <div className="searchResults-container" style={{backgroundColor:"#1f1f1f"}}>
+    <div
+      className="searchResults-container"
+      style={{ backgroundColor: '#1f1f1f' }}
+    >
       <div className="hero-category"></div>
       <div className="section-header">
         <h2>LATEST</h2>
@@ -39,29 +40,28 @@ function SearchResults(props) {
       <SearchBar
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        // Aquí el cambio para que sea dinámico
         handleSearchChange={(e) => {
-          setSearchValue(e.target.value);
-          handleSearchChange(e);
+          setSearchValue(e.target.value)
+          handleSearchChange(e)
         }}
       />
       <div className="cardM-section-results">
         {filteredNews.map((eachNew) => {
           return (
             <Link
-                className="link-cardM"
-                key={eachNew.id}
-                to={`/details/${eachNew.id}`}
-                onClick={() => incrementViews(eachNew.id)}
-              >
-            <CardM
-              getCategoryColor={getCategoryColor}
-              getRandomAvatar={getRandomAvatar}
+              className="link-cardM"
               key={eachNew.id}
-              {...eachNew}
-            />
+              to={`/details/${eachNew.id}`}
+              onClick={() => incrementViews(eachNew.id)}
+            >
+              <CardM
+                getCategoryColor={getCategoryColor}
+                getRandomAvatar={getRandomAvatar}
+                key={eachNew.id}
+                {...eachNew}
+              />
             </Link>
-          );
+          )
         })}
       </div>
       <ModalForm
@@ -73,7 +73,7 @@ function SearchResults(props) {
         news={news}
       />
     </div>
-  );
+  )
 }
 
-export default SearchResults;
+export default SearchResults

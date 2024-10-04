@@ -38,12 +38,7 @@ function Home(props) {
   }
 
   useEffect(() => {
-    // Verificar si la intro ya se ha mostrado
-    /*const introShown = localStorage.getItem('introShown')
-    if (introShown) {
-      setShowIntro(false) // Ocultar la intro si ya se ha mostrado antes
-    }*/
-    setSearchValue('') // Limpiar la barra de búsqueda
+    setSearchValue('')
   }, [])
 
   useEffect(() => {
@@ -60,7 +55,6 @@ function Home(props) {
 
   return (
     <div className="home">
-      {/* Solo mostrar el contenido principal cuando la intro haya desaparecido */}
       {!introWatched ? (
         <Intro onVideoEnd={handleIntroEnd} />
       ) : (

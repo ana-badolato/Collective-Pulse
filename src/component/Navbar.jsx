@@ -13,7 +13,6 @@ function Navbar(props) {
   } = props
 
   const { category } = useParams()
-  // Esto devolverá la categoría actual
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const allCategories = [
@@ -24,7 +23,6 @@ function Navbar(props) {
     'sustainability',
     'travel',
   ]
-  console.log(category)
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen)
   }
@@ -56,7 +54,7 @@ function Navbar(props) {
               key={cat}
               onClick={() => {
                 handleCategoryClick(cat)
-                setMobileMenuOpen(false) // Close menu after selecting a category
+                setMobileMenuOpen(false)
               }}
               to={`/category/${cat}`}
               style={{
@@ -68,12 +66,11 @@ function Navbar(props) {
             </Link>
           ))}
         </div>
-        {/* <button onClick={() => openModal(false)}> ADD PULSE</button> */}
+
         <button
           className="button-new-pulse"
           onClick={() => {
-            console.log('Opening Add Pulse modal', isUpdate)
-            openModal(false) // Modo creación
+            openModal(false)
           }}
         >
           ADD PULSE

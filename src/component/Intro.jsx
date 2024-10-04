@@ -4,19 +4,18 @@ import logo from '../assets/icons/logo.svg'
 function Intro({ onVideoEnd }) {
   const videoRef = useRef(null)
   const [videoStarted, setVideoStarted] = useState(false)
-  
 
   const handlePlayVideo = () => {
     const video = videoRef.current
     if (video) {
-      video.volume = 0.05;
+      video.volume = 0.05
       video.play()
       setVideoStarted(true)
 
       setTimeout(() => {
         video.pause()
         video.currentTime = 0
-        onVideoEnd() // Llamamos a la función de Home para ocultar la intro
+        onVideoEnd()
       }, 3000)
     }
   }
@@ -50,7 +49,6 @@ function Intro({ onVideoEnd }) {
           onClick={handlePlayVideo}
           style={{
             padding: '30px 40px 20px',
-            fontSize: '16px',
             color: 'black',
             fontSize: '30px',
             fontFamily: 'Oswald',

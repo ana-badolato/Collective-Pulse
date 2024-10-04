@@ -11,7 +11,6 @@ import catSustainability from '../assets/images/catSustainability.png'
 import catTravel from '../assets/images/catTravel.png'
 import catLifestyle from '../assets/images/catLifestyle.png'
 import catVivics from '../assets/images/catCivics.png'
-import CardL from '../component/CardL'
 import LoadingPage from './LoadingPage'
 import NotContent from '../component/NotContent'
 
@@ -29,7 +28,7 @@ function Category(props) {
     incrementViews,
     handleCategoryClick,
   } = props
-  const navigate = useNavigate()
+
   const categoryImages = {
     culture: catCulture,
     science: catScience,
@@ -49,9 +48,9 @@ function Category(props) {
   const selectedImage = categoryImages[params.category]
   useEffect(() => {
     if (params.category) {
-      getDataCategory(params.category) // Pasa la categoría de params directamente
+      getDataCategory(params.category)
     }
-  }, [params.category, news]) // Se ejecuta cuando cambia la categoría o las noticias
+  }, [params.category, news])
 
   const getRandomNew = (newsArray) => {
     const randomIndex = Math.floor(Math.random() * newsArray.length)
@@ -59,17 +58,16 @@ function Category(props) {
   }
 
   const latestNews = category
-    .slice() // Hacer una copia del array
+    .slice()
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, 4) // Limitar a las últimas 4 noticias
+    .slice(0, 4)
 
   const randomNew = latestNews.length > 0 ? getRandomNew(latestNews) : null
 
-  // Obtener las noticias en tendencia dentro de la categoría (por vistas)
   const trendingNews = category
-    .slice() // Hacer una copia del array
+    .slice()
     .sort((a, b) => b.views - a.views)
-    .slice(0, 6) // Limitar a las 6 noticias más vistas
+    .slice(0, 6)
 
   if (!category) {
     return <LoadingPage />
@@ -108,7 +106,7 @@ function Category(props) {
           </Link>
         </div>
       )}
-      {/* <Carousel news={news} getCategoryColor={getCategoryColor} /> */}
+
       <div className="section-header">
         <h2>LATEST</h2>
         <hr />

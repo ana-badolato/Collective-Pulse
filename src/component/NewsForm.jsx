@@ -1,91 +1,93 @@
-import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useParams } from "react-router";
-import { useNavigate } from "react-router-dom";
-import placeholderImg from "../assets/images/placeholder.jpg";
+import Form from 'react-bootstrap/Form'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
+import { useParams } from 'react-router'
+import { useNavigate } from 'react-router-dom'
+import placeholderImg from '../assets/images/placeholder.jpg'
 
-import "../FormStyles.css";
+import '../FormStyles.css'
 function NewsForm(props) {
-  const { getData, isUpdate, news, getDataCategory, closeModal } = props;
+  const { getData, isUpdate, news, getDataCategory, closeModal } = props
   const [newsData, setNewsData] = useState({
-    categories: "",
-    title: "",
-    author: "",
-    content: "",
-    image: "",
-  });
-  const [editNew, setEditNew] = useState(null);
-  const navigate = useNavigate();
-  const params = useParams();
-  
+    categories: '',
+    title: '',
+    author: '',
+    content: '',
+    image: '',
+  })
+  const [editNew, setEditNew] = useState(null)
+  const navigate = useNavigate()
+  const params = useParams()
+
   useEffect(() => {
     if (isUpdate) {
       // Cargar los datos existentes si es modo edición
-      const existingNews = news.find((eachNew) => eachNew.id === Number(params.id));
+      const existingNews = news.find(
+        (eachNew) => eachNew.id === Number(params.id)
+      )
       if (existingNews) {
-        setNewsData(existingNews);
+        setNewsData(existingNews)
       }
     } else {
       // Limpiar los datos si es modo creación
       setNewsData({
-        categories: "",
-        title: "",
-        author: "",
-        content: "",
-        image: "",
-      });
+        categories: '',
+        title: '',
+        author: '',
+        content: '',
+        image: '',
+      })
     }
-  }, [isUpdate, news, params.id]); 
+  }, [isUpdate, news, params.id])
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
     setNewsData((prevData) => ({
       ...prevData,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    const imageToUse = newsData.image || placeholderImg;
+    const imageToUse = newsData.image || placeholderImg
     const newPulse = {
       ...newsData,
       image: imageToUse,
       date: new Date(),
       views: editNew ? editNew.views : 0,
-    };
+    }
 
-    getData();
-    getDataCategory();
+    getData()
+    getDataCategory()
 
     try {
       if (isUpdate) {
         await axios.put(
           `${import.meta.env.VITE_SERVER_URL}/news/${params.id}`,
           newPulse
-        );
-        await getData();
+        )
+        await getData()
 
-        closeModal();
-        navigate(`/details/${params.id}`);
+        closeModal()
+        navigate(`/details/${params.id}`)
       } else {
         const response = await axios.post(
           `${import.meta.env.VITE_SERVER_URL}/news`,
           newPulse
-        );
+        )
 
-        const newNewsId = response.data.id;
+        const newNewsId = response.data.id
 
-        await getData();
+        await getData()
 
-        navigate(`/details/${newNewsId}`);
-        closeModal();
+        navigate(`/details/${newNewsId}`)
+        closeModal()
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return (
     <div className="form-container">
@@ -153,7 +155,9 @@ function NewsForm(props) {
           className="mb-3 form-block"
           controlId="exampleForm.ControlInput1"
         >
-          <Form.Label>Image <span>*</span></Form.Label>
+          <Form.Label>
+            Image <span>*</span>
+          </Form.Label>
           <Form.Control
             className="input-large"
             type="text"
@@ -193,7 +197,7 @@ function NewsForm(props) {
         </div>
       </Form>
     </div>
-  );
+  )
 }
 
-export default NewsForm;
+export default NewsForm

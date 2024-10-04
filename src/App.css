@@ -2,11 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Questrial&display=swap');
 
-/* 
-  font-family: "Oswald", sans-serif;
-  font-family: "Questrial", sans-serif;
-} */
-
+/*elementos base --------------------------------------------------------------*/
 #root {
   margin: 0 auto;
   text-align: center;
@@ -32,8 +28,6 @@ html {
   padding: 0;
 }
 
-/* Aplicar un contenedor que centra y limita el ancho del contenido */
-
 .main {
   display: flex;
   flex-direction: column;
@@ -50,6 +44,7 @@ html {
   align-items: center;
   box-sizing: border-box;
 }
+
 .container-nav {
   position: fixed;
   top: 0;
@@ -75,6 +70,7 @@ html {
   display: flex;
   gap: 48px;
 }
+
 .container-categories-nav a::after {
   content: '';
   display: block;
@@ -188,6 +184,8 @@ html {
   color: rgba(31, 31, 31, 0.7);
 }
 
+/* Home---------------------------------------------------------------*/
+
 .title {
   font-size: 7vw;
   font-family: var(--font-heading);
@@ -212,6 +210,7 @@ html {
   flex-direction: column;
   background-color: var(--color-neutral-black);
 }
+
 .hero {
   background-image: linear-gradient(
       to bottom,
@@ -246,10 +245,10 @@ html {
 }
 
 .image-container {
-  flex-shrink: 0; /* Evita que las imágenes se reduzcan */
-  width: 100%; /* Cada imagen ocupa el 100% del espacio visible */
-  height: 100%; /* Mantiene la altura del contenedor */
-  position: relative; /* Para posicionar el tag sobre la imagen */
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .image-carousel {
@@ -320,6 +319,7 @@ html {
 }
 
 /* Card L -------------------------------------------------*/
+
 .cardL-section {
   width: 80%;
   position: relative;
@@ -345,7 +345,7 @@ html {
   height: 96px;
   text-align: left;
   color: var(--color-neutral-black);
-  background: rgba(255, 255, 255, 0.8); /* Fondo translúcido */
+  background: rgba(255, 255, 255, 0.8);
   font-family: var(--font-heading);
   font-size: 24px;
   font-weight: 500;
@@ -403,7 +403,6 @@ html {
   object-fit: cover;
 }
 
-/* Rectángulo de categoría en la parte inferior */
 .cardM-category {
   position: absolute;
   top: 0;
@@ -504,7 +503,6 @@ html {
 
 /*Card S -------------------------------------------------------------------------*/
 
-/* Contenedor de la sección que agrupa las tarjetas CardS */
 .cardS-section {
   position: relative;
   width: 30%;
@@ -536,14 +534,12 @@ html {
   height: 600px;
 }
 
-/* Imagen dentro de la tarjeta */
 .cardS-image img {
   width: 100%;
   height: 260px;
-  object-fit: cover; /* Mantiene las proporciones de la imagen */
+  object-fit: cover;
 }
 
-/* Categoría en la parte superior de la tarjeta */
 .cardS-category {
   background-color: var(--custom-color);
   color: var(--color-neutral-black);
@@ -554,7 +550,7 @@ html {
   height: 40px;
   display: flex;
   align-items: center;
-  padding-left: 24px; /* Espaciado a la izquierda del texto */
+  padding-left: 24px;
   margin-top: -4px;
 }
 .cardS-header {
@@ -562,7 +558,7 @@ html {
   text-align: left;
   margin: 0;
 }
-/* Título y contenido dentro de la tarjeta */
+
 .cardS-header h3 {
   font-family: var(--font-heading);
   font-size: 20px;
@@ -578,7 +574,6 @@ html {
   height: 96px;
 }
 
-/* Línea divisoria (hr) dentro de la tarjeta */
 .cardS-container hr {
   border: none;
   border-top: 1px solid var(--color-neutral-white-details);
@@ -586,7 +581,6 @@ html {
   opacity: 0.5;
 }
 
-/* Información del autor y fecha */
 .cardS-data {
   display: flex;
   justify-content: space-between;
@@ -608,6 +602,8 @@ html {
 .cardS-data p {
   margin: 0;
 }
+
+/*Etiquetas laterales navegación ------------------------------------------------------------------------------------*/
 
 .box-labelcategory {
   position: relative;
@@ -644,7 +640,7 @@ html {
   transform: translateX(25%);
 }
 
-/*Card xs----------------------------------*/
+/*Card xs--------------------------------------------------------------------------------------------*/
 .cardXs-container {
   display: flex;
   flex-direction: column;
@@ -689,6 +685,7 @@ html {
   color: var(--color-neutral-white);
 }
 
+/*Details page ----------------------------------------------------------------------------------------------*/
 .details-title {
   background-image: url('./assets/basciHero.png');
   background-size: cover;
@@ -698,33 +695,29 @@ html {
   align-items: center;
   flex-direction: column;
   height: 1050px;
-  position: relative; /* Asegura que el overlay se posicione correctamente */
+  position: relative;
 }
 
 .title-left {
-  margin: 0; /* Eliminar margen para evitar desplazamiento */
-  padding: 20px; /* Espacio interno */
+  margin: 0;
+  padding: 20px;
   font-family: 'Oswald', sans-serif;
   font-size: 50px;
   font-weight: bold;
   color: var(--color-neutral-white);
-  text-align: left; /* Alinear el texto a la izquierda */
-  width: 80%; /* Asegura que ocupe todo el ancho */
+  text-align: left;
+  width: 80%;
 }
 
 .details-title::before {
   content: '';
-  position: absolute; /* Para que se posicione encima de la imagen */
-  top: 0; /* Empieza desde la parte superior */
-  left: 0; /* Alineado a la izquierda */
-  right: 0; /* Alineado a la derecha */
-  bottom: 0; /* Ocupa todo el contenedor */
-  background: linear-gradient(
-    to bottom,
-    rgba(31, 31, 31, 0) 0%,
-    #1f1f1f 100%
-  ); /* Gradiente de transparente a #1f1f1f */
-  z-index: 1; /* Asegúrate de que esté por encima de la imagen pero debajo del contenido */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, rgba(31, 31, 31, 0) 0%, #1f1f1f 100%);
+  z-index: 1;
 }
 
 .details-title img {
@@ -733,7 +726,7 @@ html {
   height: 707px;
   border: solid 2px var(--custom-color);
   margin-top: 40px;
-  z-index: 2; /* Cambiado a 2 para que esté por encima del overlay */
+  z-index: 2;
 }
 
 .details-title h1 {
@@ -743,14 +736,14 @@ html {
   font-size: 64px;
   font-weight: bold;
   color: var(--color-neutral-white);
-  z-index: 3; /* Asegúrate de que el texto esté por encima del overlay */
+  z-index: 3;
   text-align: left;
 }
 .container-content {
   font-size: 20px;
   line-height: 1.5;
   display: flex;
-  justify-content: space-between; /* Cambia a space-between para espacio entre secciones */
+  justify-content: space-between;
   width: 80%;
   margin: 32px 10%;
   gap: 64px;
@@ -760,7 +753,7 @@ html {
   text-align: left;
   font-family: var(--font-text);
   color: var(--color-neutral-white);
-  width: 70%; /* Asigna 70% de ancho */
+  width: 70%;
 }
 
 .right-section {
@@ -772,10 +765,8 @@ html {
 }
 
 .cardXs-container {
-  background-color: var(
-    --color-neutral-black
-  ); /* Añade un fondo si es necesario */
-  padding: 10px; /* Espaciado alrededor de las tarjetas */
+  background-color: var(--color-neutral-black);
+  padding: 10px;
 }
 .number-comments {
   text-align: left;
@@ -783,10 +774,7 @@ html {
   font-family: var(--font-heading);
   margin: 0;
 }
-/* .comment-container {
-  width: 1000px;
-  padding: 0px 60px;
-} */
+
 .author-comment {
   gap: 20px;
   display: flex;
@@ -885,30 +873,30 @@ html {
   display: flex;
   align-items: flex-start;
   width: 100%;
-  gap: 16px; /* Añadir espacio entre avatar y formulario */
+  gap: 16px;
   margin: 48px 0 64px 0;
 }
 
 .comment-avatar {
-  flex-shrink: 0; /* Evita que el avatar se reduzca de tamaño */
+  flex-shrink: 0;
 }
 
 .comment-avatar img {
-  width: 32px; /* Tamaño del avatar */
+  width: 32px;
   height: 32px;
-  border-radius: 50%; /* Hace que el avatar sea circular */
+  border-radius: 50%;
 }
 
 .form-comment-container {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ocupa todo el ancho restante */
+  width: 100%;
 }
 
 .textarea-comment {
   height: 96px;
   background-color: var(--color-neutral-black-details);
-  margin-bottom: 8px; /* Espacio entre textarea y input */
+  margin-bottom: 8px;
   padding-left: 24px;
   padding-top: 16px;
   color: var(--color-neutral-white);
@@ -986,31 +974,29 @@ html {
 
 @media (max-width: 768px) {
   .cardM-container {
-    width: calc(
-      100% - 32px
-    ); /* Se coloca una carta por fila en pantallas pequeñas */
+    width: calc(100% - 32px);
   }
 }
 
-/* Footer*/
+/* Footer -------------------------------------------------------------------------------------------------------- */
 
 .footer-section {
-  position: relative; /* Necesario para que el ::before y el contenido se posicionen correctamente */
-  background-image: url('./assets/images/footer-background.png'); /* Capa 1 */
+  position: relative;
+  background-image: url('./assets/images/footer-background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   height: auto;
-  min-height: 300px; /* Ajusta según tus necesidades */
+  min-height: 300px;
   display: flex;
   align-items: flex-end;
   padding-bottom: 64px;
-  z-index: 0; /* Fondo base */
+  z-index: 0;
 }
 
 .footer-section::before {
   content: '';
-  position: absolute; /* Se coloca encima del fondo, pero detrás del contenido */
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -1019,14 +1005,14 @@ html {
     to bottom,
     rgba(31, 31, 31, 1) 0%,
     rgba(31, 31, 31, 0) 50%
-  ); /* Capa 2 - Overlay */
-  z-index: 1; /* Se posiciona sobre el fondo, pero debajo del contenido */
-  pointer-events: none; /* El pseudo-elemento no interferirá con la interacción del usuario */
+  );
+  z-index: 1;
+  pointer-events: none;
 }
 
 .footer-content {
-  position: relative; /* Asegura que el contenido esté encima del overlay */
-  z-index: 2; /* Capa 3 - El contenido como texto, iconos, etc. está por encima del overlay */
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -1078,11 +1064,11 @@ html {
 
 .social-media-links a {
   display: inline-block;
-  transition: transform 0.3s ease-in-out; /* Transición suave */
+  transition: transform 0.3s ease-in-out;
 }
 
 .social-media-links a:hover {
-  transform: translateY(-5px); /* Mover hacia arriba 5px */
+  transform: translateY(-5px);
 }
 
 .loading {
@@ -1106,6 +1092,7 @@ html {
   font-size: 50px;
   color: var(--color-neutral-white);
 }
+
 @keyframes beat {
   0%,
   50%,
@@ -1117,6 +1104,7 @@ html {
     transform: scale(0.92, 0.95);
   }
 }
+
 .dots {
   position: relative;
   display: flex;
@@ -1164,8 +1152,8 @@ html {
   height: 16px;
 }
 
-/*Delete Modal----------------------------------*/
-/* Estilos para el contenedor principal del modal */
+/*Delete Modal-----------------------------------------------------------------------------------------------------------------*/
+
 .modal-container {
   position: fixed;
   top: 0;
@@ -1175,24 +1163,22 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
-  z-index: 1000; /* Asegura que esté encima del contenido */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
 }
 
-/* Estilos para el cuadro del modal */
 .modal-content {
-  background-color: #333; /* Fondo oscuro */
-  color: #fff; /* Texto blanco */
-  border-radius: 2px; /* Bordes redondeados mínimos */
+  background-color: #333;
+  color: #fff;
+  border-radius: 2px;
   max-width: 500px;
   width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Encabezado del modal */
 .modal-header {
   padding: 16px;
-  border-bottom: 1px solid #444; /* Borde inferior del encabezado */
+  border-bottom: 1px solid #444;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1206,27 +1192,24 @@ html {
   font-family: var(--font-heading);
 }
 
-/* Botón de cerrar en el encabezado */
 .modal-header .close {
   background: none;
   border: none;
-  color: var(--color-neutral-white); /* Color naranja */
-  font-size: 1.5rem; /* Tamaño de la "X" */
+  color: var(--color-neutral-white);
+  font-size: 1.5rem;
   cursor: pointer;
 }
 
 .modal-header .close:hover {
-  color: var(--color-neutral-white); /* Un poco más oscuro en hover */
+  color: var(--color-neutral-white);
 }
 
-/* Cuerpo del modal */
 .modal-body {
   padding: 16px;
   font-size: 1rem;
   color: #ccc;
 }
 
-/* Pie del modal con botones */
 .modal-footer {
   padding: 16px;
   display: flex;
@@ -1234,39 +1217,35 @@ html {
   border-top: 1px solid #444;
 }
 
-/* Estilos de los botones */
 .modal-footer button {
   padding: 8px 16px;
   border: none;
-  border-radius: 2px; /* Bordes muy sutiles */
+  border-radius: 2px;
   cursor: pointer;
   font-size: 1rem;
   margin-left: 8px;
 }
 
-/* Botón secundario (Close) */
 .modal-footer .secondary-btn {
-  background-color: #666; /* Gris oscuro */
+  background-color: #666;
   color: #fff;
 }
 
 .modal-footer .secondary-btn:hover {
-  background-color: #555; /* Un poco más oscuro en hover */
+  background-color: #555;
 }
 
-/* Botón primario (Yes) */
 .modal-footer .primary-btn {
-  background-color: var(
-    --color-fluor-orange
-  ); /* Color azul similar al de Bootstrap */
+  background-color: var(--color-fluor-orange);
   color: #fff;
 }
 
 .modal-footer .primary-btn:hover {
-  background-color: var(--color-fluor-orange); /* Más oscuro en hover */
+  background-color: var(--color-fluor-orange);
 }
 
-/*Category */
+/*Category------------------------------------------------------------------------------------------ */
+
 .hero-category {
   position: inherit;
   background-image: linear-gradient(
@@ -1305,16 +1284,14 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Ocupa toda la altura de la ventana */
-  background-color: var(
-    --color-neutral-black
-  ); /* El mismo color de fondo que la página */
+  height: 100vh;
+  background-color: var(--color-neutral-black);
   font-family: var(--font-heading);
 }
 
 .loading-message {
   font-size: 24px;
-  color: var(--color-neutral-white); /* Color del texto de carga */
+  color: var(--color-neutral-white);
 }
 
 .title-notFound {
@@ -1349,7 +1326,7 @@ html {
   transition: 0.3s;
 }
 
-/* Card API */
+/* Card API --------------------------------------------------------------------------------------------------- */
 .img-api {
   width: 40px;
 }
@@ -1360,7 +1337,6 @@ html {
   align-items: flex-start;
   gap: 16px;
   color: var(--color-neutral-white);
-  /* background-color: var(--color-neutral-white); */
 }
 
 .content-api {
@@ -1386,6 +1362,8 @@ html {
 .video-intro {
   width: 800px;
 }
+
+/* Responsive ------------------------------------------------------------------------------------------------*/
 
 @media (max-width: 768px) {
   .hero {
@@ -1413,7 +1391,7 @@ html {
   }
 
   .container-categories-nav.open {
-    display: flex; /* Show categories when the menu is open */
+    display: flex;
   }
 
   .logo-container {
@@ -1431,12 +1409,12 @@ html {
 
   .search-container {
     display: flex;
-    flex-grow: 1; /* Allow search bar to grow */
+    flex-grow: 1;
     margin-left: 16px;
   }
 
   .search-container input {
-    width: 100%; /* Full width */
+    width: 100%;
     padding: 8px;
     border: none;
     border-radius: 4px;
@@ -1478,9 +1456,7 @@ html {
   .right-section {
     display: none;
   }
-  /*.container-content {
-    width: 100%;
-  }*/
+
   .box-content {
     width: 80%;
   }

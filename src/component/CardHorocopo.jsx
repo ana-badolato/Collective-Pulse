@@ -9,7 +9,6 @@ function CardHorocopo() {
 
   const getChiste = async () => {
     const response = await axios.get('https://api.chucknorris.io/jokes/random')
-    console.log(response.data)
     setChiste(response.data)
   }
   return (
